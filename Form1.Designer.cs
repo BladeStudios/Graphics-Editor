@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuBar = new System.Windows.Forms.MenuStrip();
             this.abcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,25 +45,25 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.menuBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuBar
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abcToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1333, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuBar.Location = new System.Drawing.Point(0, 0);
+            this.menuBar.Name = "menuBar";
+            this.menuBar.Size = new System.Drawing.Size(1333, 24);
+            this.menuBar.TabIndex = 0;
+            this.menuBar.Text = "menuStrip1";
             // 
             // abcToolStripMenuItem
             // 
@@ -178,13 +178,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // toolStrip1
+            // toolBar
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1333, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolBar.Location = new System.Drawing.Point(0, 24);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(1333, 25);
+            this.toolBar.TabIndex = 1;
+            this.toolBar.Text = "toolStrip1";
             // 
             // toolsToolStripMenuItem
             // 
@@ -192,30 +192,31 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 52);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1333, 570);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 52);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1333, 570);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 623);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.toolBar);
+            this.Controls.Add(this.menuBar);
             this.Font = new System.Drawing.Font("Verdana", 12F);
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuBar;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form1";
             this.Text = "Graphics Editor";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuBar.ResumeLayout(false);
+            this.menuBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,7 +224,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuBar;
         private System.Windows.Forms.ToolStripMenuItem abcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -241,8 +242,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStrip toolBar;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
 

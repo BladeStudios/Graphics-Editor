@@ -13,6 +13,7 @@ namespace Graphics_Editor
     public partial class Form1 : Form
     {
         File file;
+        public Bitmap Image;
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +28,11 @@ namespace Graphics_Editor
         private void menuFileNewWindow_Click(object sender, EventArgs e)
         {
             file.NewWindow();
+        }
+
+        private void menuFileOpen_Click(object sender, EventArgs e)
+        {
+            file.Open();
         }
     }
 }

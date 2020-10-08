@@ -34,7 +34,10 @@ namespace Graphics_Editor
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
+                if (filePath == string.Empty)
+                    openFileDialog.InitialDirectory = "c:\\";
+                else
+                    openFileDialog.InitialDirectory = filePath;
                 openFileDialog.Filter = "JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 3;
                 openFileDialog.RestoreDirectory = true;

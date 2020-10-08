@@ -21,5 +21,11 @@ namespace Graphics_Editor
         {
             _form.pictureBox = null;
         }
+
+        public void NewWindow()
+        {
+            Form1 f = new Form1();
+            f.Show();
+        }
     }
 }

@@ -90,6 +90,7 @@
             this.menuFileNewWindow.Name = "menuFileNewWindow";
             this.menuFileNewWindow.Size = new System.Drawing.Size(180, 22);
             this.menuFileNewWindow.Text = "New window";
+            this.menuFileNewWindow.Click += new System.EventHandler(this.menuFileNewWindow_Click);
             // 
             // menuFileOpen
             // 
@@ -130,31 +131,31 @@
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new System.Drawing.Size(180, 22);
+            this.menuEditUndo.Size = new System.Drawing.Size(103, 22);
             this.menuEditUndo.Text = "Undo";
             // 
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new System.Drawing.Size(180, 22);
+            this.menuEditRedo.Size = new System.Drawing.Size(103, 22);
             this.menuEditRedo.Text = "Redo";
             // 
             // menuEditCut
             // 
             this.menuEditCut.Name = "menuEditCut";
-            this.menuEditCut.Size = new System.Drawing.Size(180, 22);
+            this.menuEditCut.Size = new System.Drawing.Size(103, 22);
             this.menuEditCut.Text = "Cut";
             // 
             // menuEditCopy
             // 
             this.menuEditCopy.Name = "menuEditCopy";
-            this.menuEditCopy.Size = new System.Drawing.Size(180, 22);
+            this.menuEditCopy.Size = new System.Drawing.Size(103, 22);
             this.menuEditCopy.Text = "Copy";
             // 
             // menuEditPaste
             // 
             this.menuEditPaste.Name = "menuEditPaste";
-            this.menuEditPaste.Size = new System.Drawing.Size(180, 22);
+            this.menuEditPaste.Size = new System.Drawing.Size(103, 22);
             this.menuEditPaste.Text = "Paste";
             // 
             // menuView
@@ -168,7 +169,7 @@
             // menuViewTools
             // 
             this.menuViewTools.Name = "menuViewTools";
-            this.menuViewTools.Size = new System.Drawing.Size(180, 22);
+            this.menuViewTools.Size = new System.Drawing.Size(101, 22);
             this.menuViewTools.Text = "Tools";
             // 
             // menuHelp
@@ -182,7 +183,7 @@
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuHelpAbout.Size = new System.Drawing.Size(107, 22);
             this.menuHelpAbout.Text = "About";
             // 
             // toolBar
@@ -214,6 +215,7 @@
             this.MainMenuStrip = this.menuBar;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Graphics Editor";
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();

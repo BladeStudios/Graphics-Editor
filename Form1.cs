@@ -23,5 +23,10 @@ namespace Graphics_Editor
         {
             file.New();
         }
+
+        private void menuFileNewWindow_Click(object sender, EventArgs e)
+        {
+            file.NewWindow();
+        }
     }
 }

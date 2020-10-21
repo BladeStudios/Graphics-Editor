@@ -416,6 +416,7 @@
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.Location = new System.Drawing.Point(0, 52);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(1333, 570);
             this.pictureBox.TabIndex = 2;

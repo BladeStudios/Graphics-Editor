@@ -22,6 +22,7 @@ namespace Graphics_Editor
             file = new File(this);
             appState = new AppState(this);
             drawing = new Drawing(this);
+            Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
 
             //setting button images
             int size = 20;
@@ -147,7 +148,9 @@ namespace Graphics_Editor
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-
+            int x = pictureBox.PointToClient(Cursor.Position).X;
+            int y = pictureBox.PointToClient(Cursor.Position).Y;
+            drawing.drawPoint(x,y);
         }
     }
 }

@@ -13,11 +13,13 @@ namespace Graphics_Editor
     public partial class Form1 : Form
     {
         File file;
+        AppState appState;
         public Bitmap Image;
         public Form1()
         {
             InitializeComponent();
             file = new File(this);
+            appState = new AppState(this);
 
             //setting button images
             int size = 20;
@@ -92,30 +94,35 @@ namespace Graphics_Editor
                     this.menuDrawingToolPencil.Checked = true;
                     this.menuDrawingToolPencil.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolPencil.Image;
+                    appState.setDrawingTool("Pencil");
                 }
                 else if (item == menuDrawingToolBrush)
                 {
                     this.menuDrawingToolBrush.Checked = true;
                     this.menuDrawingToolBrush.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolBrush.Image;
+                    appState.setDrawingTool("Brush");
                 }
                 else if (item == menuDrawingToolLine)
                 {
                     this.menuDrawingToolLine.Checked = true;
                     this.menuDrawingToolLine.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolLine.Image;
+                    appState.setDrawingTool("Line");
                 }
                 else if (item == menuDrawingToolRectangle)
                 {
                     this.menuDrawingToolRectangle.Checked = true;
                     this.menuDrawingToolRectangle.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolRectangle.Image;
+                    appState.setDrawingTool("Rectangle");
                 }
                 else if (item == menuDrawingToolCircle)
                 {
                     this.menuDrawingToolCircle.Checked = true;
                     this.menuDrawingToolCircle.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolCircle.Image;
+                    appState.setDrawingTool("Circle");
                 }
             }
             

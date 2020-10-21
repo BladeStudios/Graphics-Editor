@@ -25,20 +25,21 @@ namespace Graphics_Editor
             Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
 
             //setting button images
-            int size = 20;
+            int width = 20;
+            int height = 20;
 
-            this.menuColor.Image = createBitmap(size, 0, 0, 0);
-            this.menuColorBlack.Image = createBitmap(size, 0, 0, 0);
-            this.menuColorWhite.Image = createBitmap(size, 255, 255, 255);
-            this.menuColorRed.Image = createBitmap(size,255,0,0);
-            this.menuColorGreen.Image = createBitmap(size, 0, 255, 0);
-            this.menuColorBlue.Image = createBitmap(size, 0, 0, 255);
-            this.menuColorYellow.Image = createBitmap(size, 255, 255, 0);
-            this.menuColorCyan.Image = createBitmap(size, 0, 255, 255);
-            this.menuColorMagenta.Image = createBitmap(size, 255, 0, 255);
-            this.menuColorOrange.Image = createBitmap(size, 255, 165, 0);
-            this.menuColorViolet.Image = createBitmap(size, 238, 82, 238);
-            this.menuColorGrey.Image = createBitmap(size, 80, 80, 80);
+            this.menuColor.Image = createBitmap(width, height, 0, 0, 0);
+            this.menuColorBlack.Image = createBitmap(width, height, 0, 0, 0);
+            this.menuColorWhite.Image = createBitmap(width, height, 255, 255, 255);
+            this.menuColorRed.Image = createBitmap(width, height,255,0,0);
+            this.menuColorGreen.Image = createBitmap(width, height, 0, 255, 0);
+            this.menuColorBlue.Image = createBitmap(width, height, 0, 0, 255);
+            this.menuColorYellow.Image = createBitmap(width, height, 255, 255, 0);
+            this.menuColorCyan.Image = createBitmap(width, height, 0, 255, 255);
+            this.menuColorMagenta.Image = createBitmap(width, height, 255, 0, 255);
+            this.menuColorOrange.Image = createBitmap(width, height, 255, 165, 0);
+            this.menuColorViolet.Image = createBitmap(width, height, 238, 82, 238);
+            this.menuColorGrey.Image = createBitmap(width, height, 80, 80, 80);
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
@@ -53,15 +54,17 @@ namespace Graphics_Editor
 
         private void menuFileOpen_Click(object sender, EventArgs e)
         {
+            if(Image==null)
+                Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
             file.Open();
         }
 
-        Bitmap createBitmap(int size, int red, int green, int blue)
+        Bitmap createBitmap(int width, int height, int red, int green, int blue)
         {
-            Bitmap bitmap = new Bitmap(size, size);
+            Bitmap bitmap = new Bitmap(width, height);
             Graphics graphics = Graphics.FromImage(bitmap);
             SolidBrush solidbrush = new SolidBrush(Color.FromArgb(red, green, blue));
-            graphics.FillRectangle(solidbrush, 0, 0, size, size);
+            graphics.FillRectangle(solidbrush, 0, 0, width, height);
             return bitmap;
         }
 
@@ -173,6 +176,13 @@ namespace Graphics_Editor
         {
             DrawLine drawline = new DrawLine(this, "circle");
             drawline.ShowDialog();
+        }
+
+        private void clearDrawingAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image = null;
+            pictureBox.Image = null;
+            pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
         }
     }
 }

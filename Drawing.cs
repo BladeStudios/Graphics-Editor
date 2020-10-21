@@ -28,6 +28,8 @@ namespace Graphics_Editor
 
         public void drawLine(int x1, int y1, int x2, int y2, Color color)
         {
+            if(_form.Image == null)
+                _form.Image = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
             Graphics g;
             g = Graphics.FromImage(_form.Image);
             Pen p = new Pen(color);
@@ -40,6 +42,8 @@ namespace Graphics_Editor
 
         public void drawRectangle(int x1, int y1, int x2, int y2, Color color)
         {
+            if (_form.Image == null)
+                _form.Image = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
             Graphics g;
             g = Graphics.FromImage(_form.Image);
             Pen p = new Pen(color);
@@ -59,6 +63,8 @@ namespace Graphics_Editor
 
         public void drawCircle(int x1, int y1, int x2, int y2, Color color)
         {
+            if (_form.Image == null)
+                _form.Image = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
             Graphics g;
             g = Graphics.FromImage(_form.Image);
             Pen p = new Pen(color);

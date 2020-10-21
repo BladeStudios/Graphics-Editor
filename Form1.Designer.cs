@@ -73,6 +73,8 @@
             this.menuColorViolet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGrey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorOther = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearDrawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -205,7 +207,9 @@
             this.menuPaint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuPaintLine,
             this.menuPaintRectangle,
-            this.menuPaintCircle});
+            this.menuPaintCircle,
+            this.toolStripMenuItem2,
+            this.clearDrawingAreaToolStripMenuItem});
             this.menuPaint.Name = "menuPaint";
             this.menuPaint.Size = new System.Drawing.Size(55, 20);
             this.menuPaint.Text = "Paint...";
@@ -426,6 +430,18 @@
             this.menuColorOther.Size = new System.Drawing.Size(121, 22);
             this.menuColorOther.Text = "Other...";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // clearDrawingAreaToolStripMenuItem
+            // 
+            this.clearDrawingAreaToolStripMenuItem.Name = "clearDrawingAreaToolStripMenuItem";
+            this.clearDrawingAreaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearDrawingAreaToolStripMenuItem.Text = "Clear Drawing Area";
+            this.clearDrawingAreaToolStripMenuItem.Click += new System.EventHandler(this.clearDrawingAreaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -496,6 +512,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuColorViolet;
         private System.Windows.Forms.ToolStripMenuItem menuColorGrey;
         private System.Windows.Forms.ToolStripMenuItem menuColorOther;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem clearDrawingAreaToolStripMenuItem;
     }
 }
 

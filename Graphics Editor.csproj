@@ -84,5 +84,20 @@
   <ItemGroup>
     <None Include="Resources\1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\brush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\rectangle.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

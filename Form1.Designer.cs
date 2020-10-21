@@ -262,7 +262,7 @@
             this.menuDrawingToolLine,
             this.menuDrawingToolRectangle,
             this.menuDrawingToolCircle});
-            this.menuDrawingTool.Image = ((System.Drawing.Image)(resources.GetObject("menuDrawingTool.Image")));
+            this.menuDrawingTool.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuDrawingTool.Name = "menuDrawingTool";
             this.menuDrawingTool.Size = new System.Drawing.Size(105, 22);
@@ -271,37 +271,44 @@
             // 
             // menuDrawingToolPencil
             // 
+            this.menuDrawingToolPencil.Checked = true;
+            this.menuDrawingToolPencil.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuDrawingToolPencil.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
-            this.menuDrawingToolPencil.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolPencil.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolPencil.Text = "Pencil";
             // 
             // menuDrawingToolBrush
             // 
+            this.menuDrawingToolBrush.Image = global::Graphics_Editor.Properties.Resources.brush;
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
-            this.menuDrawingToolBrush.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolBrush.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolBrush.Text = "Brush";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(123, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuDrawingToolLine
             // 
+            this.menuDrawingToolLine.Image = global::Graphics_Editor.Properties.Resources.line;
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
-            this.menuDrawingToolLine.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolLine.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolLine.Text = "Line";
             // 
             // menuDrawingToolRectangle
             // 
+            this.menuDrawingToolRectangle.Image = global::Graphics_Editor.Properties.Resources.rectangle;
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
-            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolRectangle.Text = "Rectangle";
             // 
             // menuDrawingToolCircle
             // 
+            this.menuDrawingToolCircle.Image = global::Graphics_Editor.Properties.Resources.circle;
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
-            this.menuDrawingToolCircle.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolCircle.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolCircle.Text = "Circle";
             // 
             // menuColor

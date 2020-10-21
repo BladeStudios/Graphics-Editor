@@ -88,7 +88,7 @@
             this.menuHelp});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
-            this.menuBar.Size = new System.Drawing.Size(1333, 24);
+            this.menuBar.Size = new System.Drawing.Size(1002, 24);
             this.menuBar.TabIndex = 0;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -213,19 +213,20 @@
             // menuPaintLine
             // 
             this.menuPaintLine.Name = "menuPaintLine";
-            this.menuPaintLine.Size = new System.Drawing.Size(126, 22);
+            this.menuPaintLine.Size = new System.Drawing.Size(180, 22);
             this.menuPaintLine.Text = "Line";
+            this.menuPaintLine.Click += new System.EventHandler(this.menuPaintLine_Click);
             // 
             // menuPaintRectangle
             // 
             this.menuPaintRectangle.Name = "menuPaintRectangle";
-            this.menuPaintRectangle.Size = new System.Drawing.Size(126, 22);
+            this.menuPaintRectangle.Size = new System.Drawing.Size(180, 22);
             this.menuPaintRectangle.Text = "Rectangle";
             // 
             // menuPaintCircle
             // 
             this.menuPaintCircle.Name = "menuPaintCircle";
-            this.menuPaintCircle.Size = new System.Drawing.Size(126, 22);
+            this.menuPaintCircle.Size = new System.Drawing.Size(180, 22);
             this.menuPaintCircle.Text = "Circle";
             // 
             // menuHelp
@@ -249,7 +250,7 @@
             this.menuColor});
             this.toolBar.Location = new System.Drawing.Point(0, 24);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(1333, 25);
+            this.toolBar.Size = new System.Drawing.Size(1002, 25);
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
             // 
@@ -275,7 +276,7 @@
             this.menuDrawingToolPencil.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuDrawingToolPencil.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
-            this.menuDrawingToolPencil.Size = new System.Drawing.Size(180, 22);
+            this.menuDrawingToolPencil.Size = new System.Drawing.Size(126, 22);
             this.menuDrawingToolPencil.Text = "Pencil";
             this.menuDrawingToolPencil.Click += new System.EventHandler(this.menuDrawingToolPencil_Click);
             // 
@@ -283,20 +284,20 @@
             // 
             this.menuDrawingToolBrush.Image = global::Graphics_Editor.Properties.Resources.brush;
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
-            this.menuDrawingToolBrush.Size = new System.Drawing.Size(180, 22);
+            this.menuDrawingToolBrush.Size = new System.Drawing.Size(126, 22);
             this.menuDrawingToolBrush.Text = "Brush";
             this.menuDrawingToolBrush.Click += new System.EventHandler(this.menuDrawingToolBrush_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(123, 6);
             // 
             // menuDrawingToolLine
             // 
             this.menuDrawingToolLine.Image = global::Graphics_Editor.Properties.Resources.line;
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
-            this.menuDrawingToolLine.Size = new System.Drawing.Size(180, 22);
+            this.menuDrawingToolLine.Size = new System.Drawing.Size(126, 22);
             this.menuDrawingToolLine.Text = "Line";
             this.menuDrawingToolLine.Click += new System.EventHandler(this.menuDrawingToolLine_Click);
             // 
@@ -304,7 +305,7 @@
             // 
             this.menuDrawingToolRectangle.Image = global::Graphics_Editor.Properties.Resources.rectangle;
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
-            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(180, 22);
+            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(126, 22);
             this.menuDrawingToolRectangle.Text = "Rectangle";
             this.menuDrawingToolRectangle.Click += new System.EventHandler(this.menuDrawingToolRectangle_Click);
             // 
@@ -312,7 +313,7 @@
             // 
             this.menuDrawingToolCircle.Image = global::Graphics_Editor.Properties.Resources.circle;
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
-            this.menuDrawingToolCircle.Size = new System.Drawing.Size(180, 22);
+            this.menuDrawingToolCircle.Size = new System.Drawing.Size(126, 22);
             this.menuDrawingToolCircle.Text = "Circle";
             this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
             // 
@@ -343,73 +344,73 @@
             this.menuColorBlack.Checked = true;
             this.menuColorBlack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuColorBlack.Name = "menuColorBlack";
-            this.menuColorBlack.Size = new System.Drawing.Size(180, 22);
+            this.menuColorBlack.Size = new System.Drawing.Size(121, 22);
             this.menuColorBlack.Text = "Black";
             // 
             // menuColorWhite
             // 
             this.menuColorWhite.Name = "menuColorWhite";
-            this.menuColorWhite.Size = new System.Drawing.Size(180, 22);
+            this.menuColorWhite.Size = new System.Drawing.Size(121, 22);
             this.menuColorWhite.Text = "White";
             // 
             // menuColorRed
             // 
             this.menuColorRed.Name = "menuColorRed";
-            this.menuColorRed.Size = new System.Drawing.Size(180, 22);
+            this.menuColorRed.Size = new System.Drawing.Size(121, 22);
             this.menuColorRed.Text = "Red";
             // 
             // menuColorGreen
             // 
             this.menuColorGreen.Name = "menuColorGreen";
-            this.menuColorGreen.Size = new System.Drawing.Size(180, 22);
+            this.menuColorGreen.Size = new System.Drawing.Size(121, 22);
             this.menuColorGreen.Text = "Green";
             // 
             // menuColorBlue
             // 
             this.menuColorBlue.Name = "menuColorBlue";
-            this.menuColorBlue.Size = new System.Drawing.Size(180, 22);
+            this.menuColorBlue.Size = new System.Drawing.Size(121, 22);
             this.menuColorBlue.Text = "Blue";
             // 
             // menuColorYellow
             // 
             this.menuColorYellow.Name = "menuColorYellow";
-            this.menuColorYellow.Size = new System.Drawing.Size(180, 22);
+            this.menuColorYellow.Size = new System.Drawing.Size(121, 22);
             this.menuColorYellow.Text = "Yellow";
             // 
             // menuColorCyan
             // 
             this.menuColorCyan.Name = "menuColorCyan";
-            this.menuColorCyan.Size = new System.Drawing.Size(180, 22);
+            this.menuColorCyan.Size = new System.Drawing.Size(121, 22);
             this.menuColorCyan.Text = "Cyan";
             // 
             // menuColorMagenta
             // 
             this.menuColorMagenta.Name = "menuColorMagenta";
-            this.menuColorMagenta.Size = new System.Drawing.Size(180, 22);
+            this.menuColorMagenta.Size = new System.Drawing.Size(121, 22);
             this.menuColorMagenta.Text = "Magenta";
             // 
             // menuColorOrange
             // 
             this.menuColorOrange.Name = "menuColorOrange";
-            this.menuColorOrange.Size = new System.Drawing.Size(180, 22);
+            this.menuColorOrange.Size = new System.Drawing.Size(121, 22);
             this.menuColorOrange.Text = "Orange";
             // 
             // menuColorViolet
             // 
             this.menuColorViolet.Name = "menuColorViolet";
-            this.menuColorViolet.Size = new System.Drawing.Size(180, 22);
+            this.menuColorViolet.Size = new System.Drawing.Size(121, 22);
             this.menuColorViolet.Text = "Violet";
             // 
             // menuColorGrey
             // 
             this.menuColorGrey.Name = "menuColorGrey";
-            this.menuColorGrey.Size = new System.Drawing.Size(180, 22);
+            this.menuColorGrey.Size = new System.Drawing.Size(121, 22);
             this.menuColorGrey.Text = "Grey";
             // 
             // menuColorOther
             // 
             this.menuColorOther.Name = "menuColorOther";
-            this.menuColorOther.Size = new System.Drawing.Size(180, 22);
+            this.menuColorOther.Size = new System.Drawing.Size(121, 22);
             this.menuColorOther.Text = "Other...";
             // 
             // pictureBox
@@ -418,7 +419,7 @@
             this.pictureBox.Location = new System.Drawing.Point(0, 52);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1333, 570);
+            this.pictureBox.Size = new System.Drawing.Size(1000, 550);
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -427,7 +428,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1333, 623);
+            this.ClientSize = new System.Drawing.Size(1002, 606);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.menuBar);
@@ -473,14 +474,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuPaintLine;
         private System.Windows.Forms.ToolStripMenuItem menuPaintRectangle;
         private System.Windows.Forms.ToolStripMenuItem menuPaintCircle;
-        private System.Windows.Forms.ToolStripDropDownButton menuDrawingTool;
-        private System.Windows.Forms.ToolStripDropDownButton menuColor;
-        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolPencil;
-        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolBrush;
+        public System.Windows.Forms.ToolStripDropDownButton menuDrawingTool;
+        public System.Windows.Forms.ToolStripDropDownButton menuColor;
+        public System.Windows.Forms.ToolStripMenuItem menuDrawingToolPencil;
+        public System.Windows.Forms.ToolStripMenuItem menuDrawingToolBrush;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolLine;
-        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolRectangle;
-        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolCircle;
+        public System.Windows.Forms.ToolStripMenuItem menuDrawingToolLine;
+        public System.Windows.Forms.ToolStripMenuItem menuDrawingToolRectangle;
+        public System.Windows.Forms.ToolStripMenuItem menuDrawingToolCircle;
         private System.Windows.Forms.ToolStripMenuItem menuColorBlack;
         private System.Windows.Forms.ToolStripMenuItem menuColorWhite;
         private System.Windows.Forms.ToolStripMenuItem menuColorRed;

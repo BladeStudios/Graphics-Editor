@@ -77,8 +77,7 @@ namespace Graphics_Editor
 
         private void selectMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
         {
-            //menu Drawing Tool
-            if(menu == menuDrawingTool)
+            if(menu == menuDrawingTool) //menu Drawing Tool
             {
                 //unchecking all items
                 this.menuDrawingToolPencil.Checked = false;
@@ -128,6 +127,10 @@ namespace Graphics_Editor
                     appState.setDrawingTool("Circle");
                 }
             }
+            else if(menu == this.menuColor) //menu Color
+            {
+
+            }
             
         }
 
@@ -150,7 +153,14 @@ namespace Graphics_Editor
         {
             int x = pictureBox.PointToClient(Cursor.Position).X;
             int y = pictureBox.PointToClient(Cursor.Position).Y;
-            drawing.drawPoint(x,y);
+            drawing.drawPoint(x,y,appState.getColor());
+        }
+
+        private void menuPaintLine_Click(object sender, EventArgs e)
+        {
+            //drawing.drawLine(50, 50, 200, 200, Color.Red);
+            DrawLine drawline = new DrawLine(this);
+            drawline.ShowDialog();
         }
     }
 }

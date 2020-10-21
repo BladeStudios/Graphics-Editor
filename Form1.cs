@@ -14,12 +14,14 @@ namespace Graphics_Editor
     {
         File file;
         AppState appState;
+        Drawing drawing;
         public Bitmap Image;
         public Form1()
         {
             InitializeComponent();
             file = new File(this);
             appState = new AppState(this);
+            drawing = new Drawing(this);
 
             //setting button images
             int size = 20;
@@ -64,15 +66,15 @@ namespace Graphics_Editor
 
         private void menuDrawingToolPencil_Click(object sender, EventArgs e)
         {
-            checkMenuItem(menuDrawingTool, menuDrawingToolPencil);
+            selectMenuItem(menuDrawingTool, menuDrawingToolPencil);
         }
 
         private void menuDrawingToolBrush_Click(object sender, EventArgs e)
         {
-            checkMenuItem(menuDrawingTool, menuDrawingToolBrush);
+            selectMenuItem(menuDrawingTool, menuDrawingToolBrush);
         }
 
-        private void checkMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
+        private void selectMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
         {
             //menu Drawing Tool
             if(menu == menuDrawingTool)
@@ -130,17 +132,22 @@ namespace Graphics_Editor
 
         private void menuDrawingToolLine_Click(object sender, EventArgs e)
         {
-            checkMenuItem(menuDrawingTool, menuDrawingToolLine);
+            selectMenuItem(menuDrawingTool, menuDrawingToolLine);
         }
 
         private void menuDrawingToolRectangle_Click(object sender, EventArgs e)
         {
-            checkMenuItem(menuDrawingTool, menuDrawingToolRectangle);
+            selectMenuItem(menuDrawingTool, menuDrawingToolRectangle);
         }
 
         private void menuDrawingToolCircle_Click(object sender, EventArgs e)
         {
-            checkMenuItem(menuDrawingTool, menuDrawingToolCircle);
+            selectMenuItem(menuDrawingTool, menuDrawingToolCircle);
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

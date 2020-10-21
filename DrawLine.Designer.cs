@@ -240,7 +240,7 @@
             this.Controls.Add(this.fromXLabel);
             this.Name = "DrawLine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DrawLine";
+            this.Text = "Draw Line";
             ((System.ComponentModel.ISupportInitialize)(this.fromX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toX)).EndInit();

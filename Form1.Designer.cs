@@ -52,6 +52,7 @@
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuDrawingTool = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuDrawingToolPencil = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolBrush = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,6 @@
             this.menuColorViolet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGrey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorOther = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -222,12 +222,14 @@
             this.menuPaintRectangle.Name = "menuPaintRectangle";
             this.menuPaintRectangle.Size = new System.Drawing.Size(180, 22);
             this.menuPaintRectangle.Text = "Rectangle";
+            this.menuPaintRectangle.Click += new System.EventHandler(this.menuPaintRectangle_Click);
             // 
             // menuPaintCircle
             // 
             this.menuPaintCircle.Name = "menuPaintCircle";
             this.menuPaintCircle.Size = new System.Drawing.Size(180, 22);
             this.menuPaintCircle.Text = "Circle";
+            this.menuPaintCircle.Click += new System.EventHandler(this.menuPaintCircle_Click);
             // 
             // menuHelp
             // 
@@ -253,6 +255,17 @@
             this.toolBar.Size = new System.Drawing.Size(1002, 25);
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 52);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1000, 550);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // menuDrawingTool
             // 
@@ -412,17 +425,6 @@
             this.menuColorOther.Name = "menuColorOther";
             this.menuColorOther.Size = new System.Drawing.Size(121, 22);
             this.menuColorOther.Text = "Other...";
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(0, 52);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1000, 550);
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // Form1
             // 

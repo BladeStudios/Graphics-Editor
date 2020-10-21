@@ -159,7 +159,19 @@ namespace Graphics_Editor
         private void menuPaintLine_Click(object sender, EventArgs e)
         {
             //drawing.drawLine(50, 50, 200, 200, Color.Red);
-            DrawLine drawline = new DrawLine(this);
+            DrawLine drawline = new DrawLine(this,"line");
+            drawline.ShowDialog();
+        }
+
+        private void menuPaintRectangle_Click(object sender, EventArgs e)
+        {
+            DrawLine drawline = new DrawLine(this, "rectangle");
+            drawline.ShowDialog();
+        }
+
+        private void menuPaintCircle_Click(object sender, EventArgs e)
+        {
+            DrawLine drawline = new DrawLine(this, "circle");
             drawline.ShowDialog();
         }
     }

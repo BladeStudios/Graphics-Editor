@@ -16,11 +16,17 @@ namespace Graphics_Editor
         public Bitmap Image;
         int rValue, gValue, bValue;
         string mode;
-        public DrawLine(Form1 form)
+        public DrawLine(Form1 form, string drawMode)
         {
             InitializeComponent();
             _form = form;
-            mode = "line";
+            mode = drawMode;
+            if (mode == "line")
+                this.Text = "Draw Line";
+            else if (mode == "rectangle")
+                this.Text = "Draw Rectangle";
+            else if (mode == "circle")
+                this.Text = "Draw Circle";
             fromX.Maximum = _form.pictureBox.Width;
             fromY.Maximum = _form.pictureBox.Height;
             toX.Maximum = _form.pictureBox.Width;
@@ -51,12 +57,25 @@ namespace Graphics_Editor
             int fromYValue = Convert.ToInt32(fromY.Value);
             int toXValue = Convert.ToInt32(toX.Value);
             int toYValue = Convert.ToInt32(toY.Value);
+            int temp;
+            if (fromXValue > toXValue)
+            {
+                temp = fromXValue;
+                fromXValue = toXValue;
+                toXValue = temp;
+            }
+            if(fromYValue > toYValue)
+            {
+                temp = fromYValue;
+                fromYValue = toYValue;
+                toYValue = temp;
+            }
             if(mode=="line")
                 drawing.drawLine(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue,gValue,bValue));
             else if(mode=="rectangle")
-                drawing.drawLine(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue, gValue, bValue));
+                drawing.drawRectangle(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue, gValue, bValue));
             else if(mode=="circle")
-                drawing.drawLine(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue, gValue, bValue));
+                drawing.drawCircle(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue, gValue, bValue));
         }
 
         private void updateColor()

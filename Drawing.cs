@@ -37,5 +37,36 @@ namespace Graphics_Editor
             _form.pictureBox.Image = _form.Image;
             g.Dispose();
         }
+
+        public void drawRectangle(int x1, int y1, int x2, int y2, Color color)
+        {
+            Graphics g;
+            g = Graphics.FromImage(_form.Image);
+            Pen p = new Pen(color);
+            int width, height;
+            if (x2 > x1)
+                width = x2 - x1;
+            else
+                width = x1 - x2;
+            if (y2 > y1)
+                height = y2 - y1;
+            else
+                height = y1 - y2;
+            g.DrawRectangle(p, x1, y1, width, height);
+            _form.pictureBox.Image = _form.Image;
+            g.Dispose();
+        }
+
+        public void drawCircle(int x1, int y1, int x2, int y2, Color color)
+        {
+            Graphics g;
+            g = Graphics.FromImage(_form.Image);
+            Pen p = new Pen(color);
+            Point p1 = new Point(x1, y1);
+            Point p2 = new Point(x2, y2);
+            g.DrawEllipse(p, x1, y1, x2, y2);
+            _form.pictureBox.Image = _form.Image;
+            g.Dispose();
+        }
     }
 }

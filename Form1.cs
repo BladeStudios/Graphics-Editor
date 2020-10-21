@@ -59,5 +59,81 @@ namespace Graphics_Editor
             graphics.FillRectangle(solidbrush, 0, 0, size, size);
             return bitmap;
         }
+
+        private void menuDrawingToolPencil_Click(object sender, EventArgs e)
+        {
+            checkMenuItem(menuDrawingTool, menuDrawingToolPencil);
+        }
+
+        private void menuDrawingToolBrush_Click(object sender, EventArgs e)
+        {
+            checkMenuItem(menuDrawingTool, menuDrawingToolBrush);
+        }
+
+        private void checkMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
+        {
+            //menu Drawing Tool
+            if(menu == menuDrawingTool)
+            {
+                //unchecking all items
+                this.menuDrawingToolPencil.Checked = false;
+                this.menuDrawingToolPencil.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolBrush.Checked = false;
+                this.menuDrawingToolBrush.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolLine.Checked = false;
+                this.menuDrawingToolLine.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolRectangle.Checked = false;
+                this.menuDrawingToolRectangle.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolCircle.Checked = false;
+                this.menuDrawingToolCircle.CheckState = CheckState.Unchecked;
+
+                if (item == menuDrawingToolPencil)
+                {
+                    this.menuDrawingToolPencil.Checked = true;
+                    this.menuDrawingToolPencil.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPencil.Image;
+                }
+                else if (item == menuDrawingToolBrush)
+                {
+                    this.menuDrawingToolBrush.Checked = true;
+                    this.menuDrawingToolBrush.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolBrush.Image;
+                }
+                else if (item == menuDrawingToolLine)
+                {
+                    this.menuDrawingToolLine.Checked = true;
+                    this.menuDrawingToolLine.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolLine.Image;
+                }
+                else if (item == menuDrawingToolRectangle)
+                {
+                    this.menuDrawingToolRectangle.Checked = true;
+                    this.menuDrawingToolRectangle.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolRectangle.Image;
+                }
+                else if (item == menuDrawingToolCircle)
+                {
+                    this.menuDrawingToolCircle.Checked = true;
+                    this.menuDrawingToolCircle.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolCircle.Image;
+                }
+            }
+            
+        }
+
+        private void menuDrawingToolLine_Click(object sender, EventArgs e)
+        {
+            checkMenuItem(menuDrawingTool, menuDrawingToolLine);
+        }
+
+        private void menuDrawingToolRectangle_Click(object sender, EventArgs e)
+        {
+            checkMenuItem(menuDrawingTool, menuDrawingToolRectangle);
+        }
+
+        private void menuDrawingToolCircle_Click(object sender, EventArgs e)
+        {
+            checkMenuItem(menuDrawingTool, menuDrawingToolCircle);
+        }
     }
 }

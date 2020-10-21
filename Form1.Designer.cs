@@ -277,6 +277,7 @@
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
             this.menuDrawingToolPencil.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolPencil.Text = "Pencil";
+            this.menuDrawingToolPencil.Click += new System.EventHandler(this.menuDrawingToolPencil_Click);
             // 
             // menuDrawingToolBrush
             // 
@@ -284,6 +285,7 @@
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
             this.menuDrawingToolBrush.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolBrush.Text = "Brush";
+            this.menuDrawingToolBrush.Click += new System.EventHandler(this.menuDrawingToolBrush_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -296,6 +298,7 @@
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
             this.menuDrawingToolLine.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolLine.Text = "Line";
+            this.menuDrawingToolLine.Click += new System.EventHandler(this.menuDrawingToolLine_Click);
             // 
             // menuDrawingToolRectangle
             // 
@@ -303,6 +306,7 @@
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
             this.menuDrawingToolRectangle.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolRectangle.Text = "Rectangle";
+            this.menuDrawingToolRectangle.Click += new System.EventHandler(this.menuDrawingToolRectangle_Click);
             // 
             // menuDrawingToolCircle
             // 
@@ -310,6 +314,7 @@
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
             this.menuDrawingToolCircle.Size = new System.Drawing.Size(180, 22);
             this.menuDrawingToolCircle.Text = "Circle";
+            this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
             // 
             // menuColor
             // 

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppState.cs" />
     <Compile Include="File.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

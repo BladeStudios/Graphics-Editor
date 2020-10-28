@@ -453,6 +453,7 @@
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.menuBar);
             this.Font = new System.Drawing.Font("Verdana", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuBar;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form1";

@@ -132,9 +132,118 @@ namespace Graphics_Editor
             }
             else if(menu == this.menuColor) //menu Color
             {
+                //unchecking all items
+                this.menuColorBlack.Checked = false;
+                this.menuColorBlack.CheckState = CheckState.Unchecked;
+                this.menuColorWhite.Checked = false;
+                this.menuColorWhite.CheckState = CheckState.Unchecked;
+                this.menuColorRed.Checked = false;
+                this.menuColorRed.CheckState = CheckState.Unchecked;
+                this.menuColorGreen.Checked = false;
+                this.menuColorGreen.CheckState = CheckState.Unchecked;
+                this.menuColorBlue.Checked = false;
+                this.menuColorBlue.CheckState = CheckState.Unchecked;
+                this.menuColorYellow.Checked = false;
+                this.menuColorYellow.CheckState = CheckState.Unchecked;
+                this.menuColorCyan.Checked = false;
+                this.menuColorCyan.CheckState = CheckState.Unchecked;
+                this.menuColorMagenta.Checked = false;
+                this.menuColorMagenta.CheckState = CheckState.Unchecked;
+                this.menuColorOrange.Checked = false;
+                this.menuColorOrange.CheckState = CheckState.Unchecked;
+                this.menuColorViolet.Checked = false;
+                this.menuColorViolet.CheckState = CheckState.Unchecked;
+                this.menuColorGrey.Checked = false;
+                this.menuColorGrey.CheckState = CheckState.Unchecked;
+                this.menuColorOther.Checked = false;
+                this.menuColorOther.CheckState = CheckState.Unchecked;
 
+                if (item == menuColorBlack)
+                {
+                    this.menuColorBlack.Checked = true;
+                    this.menuColorBlack.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorBlack.Image;
+                    appState.setColor(Color.Black);
+                }
+                else if (item == menuColorWhite)
+                {
+                    this.menuColorWhite.Checked = true;
+                    this.menuColorWhite.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorWhite.Image;
+                    appState.setColor(Color.White);
+                }
+                else if (item == menuColorRed)
+                {
+                    this.menuColorRed.Checked = true;
+                    this.menuColorRed.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorRed.Image;
+                    appState.setColor(Color.Red);
+                }
+                else if (item == menuColorGreen)
+                {
+                    this.menuColorGreen.Checked = true;
+                    this.menuColorGreen.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorGreen.Image;
+                    appState.setColor(Color.Green);
+                }
+                else if (item == menuColorBlue)
+                {
+                    this.menuColorBlue.Checked = true;
+                    this.menuColorBlue.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorBlue.Image;
+                    appState.setColor(Color.Blue);
+                }
+                else if (item == menuColorYellow)
+                {
+                    this.menuColorYellow.Checked = true;
+                    this.menuColorYellow.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorYellow.Image;
+                    appState.setColor(Color.Yellow);
+                }
+                else if (item == menuColorCyan)
+                {
+                    this.menuColorCyan.Checked = true;
+                    this.menuColorCyan.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorCyan.Image;
+                    appState.setColor(Color.Cyan);
+                }
+                else if (item == menuColorMagenta)
+                {
+                    this.menuColorMagenta.Checked = true;
+                    this.menuColorMagenta.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorMagenta.Image;
+                    appState.setColor(Color.Magenta);
+                }
+                else if (item == menuColorOrange)
+                {
+                    this.menuColorOrange.Checked = true;
+                    this.menuColorOrange.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorOrange.Image;
+                    appState.setColor(Color.FromArgb(255, 165, 0));
+                }
+                else if (item == menuColorViolet)
+                {
+                    this.menuColorViolet.Checked = true;
+                    this.menuColorViolet.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorViolet.Image;
+                    appState.setColor(Color.FromArgb(238, 82, 238));
+                }
+                else if (item == menuColorGrey)
+                {
+                    this.menuColorGrey.Checked = true;
+                    this.menuColorGrey.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorGrey.Image;
+                    appState.setColor(Color.FromArgb(80, 80, 80));
+                }
+                else if (item == menuColorOther)
+                {
+                    this.menuColorOther.Checked = true;
+                    this.menuColorOther.CheckState = CheckState.Checked;
+                    this.menuColor.Image = this.menuColorOther.Image;
+                    //appState.setColor(null);
+                }
             }
-            
+
         }
 
         private void menuDrawingToolLine_Click(object sender, EventArgs e)
@@ -183,6 +292,61 @@ namespace Graphics_Editor
             Image = null;
             pictureBox.Image = null;
             pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
+        }
+
+        private void menuColorBlack_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorBlack);
+        }
+
+        private void menuColorWhite_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorWhite);
+        }
+
+        private void menuColorRed_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorRed);
+        }
+
+        private void menuColorGreen_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorGreen);
+        }
+
+        private void menuColorBlue_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorBlue);
+        }
+
+        private void menuColorYellow_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorYellow);
+        }
+
+        private void menuColorCyan_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorCyan);
+        }
+
+        private void menuColorMagenta_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorMagenta);
+        }
+
+        private void menuColorOrange_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorOrange);
+        }
+
+        private void menuColorViolet_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorViolet);
+        }
+
+        private void menuColorGrey_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuColor, menuColorGrey);
         }
     }
 }

@@ -364,73 +364,84 @@
             this.menuColorBlack.Checked = true;
             this.menuColorBlack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuColorBlack.Name = "menuColorBlack";
-            this.menuColorBlack.Size = new System.Drawing.Size(141, 26);
+            this.menuColorBlack.Size = new System.Drawing.Size(180, 26);
             this.menuColorBlack.Text = "Black";
+            this.menuColorBlack.Click += new System.EventHandler(this.menuColorBlack_Click);
             // 
             // menuColorWhite
             // 
             this.menuColorWhite.Name = "menuColorWhite";
-            this.menuColorWhite.Size = new System.Drawing.Size(141, 26);
+            this.menuColorWhite.Size = new System.Drawing.Size(180, 26);
             this.menuColorWhite.Text = "White";
+            this.menuColorWhite.Click += new System.EventHandler(this.menuColorWhite_Click);
             // 
             // menuColorRed
             // 
             this.menuColorRed.Name = "menuColorRed";
-            this.menuColorRed.Size = new System.Drawing.Size(141, 26);
+            this.menuColorRed.Size = new System.Drawing.Size(180, 26);
             this.menuColorRed.Text = "Red";
+            this.menuColorRed.Click += new System.EventHandler(this.menuColorRed_Click);
             // 
             // menuColorGreen
             // 
             this.menuColorGreen.Name = "menuColorGreen";
-            this.menuColorGreen.Size = new System.Drawing.Size(141, 26);
+            this.menuColorGreen.Size = new System.Drawing.Size(180, 26);
             this.menuColorGreen.Text = "Green";
+            this.menuColorGreen.Click += new System.EventHandler(this.menuColorGreen_Click);
             // 
             // menuColorBlue
             // 
             this.menuColorBlue.Name = "menuColorBlue";
-            this.menuColorBlue.Size = new System.Drawing.Size(141, 26);
+            this.menuColorBlue.Size = new System.Drawing.Size(180, 26);
             this.menuColorBlue.Text = "Blue";
+            this.menuColorBlue.Click += new System.EventHandler(this.menuColorBlue_Click);
             // 
             // menuColorYellow
             // 
             this.menuColorYellow.Name = "menuColorYellow";
-            this.menuColorYellow.Size = new System.Drawing.Size(141, 26);
+            this.menuColorYellow.Size = new System.Drawing.Size(180, 26);
             this.menuColorYellow.Text = "Yellow";
+            this.menuColorYellow.Click += new System.EventHandler(this.menuColorYellow_Click);
             // 
             // menuColorCyan
             // 
             this.menuColorCyan.Name = "menuColorCyan";
-            this.menuColorCyan.Size = new System.Drawing.Size(141, 26);
+            this.menuColorCyan.Size = new System.Drawing.Size(180, 26);
             this.menuColorCyan.Text = "Cyan";
+            this.menuColorCyan.Click += new System.EventHandler(this.menuColorCyan_Click);
             // 
             // menuColorMagenta
             // 
             this.menuColorMagenta.Name = "menuColorMagenta";
-            this.menuColorMagenta.Size = new System.Drawing.Size(141, 26);
+            this.menuColorMagenta.Size = new System.Drawing.Size(180, 26);
             this.menuColorMagenta.Text = "Magenta";
+            this.menuColorMagenta.Click += new System.EventHandler(this.menuColorMagenta_Click);
             // 
             // menuColorOrange
             // 
             this.menuColorOrange.Name = "menuColorOrange";
-            this.menuColorOrange.Size = new System.Drawing.Size(141, 26);
+            this.menuColorOrange.Size = new System.Drawing.Size(180, 26);
             this.menuColorOrange.Text = "Orange";
+            this.menuColorOrange.Click += new System.EventHandler(this.menuColorOrange_Click);
             // 
             // menuColorViolet
             // 
             this.menuColorViolet.Name = "menuColorViolet";
-            this.menuColorViolet.Size = new System.Drawing.Size(141, 26);
+            this.menuColorViolet.Size = new System.Drawing.Size(180, 26);
             this.menuColorViolet.Text = "Violet";
+            this.menuColorViolet.Click += new System.EventHandler(this.menuColorViolet_Click);
             // 
             // menuColorGrey
             // 
             this.menuColorGrey.Name = "menuColorGrey";
-            this.menuColorGrey.Size = new System.Drawing.Size(141, 26);
+            this.menuColorGrey.Size = new System.Drawing.Size(180, 26);
             this.menuColorGrey.Text = "Grey";
+            this.menuColorGrey.Click += new System.EventHandler(this.menuColorGrey_Click);
             // 
             // menuColorOther
             // 
             this.menuColorOther.Name = "menuColorOther";
-            this.menuColorOther.Size = new System.Drawing.Size(141, 26);
+            this.menuColorOther.Size = new System.Drawing.Size(180, 26);
             this.menuColorOther.Text = "Other...";
             // 
             // pictureBox

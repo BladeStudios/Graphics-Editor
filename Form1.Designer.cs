@@ -54,6 +54,8 @@
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.zoomLabel = new System.Windows.Forms.ToolStripLabel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuDrawingTool = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuDrawingToolPencil = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolBrush = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +76,8 @@
             this.menuColorViolet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGrey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorOther = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.zoomMinusButton = new System.Windows.Forms.ToolStripButton();
+            this.zoomPlusButton = new System.Windows.Forms.ToolStripButton();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -267,12 +270,34 @@
             this.toolBar.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuDrawingTool,
-            this.menuColor});
+            this.menuColor,
+            this.zoomLabel,
+            this.zoomMinusButton,
+            this.zoomPlusButton});
             this.toolBar.Location = new System.Drawing.Point(0, 29);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1002, 28);
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
+            // 
+            // zoomLabel
+            // 
+            this.zoomLabel.AutoSize = false;
+            this.zoomLabel.Name = "zoomLabel";
+            this.zoomLabel.Size = new System.Drawing.Size(100, 25);
+            this.zoomLabel.Text = "Zoom: 1x";
+            this.zoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 57);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1000, 545);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // menuDrawingTool
             // 
@@ -296,7 +321,7 @@
             this.menuDrawingToolPencil.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuDrawingToolPencil.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
-            this.menuDrawingToolPencil.Size = new System.Drawing.Size(180, 26);
+            this.menuDrawingToolPencil.Size = new System.Drawing.Size(148, 26);
             this.menuDrawingToolPencil.Text = "Pencil";
             this.menuDrawingToolPencil.Click += new System.EventHandler(this.menuDrawingToolPencil_Click);
             // 
@@ -304,20 +329,20 @@
             // 
             this.menuDrawingToolBrush.Image = global::Graphics_Editor.Properties.Resources.brush;
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
-            this.menuDrawingToolBrush.Size = new System.Drawing.Size(180, 26);
+            this.menuDrawingToolBrush.Size = new System.Drawing.Size(148, 26);
             this.menuDrawingToolBrush.Text = "Brush";
             this.menuDrawingToolBrush.Click += new System.EventHandler(this.menuDrawingToolBrush_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 6);
             // 
             // menuDrawingToolLine
             // 
             this.menuDrawingToolLine.Image = global::Graphics_Editor.Properties.Resources.line;
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
-            this.menuDrawingToolLine.Size = new System.Drawing.Size(180, 26);
+            this.menuDrawingToolLine.Size = new System.Drawing.Size(148, 26);
             this.menuDrawingToolLine.Text = "Line";
             this.menuDrawingToolLine.Click += new System.EventHandler(this.menuDrawingToolLine_Click);
             // 
@@ -325,7 +350,7 @@
             // 
             this.menuDrawingToolRectangle.Image = global::Graphics_Editor.Properties.Resources.rectangle;
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
-            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(180, 26);
+            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(148, 26);
             this.menuDrawingToolRectangle.Text = "Rectangle";
             this.menuDrawingToolRectangle.Click += new System.EventHandler(this.menuDrawingToolRectangle_Click);
             // 
@@ -333,7 +358,7 @@
             // 
             this.menuDrawingToolCircle.Image = global::Graphics_Editor.Properties.Resources.circle;
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
-            this.menuDrawingToolCircle.Size = new System.Drawing.Size(180, 26);
+            this.menuDrawingToolCircle.Size = new System.Drawing.Size(148, 26);
             this.menuDrawingToolCircle.Text = "Circle";
             this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
             // 
@@ -364,97 +389,108 @@
             this.menuColorBlack.Checked = true;
             this.menuColorBlack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuColorBlack.Name = "menuColorBlack";
-            this.menuColorBlack.Size = new System.Drawing.Size(180, 26);
+            this.menuColorBlack.Size = new System.Drawing.Size(141, 26);
             this.menuColorBlack.Text = "Black";
             this.menuColorBlack.Click += new System.EventHandler(this.menuColorBlack_Click);
             // 
             // menuColorWhite
             // 
             this.menuColorWhite.Name = "menuColorWhite";
-            this.menuColorWhite.Size = new System.Drawing.Size(180, 26);
+            this.menuColorWhite.Size = new System.Drawing.Size(141, 26);
             this.menuColorWhite.Text = "White";
             this.menuColorWhite.Click += new System.EventHandler(this.menuColorWhite_Click);
             // 
             // menuColorRed
             // 
             this.menuColorRed.Name = "menuColorRed";
-            this.menuColorRed.Size = new System.Drawing.Size(180, 26);
+            this.menuColorRed.Size = new System.Drawing.Size(141, 26);
             this.menuColorRed.Text = "Red";
             this.menuColorRed.Click += new System.EventHandler(this.menuColorRed_Click);
             // 
             // menuColorGreen
             // 
             this.menuColorGreen.Name = "menuColorGreen";
-            this.menuColorGreen.Size = new System.Drawing.Size(180, 26);
+            this.menuColorGreen.Size = new System.Drawing.Size(141, 26);
             this.menuColorGreen.Text = "Green";
             this.menuColorGreen.Click += new System.EventHandler(this.menuColorGreen_Click);
             // 
             // menuColorBlue
             // 
             this.menuColorBlue.Name = "menuColorBlue";
-            this.menuColorBlue.Size = new System.Drawing.Size(180, 26);
+            this.menuColorBlue.Size = new System.Drawing.Size(141, 26);
             this.menuColorBlue.Text = "Blue";
             this.menuColorBlue.Click += new System.EventHandler(this.menuColorBlue_Click);
             // 
             // menuColorYellow
             // 
             this.menuColorYellow.Name = "menuColorYellow";
-            this.menuColorYellow.Size = new System.Drawing.Size(180, 26);
+            this.menuColorYellow.Size = new System.Drawing.Size(141, 26);
             this.menuColorYellow.Text = "Yellow";
             this.menuColorYellow.Click += new System.EventHandler(this.menuColorYellow_Click);
             // 
             // menuColorCyan
             // 
             this.menuColorCyan.Name = "menuColorCyan";
-            this.menuColorCyan.Size = new System.Drawing.Size(180, 26);
+            this.menuColorCyan.Size = new System.Drawing.Size(141, 26);
             this.menuColorCyan.Text = "Cyan";
             this.menuColorCyan.Click += new System.EventHandler(this.menuColorCyan_Click);
             // 
             // menuColorMagenta
             // 
             this.menuColorMagenta.Name = "menuColorMagenta";
-            this.menuColorMagenta.Size = new System.Drawing.Size(180, 26);
+            this.menuColorMagenta.Size = new System.Drawing.Size(141, 26);
             this.menuColorMagenta.Text = "Magenta";
             this.menuColorMagenta.Click += new System.EventHandler(this.menuColorMagenta_Click);
             // 
             // menuColorOrange
             // 
             this.menuColorOrange.Name = "menuColorOrange";
-            this.menuColorOrange.Size = new System.Drawing.Size(180, 26);
+            this.menuColorOrange.Size = new System.Drawing.Size(141, 26);
             this.menuColorOrange.Text = "Orange";
             this.menuColorOrange.Click += new System.EventHandler(this.menuColorOrange_Click);
             // 
             // menuColorViolet
             // 
             this.menuColorViolet.Name = "menuColorViolet";
-            this.menuColorViolet.Size = new System.Drawing.Size(180, 26);
+            this.menuColorViolet.Size = new System.Drawing.Size(141, 26);
             this.menuColorViolet.Text = "Violet";
             this.menuColorViolet.Click += new System.EventHandler(this.menuColorViolet_Click);
             // 
             // menuColorGrey
             // 
             this.menuColorGrey.Name = "menuColorGrey";
-            this.menuColorGrey.Size = new System.Drawing.Size(180, 26);
+            this.menuColorGrey.Size = new System.Drawing.Size(141, 26);
             this.menuColorGrey.Text = "Grey";
             this.menuColorGrey.Click += new System.EventHandler(this.menuColorGrey_Click);
             // 
             // menuColorOther
             // 
             this.menuColorOther.Name = "menuColorOther";
-            this.menuColorOther.Size = new System.Drawing.Size(180, 26);
+            this.menuColorOther.Size = new System.Drawing.Size(141, 26);
             this.menuColorOther.Text = "Other...";
             this.menuColorOther.Click += new System.EventHandler(this.menuColorOther_Click);
             // 
-            // pictureBox
+            // zoomMinusButton
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(0, 57);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1000, 545);
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            this.zoomMinusButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zoomMinusButton.Image = global::Graphics_Editor.Properties.Resources.zoomminus1;
+            this.zoomMinusButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zoomMinusButton.Name = "zoomMinusButton";
+            this.zoomMinusButton.Size = new System.Drawing.Size(23, 25);
+            this.zoomMinusButton.Text = "toolStripButton2";
+            this.zoomMinusButton.ToolTipText = "Zoom -";
+            this.zoomMinusButton.Click += new System.EventHandler(this.zoomMinusButton_Click);
+            // 
+            // zoomPlusButton
+            // 
+            this.zoomPlusButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zoomPlusButton.Image = global::Graphics_Editor.Properties.Resources.zoomplus1;
+            this.zoomPlusButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zoomPlusButton.Name = "zoomPlusButton";
+            this.zoomPlusButton.Size = new System.Drawing.Size(23, 25);
+            this.zoomPlusButton.Text = "toolStripButton1";
+            this.zoomPlusButton.ToolTipText = "Zoom +";
+            this.zoomPlusButton.Click += new System.EventHandler(this.zoomPlusButton_Click);
             // 
             // Form1
             // 
@@ -529,6 +565,9 @@
         public System.Windows.Forms.ToolStripMenuItem menuColorOther;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clearDrawingAreaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel zoomLabel;
+        private System.Windows.Forms.ToolStripButton zoomPlusButton;
+        private System.Windows.Forms.ToolStripButton zoomMinusButton;
     }
 }
 

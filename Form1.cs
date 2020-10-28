@@ -16,9 +16,11 @@ namespace Graphics_Editor
         public AppState appState;
         Drawing drawing;
         public Bitmap Image;
+        double ratio;
         public Form1()
         {
             InitializeComponent();
+            ratio = 1;
             file = new File(this);
             appState = new AppState(this);
             drawing = new Drawing(this);
@@ -353,6 +355,38 @@ namespace Graphics_Editor
         {
             ColorPicker colorpicker = new ColorPicker(this);
             colorpicker.ShowDialog();
+        }
+
+        private void zoom (double ratio)
+        {
+            Size size = new Size((int)(Image.Width * ratio),(int)(Image.Height * ratio));
+            Bitmap bitmap = new Bitmap(Image, size);
+            pictureBox.Image = bitmap;
+            zoomLabel.Text = "Zoom: " + ratio.ToString() + "x";
+        }
+
+        private void zoomPlusButton_Click(object sender, EventArgs e)
+        {
+            if(ratio<8)
+            {
+                if (ratio < 1)
+                    ratio *= 2;
+                else
+                    ratio += 1;
+                zoom(ratio);
+            }
+        }
+
+        private void zoomMinusButton_Click(object sender, EventArgs e)
+        {
+            if(ratio>0.2)
+            {
+                if (ratio <= 1)
+                    ratio /= 2;
+                else
+                    ratio -= 1;
+                zoom(ratio);
+            }
         }
     }
 }

@@ -120,5 +120,11 @@
   <ItemGroup>
     <None Include="bin\Debug\rectangle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\zoomminus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\zoomplus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

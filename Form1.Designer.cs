@@ -49,10 +49,11 @@
             this.menuPaintLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintRectangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintCircle = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearDrawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuDrawingTool = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuDrawingToolPencil = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolBrush = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +74,7 @@
             this.menuColorViolet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGrey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorOther = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.clearDrawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -82,6 +82,7 @@
             // 
             // menuBar
             // 
+            this.menuBar.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuEdit,
@@ -90,7 +91,7 @@
             this.menuHelp});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
-            this.menuBar.Size = new System.Drawing.Size(1002, 24);
+            this.menuBar.Size = new System.Drawing.Size(1002, 29);
             this.menuBar.TabIndex = 0;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -104,46 +105,46 @@
             this.menuFileSaveAs,
             this.menuFilePrint});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(37, 20);
+            this.menuFile.Size = new System.Drawing.Size(46, 25);
             this.menuFile.Text = "File";
             // 
             // menuFileNew
             // 
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new System.Drawing.Size(143, 22);
+            this.menuFileNew.Size = new System.Drawing.Size(171, 26);
             this.menuFileNew.Text = "New";
             this.menuFileNew.Click += new System.EventHandler(this.menuFileNew_Click);
             // 
             // menuFileNewWindow
             // 
             this.menuFileNewWindow.Name = "menuFileNewWindow";
-            this.menuFileNewWindow.Size = new System.Drawing.Size(143, 22);
+            this.menuFileNewWindow.Size = new System.Drawing.Size(171, 26);
             this.menuFileNewWindow.Text = "New window";
             this.menuFileNewWindow.Click += new System.EventHandler(this.menuFileNewWindow_Click);
             // 
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(143, 22);
+            this.menuFileOpen.Size = new System.Drawing.Size(171, 26);
             this.menuFileOpen.Text = "Open";
             this.menuFileOpen.Click += new System.EventHandler(this.menuFileOpen_Click);
             // 
             // menuFileSave
             // 
             this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new System.Drawing.Size(143, 22);
+            this.menuFileSave.Size = new System.Drawing.Size(171, 26);
             this.menuFileSave.Text = "Save";
             // 
             // menuFileSaveAs
             // 
             this.menuFileSaveAs.Name = "menuFileSaveAs";
-            this.menuFileSaveAs.Size = new System.Drawing.Size(143, 22);
+            this.menuFileSaveAs.Size = new System.Drawing.Size(171, 26);
             this.menuFileSaveAs.Text = "Save as...";
             // 
             // menuFilePrint
             // 
             this.menuFilePrint.Name = "menuFilePrint";
-            this.menuFilePrint.Size = new System.Drawing.Size(143, 22);
+            this.menuFilePrint.Size = new System.Drawing.Size(171, 26);
             this.menuFilePrint.Text = "Print...";
             // 
             // menuEdit
@@ -155,37 +156,37 @@
             this.menuEditCopy,
             this.menuEditPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(39, 20);
+            this.menuEdit.Size = new System.Drawing.Size(48, 25);
             this.menuEdit.Text = "Edit";
             // 
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new System.Drawing.Size(103, 22);
+            this.menuEditUndo.Size = new System.Drawing.Size(118, 26);
             this.menuEditUndo.Text = "Undo";
             // 
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new System.Drawing.Size(103, 22);
+            this.menuEditRedo.Size = new System.Drawing.Size(118, 26);
             this.menuEditRedo.Text = "Redo";
             // 
             // menuEditCut
             // 
             this.menuEditCut.Name = "menuEditCut";
-            this.menuEditCut.Size = new System.Drawing.Size(103, 22);
+            this.menuEditCut.Size = new System.Drawing.Size(118, 26);
             this.menuEditCut.Text = "Cut";
             // 
             // menuEditCopy
             // 
             this.menuEditCopy.Name = "menuEditCopy";
-            this.menuEditCopy.Size = new System.Drawing.Size(103, 22);
+            this.menuEditCopy.Size = new System.Drawing.Size(118, 26);
             this.menuEditCopy.Text = "Copy";
             // 
             // menuEditPaste
             // 
             this.menuEditPaste.Name = "menuEditPaste";
-            this.menuEditPaste.Size = new System.Drawing.Size(103, 22);
+            this.menuEditPaste.Size = new System.Drawing.Size(118, 26);
             this.menuEditPaste.Text = "Paste";
             // 
             // menuView
@@ -193,13 +194,13 @@
             this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuViewTools});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(44, 20);
+            this.menuView.Size = new System.Drawing.Size(56, 25);
             this.menuView.Text = "View";
             // 
             // menuViewTools
             // 
             this.menuViewTools.Name = "menuViewTools";
-            this.menuViewTools.Size = new System.Drawing.Size(101, 22);
+            this.menuViewTools.Size = new System.Drawing.Size(115, 26);
             this.menuViewTools.Text = "Tools";
             // 
             // menuPaint
@@ -211,65 +212,67 @@
             this.toolStripMenuItem2,
             this.clearDrawingAreaToolStripMenuItem});
             this.menuPaint.Name = "menuPaint";
-            this.menuPaint.Size = new System.Drawing.Size(55, 20);
+            this.menuPaint.Size = new System.Drawing.Size(65, 25);
             this.menuPaint.Text = "Paint...";
             // 
             // menuPaintLine
             // 
             this.menuPaintLine.Name = "menuPaintLine";
-            this.menuPaintLine.Size = new System.Drawing.Size(180, 22);
+            this.menuPaintLine.Size = new System.Drawing.Size(215, 26);
             this.menuPaintLine.Text = "Line";
             this.menuPaintLine.Click += new System.EventHandler(this.menuPaintLine_Click);
             // 
             // menuPaintRectangle
             // 
             this.menuPaintRectangle.Name = "menuPaintRectangle";
-            this.menuPaintRectangle.Size = new System.Drawing.Size(180, 22);
+            this.menuPaintRectangle.Size = new System.Drawing.Size(215, 26);
             this.menuPaintRectangle.Text = "Rectangle";
             this.menuPaintRectangle.Click += new System.EventHandler(this.menuPaintRectangle_Click);
             // 
             // menuPaintCircle
             // 
             this.menuPaintCircle.Name = "menuPaintCircle";
-            this.menuPaintCircle.Size = new System.Drawing.Size(180, 22);
+            this.menuPaintCircle.Size = new System.Drawing.Size(215, 26);
             this.menuPaintCircle.Text = "Circle";
             this.menuPaintCircle.Click += new System.EventHandler(this.menuPaintCircle_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(212, 6);
+            // 
+            // clearDrawingAreaToolStripMenuItem
+            // 
+            this.clearDrawingAreaToolStripMenuItem.Name = "clearDrawingAreaToolStripMenuItem";
+            this.clearDrawingAreaToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.clearDrawingAreaToolStripMenuItem.Text = "Clear Drawing Area";
+            this.clearDrawingAreaToolStripMenuItem.Click += new System.EventHandler(this.clearDrawingAreaToolStripMenuItem_Click);
             // 
             // menuHelp
             // 
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuHelpAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Size = new System.Drawing.Size(54, 25);
             this.menuHelp.Text = "Help";
             // 
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(107, 22);
+            this.menuHelpAbout.Size = new System.Drawing.Size(122, 26);
             this.menuHelpAbout.Text = "About";
             // 
             // toolBar
             // 
+            this.toolBar.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuDrawingTool,
             this.menuColor});
-            this.toolBar.Location = new System.Drawing.Point(0, 24);
+            this.toolBar.Location = new System.Drawing.Point(0, 29);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(1002, 25);
+            this.toolBar.Size = new System.Drawing.Size(1002, 28);
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(0, 52);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1000, 550);
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // menuDrawingTool
             // 
@@ -283,7 +286,7 @@
             this.menuDrawingTool.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuDrawingTool.Name = "menuDrawingTool";
-            this.menuDrawingTool.Size = new System.Drawing.Size(105, 22);
+            this.menuDrawingTool.Size = new System.Drawing.Size(130, 25);
             this.menuDrawingTool.Text = "Drawing Tool";
             this.menuDrawingTool.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -293,7 +296,7 @@
             this.menuDrawingToolPencil.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuDrawingToolPencil.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
-            this.menuDrawingToolPencil.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolPencil.Size = new System.Drawing.Size(180, 26);
             this.menuDrawingToolPencil.Text = "Pencil";
             this.menuDrawingToolPencil.Click += new System.EventHandler(this.menuDrawingToolPencil_Click);
             // 
@@ -301,20 +304,20 @@
             // 
             this.menuDrawingToolBrush.Image = global::Graphics_Editor.Properties.Resources.brush;
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
-            this.menuDrawingToolBrush.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolBrush.Size = new System.Drawing.Size(180, 26);
             this.menuDrawingToolBrush.Text = "Brush";
             this.menuDrawingToolBrush.Click += new System.EventHandler(this.menuDrawingToolBrush_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(123, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuDrawingToolLine
             // 
             this.menuDrawingToolLine.Image = global::Graphics_Editor.Properties.Resources.line;
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
-            this.menuDrawingToolLine.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolLine.Size = new System.Drawing.Size(180, 26);
             this.menuDrawingToolLine.Text = "Line";
             this.menuDrawingToolLine.Click += new System.EventHandler(this.menuDrawingToolLine_Click);
             // 
@@ -322,7 +325,7 @@
             // 
             this.menuDrawingToolRectangle.Image = global::Graphics_Editor.Properties.Resources.rectangle;
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
-            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(180, 26);
             this.menuDrawingToolRectangle.Text = "Rectangle";
             this.menuDrawingToolRectangle.Click += new System.EventHandler(this.menuDrawingToolRectangle_Click);
             // 
@@ -330,7 +333,7 @@
             // 
             this.menuDrawingToolCircle.Image = global::Graphics_Editor.Properties.Resources.circle;
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
-            this.menuDrawingToolCircle.Size = new System.Drawing.Size(126, 22);
+            this.menuDrawingToolCircle.Size = new System.Drawing.Size(180, 26);
             this.menuDrawingToolCircle.Text = "Circle";
             this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
             // 
@@ -352,7 +355,7 @@
             this.menuColor.Image = ((System.Drawing.Image)(resources.GetObject("menuColor.Image")));
             this.menuColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuColor.Name = "menuColor";
-            this.menuColor.Size = new System.Drawing.Size(65, 22);
+            this.menuColor.Size = new System.Drawing.Size(77, 25);
             this.menuColor.Text = "Color";
             this.menuColor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -361,86 +364,85 @@
             this.menuColorBlack.Checked = true;
             this.menuColorBlack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuColorBlack.Name = "menuColorBlack";
-            this.menuColorBlack.Size = new System.Drawing.Size(121, 22);
+            this.menuColorBlack.Size = new System.Drawing.Size(141, 26);
             this.menuColorBlack.Text = "Black";
             // 
             // menuColorWhite
             // 
             this.menuColorWhite.Name = "menuColorWhite";
-            this.menuColorWhite.Size = new System.Drawing.Size(121, 22);
+            this.menuColorWhite.Size = new System.Drawing.Size(141, 26);
             this.menuColorWhite.Text = "White";
             // 
             // menuColorRed
             // 
             this.menuColorRed.Name = "menuColorRed";
-            this.menuColorRed.Size = new System.Drawing.Size(121, 22);
+            this.menuColorRed.Size = new System.Drawing.Size(141, 26);
             this.menuColorRed.Text = "Red";
             // 
             // menuColorGreen
             // 
             this.menuColorGreen.Name = "menuColorGreen";
-            this.menuColorGreen.Size = new System.Drawing.Size(121, 22);
+            this.menuColorGreen.Size = new System.Drawing.Size(141, 26);
             this.menuColorGreen.Text = "Green";
             // 
             // menuColorBlue
             // 
             this.menuColorBlue.Name = "menuColorBlue";
-            this.menuColorBlue.Size = new System.Drawing.Size(121, 22);
+            this.menuColorBlue.Size = new System.Drawing.Size(141, 26);
             this.menuColorBlue.Text = "Blue";
             // 
             // menuColorYellow
             // 
             this.menuColorYellow.Name = "menuColorYellow";
-            this.menuColorYellow.Size = new System.Drawing.Size(121, 22);
+            this.menuColorYellow.Size = new System.Drawing.Size(141, 26);
             this.menuColorYellow.Text = "Yellow";
             // 
             // menuColorCyan
             // 
             this.menuColorCyan.Name = "menuColorCyan";
-            this.menuColorCyan.Size = new System.Drawing.Size(121, 22);
+            this.menuColorCyan.Size = new System.Drawing.Size(141, 26);
             this.menuColorCyan.Text = "Cyan";
             // 
             // menuColorMagenta
             // 
             this.menuColorMagenta.Name = "menuColorMagenta";
-            this.menuColorMagenta.Size = new System.Drawing.Size(121, 22);
+            this.menuColorMagenta.Size = new System.Drawing.Size(141, 26);
             this.menuColorMagenta.Text = "Magenta";
             // 
             // menuColorOrange
             // 
             this.menuColorOrange.Name = "menuColorOrange";
-            this.menuColorOrange.Size = new System.Drawing.Size(121, 22);
+            this.menuColorOrange.Size = new System.Drawing.Size(141, 26);
             this.menuColorOrange.Text = "Orange";
             // 
             // menuColorViolet
             // 
             this.menuColorViolet.Name = "menuColorViolet";
-            this.menuColorViolet.Size = new System.Drawing.Size(121, 22);
+            this.menuColorViolet.Size = new System.Drawing.Size(141, 26);
             this.menuColorViolet.Text = "Violet";
             // 
             // menuColorGrey
             // 
             this.menuColorGrey.Name = "menuColorGrey";
-            this.menuColorGrey.Size = new System.Drawing.Size(121, 22);
+            this.menuColorGrey.Size = new System.Drawing.Size(141, 26);
             this.menuColorGrey.Text = "Grey";
             // 
             // menuColorOther
             // 
             this.menuColorOther.Name = "menuColorOther";
-            this.menuColorOther.Size = new System.Drawing.Size(121, 22);
+            this.menuColorOther.Size = new System.Drawing.Size(141, 26);
             this.menuColorOther.Text = "Other...";
             // 
-            // toolStripMenuItem2
+            // pictureBox
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // clearDrawingAreaToolStripMenuItem
-            // 
-            this.clearDrawingAreaToolStripMenuItem.Name = "clearDrawingAreaToolStripMenuItem";
-            this.clearDrawingAreaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearDrawingAreaToolStripMenuItem.Text = "Clear Drawing Area";
-            this.clearDrawingAreaToolStripMenuItem.Click += new System.EventHandler(this.clearDrawingAreaToolStripMenuItem_Click);
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 57);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1000, 545);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // Form1
             // 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Graphics_Editor
 {
-    class AppState
+    public class AppState
     {
         private readonly Form1 _form;
         string selectedDrawingTool;

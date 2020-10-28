@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppState.cs" />
+    <Compile Include="ColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing.cs" />
     <Compile Include="DrawLine.cs">
       <SubType>Form</SubType>
@@ -64,6 +70,9 @@
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DrawLine.resx">
       <DependentUpon>DrawLine.cs</DependentUpon>
     </EmbeddedResource>

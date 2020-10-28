@@ -13,7 +13,7 @@ namespace Graphics_Editor
     public partial class Form1 : Form
     {
         File file;
-        AppState appState;
+        public AppState appState;
         Drawing drawing;
         public Bitmap Image;
         public Form1()
@@ -157,6 +157,7 @@ namespace Graphics_Editor
                 this.menuColorGrey.CheckState = CheckState.Unchecked;
                 this.menuColorOther.Checked = false;
                 this.menuColorOther.CheckState = CheckState.Unchecked;
+                this.menuColorOther.Image = null;
 
                 if (item == menuColorBlack)
                 {
@@ -240,7 +241,6 @@ namespace Graphics_Editor
                     this.menuColorOther.Checked = true;
                     this.menuColorOther.CheckState = CheckState.Checked;
                     this.menuColor.Image = this.menuColorOther.Image;
-                    //appState.setColor(null);
                 }
             }
 
@@ -347,6 +347,12 @@ namespace Graphics_Editor
         private void menuColorGrey_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuColor, menuColorGrey);
+        }
+
+        private void menuColorOther_Click(object sender, EventArgs e)
+        {
+            ColorPicker colorpicker = new ColorPicker(this);
+            colorpicker.ShowDialog();
         }
     }
 }

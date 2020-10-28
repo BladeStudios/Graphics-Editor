@@ -443,6 +443,7 @@
             this.menuColorOther.Name = "menuColorOther";
             this.menuColorOther.Size = new System.Drawing.Size(180, 26);
             this.menuColorOther.Text = "Other...";
+            this.menuColorOther.Click += new System.EventHandler(this.menuColorOther_Click);
             // 
             // pictureBox
             // 
@@ -525,7 +526,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuColorOrange;
         private System.Windows.Forms.ToolStripMenuItem menuColorViolet;
         private System.Windows.Forms.ToolStripMenuItem menuColorGrey;
-        private System.Windows.Forms.ToolStripMenuItem menuColorOther;
+        public System.Windows.Forms.ToolStripMenuItem menuColorOther;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clearDrawingAreaToolStripMenuItem;
     }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Graphics_Editor
 {
@@ -46,6 +47,9 @@ namespace Graphics_Editor
                 {
                     filePath = openFileDialog.FileName;
                     var fileStream = openFileDialog.OpenFile();
+                    _form.Text = Path.GetFileName(filePath) + " - Graphics Editor";
+
+                    string extension = Path.GetExtension(filePath);
 
                     _form.Image = new Bitmap(Image.FromFile(openFileDialog.FileName));
                     if (_form.pictureBox.Image != null) _form.pictureBox.Image.Dispose();

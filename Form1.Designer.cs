@@ -565,7 +565,7 @@
         public System.Windows.Forms.ToolStripMenuItem menuColorOther;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clearDrawingAreaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripLabel zoomLabel;
+        public System.Windows.Forms.ToolStripLabel zoomLabel;
         private System.Windows.Forms.ToolStripButton zoomPlusButton;
         private System.Windows.Forms.ToolStripButton zoomMinusButton;
     }

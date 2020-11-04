@@ -67,40 +67,81 @@ namespace Graphics_Editor
 
         private void OpenPPM()
         {
+            _form.console.Text = "";
             StreamReader sr = System.IO.File.OpenText(filePath);
             string s = String.Empty;
             string ppmType = String.Empty;
             int width = 0, height = 0, maxColorValue = 0;
             List<Color> list = new List<Color>();
             Color currentColor;
-            Bitmap bitmap;
-            int readingPhase = 0; //0-ppm type, 1-width, 2-height, 3-max color value, 4-colors
-            int colorPhase = 0; //0-red, 1- green, 2- blue
+            Bitmap bitmap = new Bitmap(1,1);
+            int readingPhase = -1; //-1 - default, 0-ppm type, 1-width, 2-height, 3-max color value, 4-colors
             bool isBitmapCreated = false;
             int length;
+            int newR = 0, newG = 0, newB = 0;
+            int x = 0, y = 0;
+            bool error = false;
+            bool consoleInfoShowed = false;
+            bool canGoNextPhase = true;
+            int line = 0;
+            bool shouldColorBeReseted = true;
 
-            while((s = sr.ReadLine())!=null)
+            while ((s = sr.ReadLine())!=null && !error)
             {
+                line++;
                 length = s.Length;
-                for(int i=0;i<length;i++)
+                for (int i=0;i<length;i++)
                 {
-                    //_form.console.Text = _form.console.Text.ToString() + "s[i]=" + s[i].ToString() + "\n";
                     if (s[i] == '#')
-                        i = length;
-                    else if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t' || s[i] == '\r')
                     {
-                        if (readingPhase != -1 && readingPhase != 4)
+                        i = length - 1;
+                    }
+                    else if (s[i] == ' ' || s[i] == '\t')
+                    {
+                        //wasPreviousSymbolALineFeed = false;
+                        if (canGoNextPhase && readingPhase!=-1)
+                        {
                             readingPhase++;
+                            canGoNextPhase = false;
+                        }
+                        if (readingPhase >= 7)
+                        {
+                            if(line<40)
+                                _form.console.Text = _form.console.Text.ToString() + '[' + x.ToString() + "][" + y.ToString() + "] = (" + newR.ToString() + ',' + newG.ToString()
+                                + ',' + newB.ToString() + ")\n";
+                            if (newR >= 0 && newR < 256 && newG >= 0 && newG < 256 && newB >= 0 && newB < 256)
+                            {
+                                bitmap.SetPixel(x, y, Color.FromArgb(newR, newG, newB));
+                                _form.pictureBox.Image = bitmap;
+                                x++;
+                                if (x >= width)
+                                {
+                                    x = 0;
+                                    y++;
+                                }
+                                if (y >= height)
+                                {
+                                    error = true;
+                                    _form.console.Text = _form.console.Text.ToString() + "ERROR IN LINE " + line.ToString() + " height=" + height.ToString() + "\n";
+                                }
+                            }
+                            else
+                            {
+                                _form.console.Text = _form.console.Text.ToString() + "ERROR IN LINE " + line.ToString() + ": newR=" + newR.ToString() + " newG=" + newG.ToString()
+                                    + " newB=" + newB.ToString() + "\n";
+                                error = true;
+                            }
+                            readingPhase = 4;
+                        }
                     }
                     else
                     {
+                        canGoNextPhase = true;
                         if (readingPhase == -1)
-                            readingPhase++;
-                        if (readingPhase==4)
                         {
-
+                            readingPhase++;
                         }
-                        else if (readingPhase == 0) //ppm type
+                        if (readingPhase == 0) //ppm type
                         {
                             ppmType = ppmType + s[i].ToString();
                         }
@@ -116,17 +157,90 @@ namespace Graphics_Editor
                         {
                             maxColorValue = maxColorValue * 10 + int.Parse(s[i].ToString());
                         }
+                        else if (readingPhase == 4) //read R
+                        {
+                            if (isBitmapCreated == false)
+                            {
+                                bitmap = new Bitmap(width, height);
+                                isBitmapCreated = true;
+                            }
+                            if (shouldColorBeReseted == true)
+                            {
+                                newR = 0;
+                                newG = 0;
+                                newB = 0;
+                                shouldColorBeReseted = false;
+                            }
+                            newR = newR * 10 + int.Parse(s[i].ToString());
+                        }
+                        else if (readingPhase == 5) //read G
+                        {
+                            newG = newG * 10 + int.Parse(s[i].ToString());
+                        }
+                        else if (readingPhase == 6) //read B
+                        {
+                            if (!shouldColorBeReseted)
+                                shouldColorBeReseted = true;
+                            newB = newB * 10 + int.Parse(s[i].ToString());
+                        }
                     }
-
-                    if (i == length-1 && readingPhase < 4)
+                    
+                    if (i == length-1 && canGoNextPhase)
+                    {
                         readingPhase++;
+                        if (readingPhase >= 7)
+                        {
+                            if (line < 40)
+                                _form.console.Text = _form.console.Text.ToString() + '[' + x.ToString() + "][" + y.ToString() + "] = (" + newR.ToString() + ',' + newG.ToString()
+                                + ',' + newB.ToString() + ")\n";
+                            if (newR >= 0 && newR < 256 && newG >= 0 && newG < 256 && newB >= 0 && newB < 256)
+                            {
+                                bitmap.SetPixel(x, y, Color.FromArgb(newR, newG, newB));
+                                _form.pictureBox.Image = bitmap;
+                                x++;
+                                if (x >= width)
+                                {
+                                    x = 0;
+                                    y++;
+                                }
+                                if (y >= height)
+                                {
+                                    error = true;
+                                }
+                            }
+                            else
+                            {
+                                _form.console.Text = _form.console.Text.ToString() + "ERROR IN LINE " + line.ToString() + ": newR=" + newR.ToString() + " newG=" + newG.ToString()
+                                    + " newB=" + newB.ToString() + "\n";
+                                error = true;
+                            }
+                            readingPhase = 4;
+                        }
+
+                        if (readingPhase == 4 && !consoleInfoShowed)
+                        {
+                            _form.console.Text = _form.console.Text.ToString() + "PPM type: " + ppmType + "\n";
+                            _form.console.Text = _form.console.Text.ToString() + "width: " + width.ToString() + "\n";
+                            _form.console.Text = _form.console.Text.ToString() + "height: " + height.ToString() + "\n";
+                            _form.console.Text = _form.console.Text.ToString() + "max color value: " + maxColorValue.ToString() + "\n";
+                            consoleInfoShowed = true;
+                        }
+
+                        canGoNextPhase = false;
+                    }
                 }
             }
+            _form.console.Text = _form.console.Text.ToString() + "DONE, Succesfully readed " + line.ToString() + " lines.\n";
+            /*
+            for (int j = 0; j < height; j++)
+            {
+                for (int i = 0; i < width; i++)
+                {
+                    _form.console.Text = _form.console.Text.ToString() + "[" + i.ToString() + "][" + j.ToString() + "]=(" +
+                        bitmap.GetPixel(i, j).R.ToString() + "," + bitmap.GetPixel(i, j).G.ToString() + "," + bitmap.GetPixel(i, j).B.ToString() + ")\n";
+                }
+            }*/
 
-            _form.console.Text = _form.console.Text.ToString() + "PPM type: " + ppmType + "\n";
-            _form.console.Text = _form.console.Text.ToString() + "width: " + width.ToString() + "\n";
-            _form.console.Text = _form.console.Text.ToString() + "height: " + height.ToString() + "\n";
-            _form.console.Text = _form.console.Text.ToString() + "max color value: " + maxColorValue.ToString() + "\n";
         }
     }
 }

@@ -496,16 +496,17 @@
             // 
             // console
             // 
-            this.console.Location = new System.Drawing.Point(12, 535);
+            this.console.Font = new System.Drawing.Font("Verdana", 8F);
+            this.console.Location = new System.Drawing.Point(0, 528);
             this.console.Name = "console";
-            this.console.Size = new System.Drawing.Size(978, 96);
+            this.console.Size = new System.Drawing.Size(1000, 110);
             this.console.TabIndex = 3;
             this.console.Text = "";
             // 
             // consoleLabel
             // 
             this.consoleLabel.AutoSize = true;
-            this.consoleLabel.Location = new System.Drawing.Point(12, 517);
+            this.consoleLabel.Location = new System.Drawing.Point(-3, 507);
             this.consoleLabel.Name = "consoleLabel";
             this.consoleLabel.Size = new System.Drawing.Size(73, 18);
             this.consoleLabel.TabIndex = 4;
@@ -515,7 +516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 643);
+            this.ClientSize = new System.Drawing.Size(1002, 639);
             this.Controls.Add(this.consoleLabel);
             this.Controls.Add(this.console);
             this.Controls.Add(this.pictureBox);

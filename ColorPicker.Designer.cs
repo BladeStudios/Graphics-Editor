@@ -312,6 +312,7 @@
             this.redValue.Name = "redValue";
             this.redValue.Size = new System.Drawing.Size(51, 29);
             this.redValue.TabIndex = 23;
+            this.redValue.ValueChanged += new System.EventHandler(this.redValue_ValueChanged);
             // 
             // greenValue
             // 
@@ -325,6 +326,7 @@
             this.greenValue.Name = "greenValue";
             this.greenValue.Size = new System.Drawing.Size(51, 29);
             this.greenValue.TabIndex = 24;
+            this.greenValue.ValueChanged += new System.EventHandler(this.greenValue_ValueChanged);
             // 
             // blueValue
             // 
@@ -338,6 +340,7 @@
             this.blueValue.Name = "blueValue";
             this.blueValue.Size = new System.Drawing.Size(51, 29);
             this.blueValue.TabIndex = 25;
+            this.blueValue.ValueChanged += new System.EventHandler(this.blueValue_ValueChanged);
             // 
             // hueValue
             // 

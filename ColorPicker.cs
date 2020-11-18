@@ -52,6 +52,24 @@ namespace Graphics_Editor
             this.Close();
         }
 
+        private void redValue_ValueChanged(object sender, EventArgs e)
+        {
+            redBar.Value = Convert.ToInt32(redValue.Value);
+            updateColor();
+        }
+
+        private void greenValue_ValueChanged(object sender, EventArgs e)
+        {
+            greenBar.Value = Convert.ToInt32(greenValue.Value);
+            updateColor();
+        }
+
+        private void blueValue_ValueChanged(object sender, EventArgs e)
+        {
+            blueBar.Value = Convert.ToInt32(blueValue.Value);
+            updateColor();
+        }
+
         private void greenBar_Scroll(object sender, EventArgs e)
         {
             greenValue.Value = greenBar.Value;

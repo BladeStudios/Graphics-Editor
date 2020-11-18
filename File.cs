@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Schema;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace Graphics_Editor
 {
@@ -85,6 +86,7 @@ namespace Graphics_Editor
             bool canGoNextPhase = true;
             int line = 0;
             bool shouldColorBeReseted = true;
+            byte[] tab;
 
             while ((s = sr.ReadLine())!=null && !error)
             {
@@ -112,7 +114,6 @@ namespace Graphics_Editor
                             if (newR >= 0 && newR < 256 && newG >= 0 && newG < 256 && newB >= 0 && newB < 256)
                             {
                                 bitmap.SetPixel(x, y, Color.FromArgb(newR, newG, newB));
-                                _form.pictureBox.Image = bitmap;
                                 x++;
                                 if (x >= width)
                                 {
@@ -162,6 +163,7 @@ namespace Graphics_Editor
                             if (isBitmapCreated == false)
                             {
                                 bitmap = new Bitmap(width, height);
+                                tab = new byte[width * height * 8];
                                 isBitmapCreated = true;
                             }
                             if (shouldColorBeReseted == true)
@@ -230,6 +232,8 @@ namespace Graphics_Editor
                     }
                 }
             }
+
+            _form.pictureBox.Image = bitmap;
             _form.console.Text = _form.console.Text.ToString() + "DONE, Succesfully readed " + line.ToString() + " lines.\n";
             /*
             for (int j = 0; j < height; j++)
@@ -241,6 +245,14 @@ namespace Graphics_Editor
                 }
             }*/
 
+        }
+
+        private void setPixels(Bitmap processedBitmap, byte [] tab)
+        {
+            BitmapData bitmapData = processedBitmap.LockBits(new Rectangle(0, 0, processedBitmap.Width, processedBitmap.Height), ImageLockMode.ReadWrite, processedBitmap.PixelFormat);
+            int bytesPerPixel = Bitmap.GetPixelFormatSize(processedBitmap.PixelFormat) / 8;
+            int byteCount = bitmapData.Stride * processedBitmap.Height;
+            //byte[] pixels = new byte[byteCount];
         }
     }
 }

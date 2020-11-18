@@ -278,6 +278,8 @@
             this.cyanBar.Name = "cyanBar";
             this.cyanBar.Size = new System.Drawing.Size(500, 45);
             this.cyanBar.TabIndex = 19;
+            this.cyanBar.Value = 100;
+            this.cyanBar.Scroll += new System.EventHandler(this.cyanBar_Scroll);
             // 
             // magentaBar
             // 
@@ -286,6 +288,8 @@
             this.magentaBar.Name = "magentaBar";
             this.magentaBar.Size = new System.Drawing.Size(500, 45);
             this.magentaBar.TabIndex = 20;
+            this.magentaBar.Value = 100;
+            this.magentaBar.Scroll += new System.EventHandler(this.magentaBar_Scroll);
             // 
             // yellowBar
             // 
@@ -294,6 +298,8 @@
             this.yellowBar.Name = "yellowBar";
             this.yellowBar.Size = new System.Drawing.Size(500, 45);
             this.yellowBar.TabIndex = 21;
+            this.yellowBar.Value = 100;
+            this.yellowBar.Scroll += new System.EventHandler(this.yellowBar_Scroll);
             // 
             // keyColorBar
             // 
@@ -302,6 +308,8 @@
             this.keyColorBar.Name = "keyColorBar";
             this.keyColorBar.Size = new System.Drawing.Size(500, 45);
             this.keyColorBar.TabIndex = 22;
+            this.keyColorBar.Value = 100;
+            this.keyColorBar.Scroll += new System.EventHandler(this.keyColorBar_Scroll);
             // 
             // redValue
             // 
@@ -384,6 +392,12 @@
             this.cyanValue.Name = "cyanValue";
             this.cyanValue.Size = new System.Drawing.Size(51, 29);
             this.cyanValue.TabIndex = 29;
+            this.cyanValue.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.cyanValue.ValueChanged += new System.EventHandler(this.cyanValue_ValueChanged);
             // 
             // magentaValue
             // 
@@ -392,6 +406,12 @@
             this.magentaValue.Name = "magentaValue";
             this.magentaValue.Size = new System.Drawing.Size(51, 29);
             this.magentaValue.TabIndex = 30;
+            this.magentaValue.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.magentaValue.ValueChanged += new System.EventHandler(this.magentaValue_ValueChanged);
             // 
             // yellowValue
             // 
@@ -400,6 +420,12 @@
             this.yellowValue.Name = "yellowValue";
             this.yellowValue.Size = new System.Drawing.Size(51, 29);
             this.yellowValue.TabIndex = 31;
+            this.yellowValue.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.yellowValue.ValueChanged += new System.EventHandler(this.yellowValue_ValueChanged);
             // 
             // keyColorValue
             // 
@@ -408,6 +434,12 @@
             this.keyColorValue.Name = "keyColorValue";
             this.keyColorValue.Size = new System.Drawing.Size(51, 29);
             this.keyColorValue.TabIndex = 32;
+            this.keyColorValue.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.keyColorValue.ValueChanged += new System.EventHandler(this.keyColorValue_ValueChanged);
             // 
             // label14
             // 

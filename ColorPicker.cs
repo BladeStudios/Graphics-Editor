@@ -36,6 +36,18 @@ namespace Graphics_Editor
 
         private void updateAllValues()
         {
+            //unwiring events
+            redValue.ValueChanged -= redValue_ValueChanged;
+            greenValue.ValueChanged -= greenValue_ValueChanged;
+            blueValue.ValueChanged -= blueValue_ValueChanged;
+            hueValue.ValueChanged -= hueValue_ValueChanged;
+            saturationValue.ValueChanged -= saturationValue_ValueChanged;
+            valueValue.ValueChanged -= valueValue_ValueChanged;
+            cyanValue.ValueChanged -= cyanValue_ValueChanged;
+            magentaValue.ValueChanged -= magentaValue_ValueChanged;
+            yellowValue.ValueChanged -= yellowValue_ValueChanged;
+            keyColorValue.ValueChanged -= keyColorValue_ValueChanged;
+
             redValue.Value = rValue;
             redBar.Value = rValue;
             greenValue.Value = gValue;
@@ -58,13 +70,22 @@ namespace Graphics_Editor
             yellowBar.Value = yValue;
             keyColorValue.Value = kValue;
             keyColorBar.Value = kValue;
+
+            //wiring back events
+            redValue.ValueChanged += redValue_ValueChanged;
+            greenValue.ValueChanged += greenValue_ValueChanged;
+            blueValue.ValueChanged += blueValue_ValueChanged;
+            hueValue.ValueChanged += hueValue_ValueChanged;
+            saturationValue.ValueChanged += saturationValue_ValueChanged;
+            valueValue.ValueChanged += valueValue_ValueChanged;
+            cyanValue.ValueChanged += cyanValue_ValueChanged;
+            magentaValue.ValueChanged += magentaValue_ValueChanged;
+            yellowValue.ValueChanged += yellowValue_ValueChanged;
+            keyColorValue.ValueChanged += keyColorValue_ValueChanged;
         }
 
         private void updateColor()
         {
-            //rValue = Convert.ToInt32(redValue.Value);
-            //gValue = Convert.ToInt32(greenValue.Value);
-            //bValue = Convert.ToInt32(blueValue.Value);
             Graphics g;
             g = Graphics.FromImage(Image);
             SolidBrush b = new SolidBrush(Color.FromArgb(rValue, gValue, bValue));
@@ -152,7 +173,7 @@ namespace Graphics_Editor
             hueBar.Value = Convert.ToInt32(hueValue.Value);
             hValue = hueBar.Value;
             HSVtoRGB();
-            //
+            HSVtoCMYK();
             updateColor();
             updateAllValues();
         }
@@ -161,11 +182,20 @@ namespace Graphics_Editor
         {
             saturationBar.Value = Convert.ToInt32(saturationValue.Value);
             sValue = saturationBar.Value;
+            HSVtoRGB();
+            HSVtoCMYK();
+            updateColor();
+            updateAllValues();
         }
 
         private void valueValue_ValueChanged(object sender, EventArgs e)
         {
-
+            valueBar.Value = Convert.ToInt32(valueValue.Value);
+            vValue = valueBar.Value;
+            HSVtoRGB();
+            HSVtoCMYK();
+            updateColor();
+            updateAllValues();
         }
 
         private void hueBar_Scroll(object sender, EventArgs e)
@@ -180,13 +210,107 @@ namespace Graphics_Editor
 
         private void saturationBar_Scroll(object sender, EventArgs e)
         {
-
+            sValue = saturationBar.Value;
+            saturationValue.Value = saturationBar.Value;
+            HSVtoRGB();
+            HSVtoCMYK();
+            updateColor();
+            updateAllValues();
         }
 
         private void valueBar_Scroll(object sender, EventArgs e)
         {
-
+            vValue = valueBar.Value;
+            valueValue.Value = valueBar.Value;
+            HSVtoRGB();
+            HSVtoCMYK();
+            updateColor();
+            updateAllValues();
         }
+
+        // -------------------- CMYK -----------------------------------
+
+        private void cyanValue_ValueChanged(object sender, EventArgs e)
+        {
+            cyanBar.Value = Convert.ToInt32(cyanValue.Value);
+            cValue = cyanBar.Value;
+            CMYKtoRGB();
+            CMYKtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void magentaValue_ValueChanged(object sender, EventArgs e)
+        {
+            magentaBar.Value = Convert.ToInt32(magentaValue.Value);
+            mValue = magentaBar.Value;
+            CMYKtoRGB();
+            CMYKtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void yellowValue_ValueChanged(object sender, EventArgs e)
+        {
+            yellowBar.Value = Convert.ToInt32(yellowValue.Value);
+            yValue = yellowBar.Value;
+            CMYKtoRGB();
+            CMYKtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void keyColorValue_ValueChanged(object sender, EventArgs e)
+        {
+            keyColorBar.Value = Convert.ToInt32(keyColorValue.Value);
+            kValue = keyColorBar.Value;
+            CMYKtoRGB();
+            CMYKtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void cyanBar_Scroll(object sender, EventArgs e)
+        {
+            cValue = cyanBar.Value;
+            cyanValue.Value = cyanBar.Value;
+            CMYKtoRGB();
+            RGBtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void magentaBar_Scroll(object sender, EventArgs e)
+        {
+            mValue = magentaBar.Value;
+            magentaValue.Value = magentaBar.Value;
+            CMYKtoRGB();
+            RGBtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void yellowBar_Scroll(object sender, EventArgs e)
+        {
+            yValue = yellowBar.Value;
+            yellowValue.Value = yellowBar.Value;
+            CMYKtoRGB();
+            RGBtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void keyColorBar_Scroll(object sender, EventArgs e)
+        {
+            kValue = keyColorBar.Value;
+            keyColorValue.Value = keyColorBar.Value;
+            CMYKtoRGB();
+            RGBtoHSV();
+            updateColor();
+            updateAllValues();
+        }
+
+        // ------------- methods "from X to Y" ------------------
 
         private void RGBtoHSV()
         {
@@ -213,8 +337,6 @@ namespace Graphics_Editor
                 hue = (60 * ((b01 - r01) / diff) + 120) % 360;
             else //if (cmax == b01)
                 hue = (60 * ((r01 - g01) / diff) + 240) % 360;
-
-            //if (hue == 360) hue = 0;
 
             hValue = Convert.ToInt32(hue);
 

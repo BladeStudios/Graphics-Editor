@@ -14,13 +14,50 @@ namespace Graphics_Editor
     {
         private readonly Form1 _form;
         public Bitmap Image;
-        int rValue, gValue, bValue;
+        int rValue, gValue, bValue, hValue, sValue, vValue, cValue, mValue, yValue, kValue;
         public ColorPicker(Form1 form)
         {
             InitializeComponent();
             _form = form;
             Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
+            rValue = 0;
+            gValue = 0;
+            bValue = 0;
+            hValue = 0;
+            sValue = 0;
+            vValue = 0;
+            cValue = 100;
+            mValue = 100;
+            yValue = 100;
+            kValue = 100;
             updateColor();
+            updateAllValues();
+        }
+
+        private void updateAllValues()
+        {
+            redValue.Value = rValue;
+            redBar.Value = rValue;
+            greenValue.Value = gValue;
+            greenBar.Value = gValue;
+            blueValue.Value = bValue;
+            blueBar.Value = bValue;
+
+            hueValue.Value = hValue;
+            hueBar.Value = hValue;
+            saturationValue.Value = sValue;
+            saturationBar.Value = sValue;
+            valueValue.Value = vValue;
+            valueBar.Value = vValue;
+
+            cyanValue.Value = cValue;
+            cyanBar.Value = cValue;
+            magentaValue.Value = mValue;
+            magentaBar.Value = mValue;
+            yellowValue.Value = yValue;
+            yellowBar.Value = yValue;
+            keyColorValue.Value = kValue;
+            keyColorBar.Value = kValue;
         }
 
         private void updateColor()
@@ -34,12 +71,6 @@ namespace Graphics_Editor
             g.FillRectangle(b, 0, 0, pictureBox.Width, pictureBox.Height);
             pictureBox.Image = Image;
             g.Dispose();
-        }
-
-        private void redBar_Scroll(object sender, EventArgs e)
-        {
-            redValue.Value = redBar.Value;
-            updateColor();
         }
 
         private void selectColorButton_Click(object sender, EventArgs e)
@@ -70,6 +101,15 @@ namespace Graphics_Editor
             updateColor();
         }
 
+        private void redBar_Scroll(object sender, EventArgs e)
+        {
+            redValue.Value = redBar.Value;
+            updateColor();
+            RGBtoHSV();
+            RGBtoCMYK();
+            updateAllValues();
+        }
+
         private void greenBar_Scroll(object sender, EventArgs e)
         {
             greenValue.Value = greenBar.Value;
@@ -80,6 +120,119 @@ namespace Graphics_Editor
         {
             blueValue.Value = blueBar.Value;
             updateColor();
+        }
+
+        private void hueBar_Scroll(object sender, EventArgs e)
+        {
+            hueValue.Value = hueBar.Value;
+        }
+
+        private void RGBtoHSV()
+        {
+            double r01, g01, b01; //rgb changed from 0-255 to 0-1
+            double hue, saturation, value;
+            double cmin, cmax, diff;
+
+            //casting rgb from 0-255 to 0-1
+            r01 = Convert.ToDouble(rValue) / 255;
+            g01 = Convert.ToDouble(gValue) / 255;
+            b01 = Convert.ToDouble(bValue) / 255;
+
+            //calculating cmin, cmax and diff
+            cmin = getMin(r01, g01, b01);
+            cmax = getMax(r01, g01, b01);
+            diff = cmax - cmin;
+
+            //hue calculation
+            if (cmax == 0 && cmin == 0)
+                hue = 0;
+            else if (cmax == r01)
+                hue = (60 * ((g01 - b01) / diff) + 360) % 360;
+            else if (cmax == g01)
+                hue = (60 * ((b01 - r01) / diff) + 120) % 360;
+            else //if (cmax == b01)
+                hue = (60 * ((r01 - g01) / diff) + 240) % 360;
+
+            hValue = Convert.ToInt32(hue);
+
+            //saturation calculation
+            if (cmax == 0)
+                saturation = 0;
+            else
+                saturation = (diff / cmax) * 100;
+
+            sValue = Convert.ToInt32(saturation);
+
+            //value calculation
+            value = cmax * 100;
+
+            vValue = Convert.ToInt32(value);
+        }
+
+        private void HSVtoRGB()
+        {
+
+        }
+
+        private void RGBtoCMYK()
+        {
+            double r01, g01, b01; //rgb changed from 0-255 to 0-1
+            double cyan, magenta, yellow, keyColor;
+            double cmax;
+
+            //casting rgb from 0-255 to 0-1
+            r01 = Convert.ToDouble(rValue) / 255;
+            g01 = Convert.ToDouble(gValue) / 255;
+            b01 = Convert.ToDouble(bValue) / 255;
+
+            //calculation cmax
+            cmax = getMax(r01, g01, b01);
+
+            //calculating colors
+            keyColor = (1 - cmax);
+            kValue = Convert.ToInt32((keyColor*100));
+            cyan = (1 - r01 - keyColor) / (1 - keyColor);
+            cValue = Convert.ToInt32((cyan * 100));
+            magenta = (1 - g01 - keyColor) / (1 - keyColor);
+            mValue = Convert.ToInt32((magenta * 100));
+            yellow = (1 - b01 - keyColor) / (1 - keyColor);
+            yValue = Convert.ToInt32((yellow * 100));
+        }
+
+        private double getMin(double a, double b, double c)
+        {
+            if (a <= b)
+            {
+                if (a <= c)
+                    return a;
+                else
+                    return c;
+            }
+            else
+            {
+                if (b <= c)
+                    return b;
+                else
+                    return c;
+            }
+        }
+
+        private double getMax(double a, double b, double c)
+        {
+            if (a >= b)
+            {
+                if (a >= c)
+                    return a;
+                else
+                    return c;
+            }
+            else
+            {
+                if (b >= c)
+                    return b;
+                else
+                    return c;
+            }
         }
 
     }

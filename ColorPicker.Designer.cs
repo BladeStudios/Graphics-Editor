@@ -251,6 +251,7 @@
             this.hueBar.Name = "hueBar";
             this.hueBar.Size = new System.Drawing.Size(500, 45);
             this.hueBar.TabIndex = 16;
+            this.hueBar.Scroll += new System.EventHandler(this.hueBar_Scroll);
             // 
             // saturationBar
             // 
@@ -271,7 +272,7 @@
             // cyanBar
             // 
             this.cyanBar.Location = new System.Drawing.Point(100, 310);
-            this.cyanBar.Maximum = 255;
+            this.cyanBar.Maximum = 100;
             this.cyanBar.Name = "cyanBar";
             this.cyanBar.Size = new System.Drawing.Size(500, 45);
             this.cyanBar.TabIndex = 19;
@@ -279,7 +280,7 @@
             // magentaBar
             // 
             this.magentaBar.Location = new System.Drawing.Point(100, 345);
-            this.magentaBar.Maximum = 255;
+            this.magentaBar.Maximum = 100;
             this.magentaBar.Name = "magentaBar";
             this.magentaBar.Size = new System.Drawing.Size(500, 45);
             this.magentaBar.TabIndex = 20;
@@ -287,7 +288,7 @@
             // yellowBar
             // 
             this.yellowBar.Location = new System.Drawing.Point(100, 380);
-            this.yellowBar.Maximum = 255;
+            this.yellowBar.Maximum = 100;
             this.yellowBar.Name = "yellowBar";
             this.yellowBar.Size = new System.Drawing.Size(500, 45);
             this.yellowBar.TabIndex = 21;
@@ -295,7 +296,7 @@
             // keyColorBar
             // 
             this.keyColorBar.Location = new System.Drawing.Point(100, 415);
-            this.keyColorBar.Maximum = 255;
+            this.keyColorBar.Maximum = 100;
             this.keyColorBar.Name = "keyColorBar";
             this.keyColorBar.Size = new System.Drawing.Size(500, 45);
             this.keyColorBar.TabIndex = 22;
@@ -375,11 +376,6 @@
             // 
             this.cyanValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cyanValue.Location = new System.Drawing.Point(610, 310);
-            this.cyanValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.cyanValue.Name = "cyanValue";
             this.cyanValue.Size = new System.Drawing.Size(51, 29);
             this.cyanValue.TabIndex = 29;
@@ -388,11 +384,6 @@
             // 
             this.magentaValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.magentaValue.Location = new System.Drawing.Point(610, 345);
-            this.magentaValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.magentaValue.Name = "magentaValue";
             this.magentaValue.Size = new System.Drawing.Size(51, 29);
             this.magentaValue.TabIndex = 30;
@@ -401,11 +392,6 @@
             // 
             this.yellowValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.yellowValue.Location = new System.Drawing.Point(610, 380);
-            this.yellowValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.yellowValue.Name = "yellowValue";
             this.yellowValue.Size = new System.Drawing.Size(51, 29);
             this.yellowValue.TabIndex = 31;
@@ -414,11 +400,6 @@
             // 
             this.keyColorValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.keyColorValue.Location = new System.Drawing.Point(610, 415);
-            this.keyColorValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
             this.keyColorValue.Name = "keyColorValue";
             this.keyColorValue.Size = new System.Drawing.Size(51, 29);
             this.keyColorValue.TabIndex = 32;

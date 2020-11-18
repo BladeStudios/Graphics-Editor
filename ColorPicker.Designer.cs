@@ -260,6 +260,7 @@
             this.saturationBar.Name = "saturationBar";
             this.saturationBar.Size = new System.Drawing.Size(500, 45);
             this.saturationBar.TabIndex = 17;
+            this.saturationBar.Scroll += new System.EventHandler(this.saturationBar_Scroll);
             // 
             // valueBar
             // 
@@ -268,6 +269,7 @@
             this.valueBar.Name = "valueBar";
             this.valueBar.Size = new System.Drawing.Size(500, 45);
             this.valueBar.TabIndex = 18;
+            this.valueBar.Scroll += new System.EventHandler(this.valueBar_Scroll);
             // 
             // cyanBar
             // 
@@ -355,6 +357,7 @@
             this.hueValue.Name = "hueValue";
             this.hueValue.Size = new System.Drawing.Size(51, 29);
             this.hueValue.TabIndex = 26;
+            this.hueValue.ValueChanged += new System.EventHandler(this.hueValue_ValueChanged);
             // 
             // saturationValue
             // 
@@ -363,6 +366,7 @@
             this.saturationValue.Name = "saturationValue";
             this.saturationValue.Size = new System.Drawing.Size(51, 29);
             this.saturationValue.TabIndex = 27;
+            this.saturationValue.ValueChanged += new System.EventHandler(this.saturationValue_ValueChanged);
             // 
             // valueValue
             // 
@@ -371,6 +375,7 @@
             this.valueValue.Name = "valueValue";
             this.valueValue.Size = new System.Drawing.Size(51, 29);
             this.valueValue.TabIndex = 28;
+            this.valueValue.ValueChanged += new System.EventHandler(this.valueValue_ValueChanged);
             // 
             // cyanValue
             // 

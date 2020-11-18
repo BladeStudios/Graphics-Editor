@@ -62,9 +62,9 @@ namespace Graphics_Editor
 
         private void updateColor()
         {
-            rValue = Convert.ToInt32(redValue.Value);
-            gValue = Convert.ToInt32(greenValue.Value);
-            bValue = Convert.ToInt32(blueValue.Value);
+            //rValue = Convert.ToInt32(redValue.Value);
+            //gValue = Convert.ToInt32(greenValue.Value);
+            //bValue = Convert.ToInt32(blueValue.Value);
             Graphics g;
             g = Graphics.FromImage(Image);
             SolidBrush b = new SolidBrush(Color.FromArgb(rValue, gValue, bValue));
@@ -83,48 +83,109 @@ namespace Graphics_Editor
             this.Close();
         }
 
+        // ---------------- RGB --------------------------
+
         private void redValue_ValueChanged(object sender, EventArgs e)
         {
             redBar.Value = Convert.ToInt32(redValue.Value);
+            rValue = redBar.Value;
+            RGBtoHSV();
+            RGBtoCMYK();
             updateColor();
+            updateAllValues();
         }
 
         private void greenValue_ValueChanged(object sender, EventArgs e)
         {
             greenBar.Value = Convert.ToInt32(greenValue.Value);
+            gValue = greenBar.Value;
+            RGBtoHSV();
+            RGBtoCMYK();
             updateColor();
+            updateAllValues();
         }
 
         private void blueValue_ValueChanged(object sender, EventArgs e)
         {
             blueBar.Value = Convert.ToInt32(blueValue.Value);
+            bValue = blueBar.Value;
+            RGBtoHSV();
+            RGBtoCMYK();
             updateColor();
+            updateAllValues();
         }
 
         private void redBar_Scroll(object sender, EventArgs e)
         {
+            rValue = redBar.Value;
             redValue.Value = redBar.Value;
-            updateColor();
             RGBtoHSV();
             RGBtoCMYK();
+            updateColor();
             updateAllValues();
         }
 
         private void greenBar_Scroll(object sender, EventArgs e)
         {
+            gValue = greenBar.Value;
             greenValue.Value = greenBar.Value;
+            RGBtoHSV();
+            RGBtoCMYK();
             updateColor();
+            updateAllValues();
         }
 
         private void blueBar_Scroll(object sender, EventArgs e)
         {
+            bValue = blueBar.Value;
             blueValue.Value = blueBar.Value;
+            RGBtoHSV();
+            RGBtoCMYK();
             updateColor();
+            updateAllValues();
+        }
+
+        // ------------------------- HSV ----------------------------
+
+        private void hueValue_ValueChanged(object sender, EventArgs e)
+        {
+            hueBar.Value = Convert.ToInt32(hueValue.Value);
+            hValue = hueBar.Value;
+            HSVtoRGB();
+            //
+            updateColor();
+            updateAllValues();
+        }
+
+        private void saturationValue_ValueChanged(object sender, EventArgs e)
+        {
+            saturationBar.Value = Convert.ToInt32(saturationValue.Value);
+            sValue = saturationBar.Value;
+        }
+
+        private void valueValue_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void hueBar_Scroll(object sender, EventArgs e)
         {
+            hValue = hueBar.Value;
             hueValue.Value = hueBar.Value;
+            HSVtoRGB();
+            HSVtoCMYK();
+            updateColor();
+            updateAllValues();
+        }
+
+        private void saturationBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void valueBar_Scroll(object sender, EventArgs e)
+        {
+
         }
 
         private void RGBtoHSV()
@@ -144,7 +205,7 @@ namespace Graphics_Editor
             diff = cmax - cmin;
 
             //hue calculation
-            if (cmax == 0 && cmin == 0)
+            if (diff == 0)
                 hue = 0;
             else if (cmax == r01)
                 hue = (60 * ((g01 - b01) / diff) + 360) % 360;
@@ -152,6 +213,8 @@ namespace Graphics_Editor
                 hue = (60 * ((b01 - r01) / diff) + 120) % 360;
             else //if (cmax == b01)
                 hue = (60 * ((r01 - g01) / diff) + 240) % 360;
+
+            //if (hue == 360) hue = 0;
 
             hValue = Convert.ToInt32(hue);
 
@@ -171,7 +234,68 @@ namespace Graphics_Editor
 
         private void HSVtoRGB()
         {
+            double h01, s01, v01;
+            double chroma, x, absolute;
+            double r01, g01, b01;
+            double red, green, blue;
 
+            //calculating h01, s01 and v01
+            h01 = Convert.ToDouble(hValue) / 60;
+            s01 = Convert.ToDouble(sValue) / 100;
+            v01 = Convert.ToDouble(vValue) / 100;
+
+            //calculating chroma and x
+            chroma = v01 * s01;
+            absolute = (h01 % 2) - 1;
+            if (absolute < 0)
+                absolute = absolute * (-1);
+            x = chroma * (1 - absolute);
+
+            //calculating rgb
+            if(h01 >= 0 && h01 <= 1)
+            {
+                r01 = chroma;
+                g01 = x;
+                b01 = 0;
+            }
+            else if (h01 > 1 && h01 <= 2)
+            {
+                r01 = x;
+                g01 = chroma;
+                b01 = 0;
+            }
+            else if (h01 > 2 && h01 <= 3)
+            {
+                r01 = 0;
+                g01 = chroma;
+                b01 = x;
+            }
+            else if (h01 > 3 && h01 <= 4)
+            {
+                r01 = 0;
+                g01 = x;
+                b01 = chroma;
+            }
+            else if (h01 > 4 && h01 <= 5)
+            {
+                r01 = x;
+                g01 = 0;
+                b01 = chroma;
+            }
+            else //if (h01 > 5 && h01 <= 6)
+            {
+                r01 = chroma;
+                g01 = 0;
+                b01 = x;
+            }
+
+            red = r01 + v01 - chroma;
+            green = g01 + v01 - chroma;
+            blue = b01 + v01 - chroma;
+
+            rValue = Convert.ToInt32((red * 255));
+            gValue = Convert.ToInt32((green * 255));
+            bValue = Convert.ToInt32((blue * 255));
         }
 
         private void RGBtoCMYK()
@@ -191,12 +315,54 @@ namespace Graphics_Editor
             //calculating colors
             keyColor = (1 - cmax);
             kValue = Convert.ToInt32((keyColor*100));
-            cyan = (1 - r01 - keyColor) / (1 - keyColor);
+
+            if(keyColor==1)
+            {
+                cyan = 1;
+                magenta = 1;
+                yellow = 1;
+            }
+            else
+            {
+                cyan = (1 - r01 - keyColor) / (1 - keyColor);
+                magenta = (1 - g01 - keyColor) / (1 - keyColor);
+                yellow = (1 - b01 - keyColor) / (1 - keyColor);
+            }
             cValue = Convert.ToInt32((cyan * 100));
-            magenta = (1 - g01 - keyColor) / (1 - keyColor);
             mValue = Convert.ToInt32((magenta * 100));
-            yellow = (1 - b01 - keyColor) / (1 - keyColor);
             yValue = Convert.ToInt32((yellow * 100));
+        }
+
+        private void CMYKtoRGB()
+        {
+            double c01, m01, y01, k01; //CMYK changed from 0-100 to 0-1
+            double red, green, blue;
+
+            //casting cmyk from 0-100 to 0-1
+            c01 = Convert.ToDouble(cValue) / 100;
+            m01 = Convert.ToDouble(mValue) / 100;
+            y01 = Convert.ToDouble(yValue) / 100;
+            k01 = Convert.ToDouble(kValue) / 100;
+
+            red = 255 * (1 - c01) * (1 - k01);
+            green = 255 * (1 - m01) * (1 - k01);
+            blue = 255 * (1 - y01) * (1 - k01);
+
+            rValue = Convert.ToInt32(red);
+            gValue = Convert.ToInt32(green);
+            bValue = Convert.ToInt32(blue);
+        }
+
+        private void HSVtoCMYK()
+        {
+            HSVtoRGB();
+            RGBtoCMYK();
+        }
+
+        private void CMYKtoHSV()
+        {
+            CMYKtoRGB();
+            RGBtoHSV();
         }
 
         private double getMin(double a, double b, double c)

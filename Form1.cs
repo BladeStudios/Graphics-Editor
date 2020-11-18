@@ -390,5 +390,11 @@ namespace Graphics_Editor
                 zoom(ratio);
             }
         }
+
+        private void menuToolsRGBCube_Click(object sender, EventArgs e)
+        {
+            Cube cube = new Cube(this);
+            cube.ShowDialog();
+        }
     }
 }

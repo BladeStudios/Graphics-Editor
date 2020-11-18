@@ -44,7 +44,6 @@
             this.menuEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuViewTools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaint = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintRectangle = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +79,8 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
+            this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolsRGBCube = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -91,8 +92,9 @@
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuEdit,
-            this.menuView,
             this.menuPaint,
+            this.menuView,
+            this.menuTools,
             this.menuHelp});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
@@ -196,17 +198,9 @@
             // 
             // menuView
             // 
-            this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuViewTools});
             this.menuView.Name = "menuView";
             this.menuView.Size = new System.Drawing.Size(56, 25);
             this.menuView.Text = "View";
-            // 
-            // menuViewTools
-            // 
-            this.menuViewTools.Name = "menuViewTools";
-            this.menuViewTools.Size = new System.Drawing.Size(115, 26);
-            this.menuViewTools.Text = "Tools";
             // 
             // menuPaint
             // 
@@ -264,7 +258,7 @@
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(122, 26);
+            this.menuHelpAbout.Size = new System.Drawing.Size(180, 26);
             this.menuHelpAbout.Text = "About";
             // 
             // toolBar
@@ -512,6 +506,21 @@
             this.consoleLabel.TabIndex = 4;
             this.consoleLabel.Text = "Console";
             // 
+            // menuTools
+            // 
+            this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolsRGBCube});
+            this.menuTools.Name = "menuTools";
+            this.menuTools.Size = new System.Drawing.Size(57, 25);
+            this.menuTools.Text = "Tools";
+            // 
+            // menuToolsRGBCube
+            // 
+            this.menuToolsRGBCube.Name = "menuToolsRGBCube";
+            this.menuToolsRGBCube.Size = new System.Drawing.Size(180, 26);
+            this.menuToolsRGBCube.Text = "RGB Cube";
+            this.menuToolsRGBCube.Click += new System.EventHandler(this.menuToolsRGBCube_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -558,7 +567,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuView;
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private System.Windows.Forms.ToolStripMenuItem menuHelpAbout;
-        private System.Windows.Forms.ToolStripMenuItem menuViewTools;
         private System.Windows.Forms.ToolStrip toolBar;
         public System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ToolStripMenuItem menuPaint;
@@ -592,6 +600,8 @@
         private System.Windows.Forms.ToolStripButton zoomMinusButton;
         public System.Windows.Forms.RichTextBox console;
         private System.Windows.Forms.Label consoleLabel;
+        private System.Windows.Forms.ToolStripMenuItem menuTools;
+        private System.Windows.Forms.ToolStripMenuItem menuToolsRGBCube;
     }
 }
 

@@ -53,6 +53,12 @@
     <Compile Include="ColorPicker.Designer.cs">
       <DependentUpon>ColorPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cube.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cube.Designer.cs">
+      <DependentUpon>Cube.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing.cs" />
     <Compile Include="DrawLine.cs">
       <SubType>Form</SubType>
@@ -72,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ColorPicker.resx">
       <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cube.resx">
+      <DependentUpon>Cube.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawLine.resx">
       <DependentUpon>DrawLine.cs</DependentUpon>

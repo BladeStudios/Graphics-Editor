@@ -40,7 +40,7 @@
             this.brightnessValue = new System.Windows.Forms.NumericUpDown();
             this.greyScaleBox = new System.Windows.Forms.GroupBox();
             this.averagingButton = new System.Windows.Forms.Button();
-            this.alghoritm2Button = new System.Windows.Forms.Button();
+            this.decompositionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.value)).BeginInit();
             this.modifyingBox.SuspendLayout();
             this.brightnessBox.SuspendLayout();
@@ -180,7 +180,7 @@
             // 
             // greyScaleBox
             // 
-            this.greyScaleBox.Controls.Add(this.alghoritm2Button);
+            this.greyScaleBox.Controls.Add(this.decompositionButton);
             this.greyScaleBox.Controls.Add(this.averagingButton);
             this.greyScaleBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.greyScaleBox.Location = new System.Drawing.Point(12, 168);
@@ -201,15 +201,16 @@
             this.averagingButton.UseVisualStyleBackColor = true;
             this.averagingButton.Click += new System.EventHandler(this.averagingButton_Click);
             // 
-            // alghoritm2Button
+            // decompositionButton
             // 
-            this.alghoritm2Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.alghoritm2Button.Location = new System.Drawing.Point(272, 33);
-            this.alghoritm2Button.Name = "alghoritm2Button";
-            this.alghoritm2Button.Size = new System.Drawing.Size(250, 30);
-            this.alghoritm2Button.TabIndex = 38;
-            this.alghoritm2Button.Text = "Alghoritm 2";
-            this.alghoritm2Button.UseVisualStyleBackColor = true;
+            this.decompositionButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.decompositionButton.Location = new System.Drawing.Point(272, 33);
+            this.decompositionButton.Name = "decompositionButton";
+            this.decompositionButton.Size = new System.Drawing.Size(250, 30);
+            this.decompositionButton.TabIndex = 38;
+            this.decompositionButton.Text = "Decomposition Alghoritm";
+            this.decompositionButton.UseVisualStyleBackColor = true;
+            this.decompositionButton.Click += new System.EventHandler(this.decompositionButton_Click);
             // 
             // Transformation
             // 
@@ -247,7 +248,7 @@
         private System.Windows.Forms.NumericUpDown brightnessValue;
         private System.Windows.Forms.TrackBar brightnessBar;
         private System.Windows.Forms.GroupBox greyScaleBox;
-        private System.Windows.Forms.Button alghoritm2Button;
+        private System.Windows.Forms.Button decompositionButton;
         private System.Windows.Forms.Button averagingButton;
     }
 }

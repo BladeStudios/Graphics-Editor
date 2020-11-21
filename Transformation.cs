@@ -129,6 +129,36 @@ namespace Graphics_Editor
             _form.setImage(img);
         }
 
+        private void decompositionAlghoritm()
+        {
+            int grey;
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    //grey = (img.GetPixel(i, j).R + img.GetPixel(i, j).G + img.GetPixel(i, j).B) / 3;
+                    grey = getMin(img.GetPixel(i, j).R, img.GetPixel(i, j).G, img.GetPixel(i, j).B);
+                    img.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
+                }
+            }
+            _form.setImage(img);
+        }
+
+        private int getMin(int a, int b, int c)
+        {
+            if (a <= b)
+            {
+                if (a <= c)
+                    return a;
+                else
+                    return c;
+            }
+            else if (b <= c)
+                return b;
+            else
+                return c;
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             transform(0);
@@ -164,6 +194,11 @@ namespace Graphics_Editor
         private void averagingButton_Click(object sender, EventArgs e)
         {
             averagingAlghoritm();
+        }
+
+        private void decompositionButton_Click(object sender, EventArgs e)
+        {
+            decompositionAlghoritm();
         }
     }
 }

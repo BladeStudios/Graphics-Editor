@@ -39,7 +39,7 @@
             this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.brightnessValue = new System.Windows.Forms.NumericUpDown();
             this.greyScaleBox = new System.Windows.Forms.GroupBox();
-            this.alghoritm1Button = new System.Windows.Forms.Button();
+            this.averagingButton = new System.Windows.Forms.Button();
             this.alghoritm2Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.value)).BeginInit();
             this.modifyingBox.SuspendLayout();
@@ -181,7 +181,7 @@
             // greyScaleBox
             // 
             this.greyScaleBox.Controls.Add(this.alghoritm2Button);
-            this.greyScaleBox.Controls.Add(this.alghoritm1Button);
+            this.greyScaleBox.Controls.Add(this.averagingButton);
             this.greyScaleBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.greyScaleBox.Location = new System.Drawing.Point(12, 168);
             this.greyScaleBox.Name = "greyScaleBox";
@@ -190,15 +190,16 @@
             this.greyScaleBox.TabStop = false;
             this.greyScaleBox.Text = "Grey scale";
             // 
-            // alghoritm1Button
+            // averagingButton
             // 
-            this.alghoritm1Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.alghoritm1Button.Location = new System.Drawing.Point(10, 33);
-            this.alghoritm1Button.Name = "alghoritm1Button";
-            this.alghoritm1Button.Size = new System.Drawing.Size(250, 30);
-            this.alghoritm1Button.TabIndex = 37;
-            this.alghoritm1Button.Text = "Alghoritm 1";
-            this.alghoritm1Button.UseVisualStyleBackColor = true;
+            this.averagingButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.averagingButton.Location = new System.Drawing.Point(10, 33);
+            this.averagingButton.Name = "averagingButton";
+            this.averagingButton.Size = new System.Drawing.Size(250, 30);
+            this.averagingButton.TabIndex = 37;
+            this.averagingButton.Text = "Averaging Alghoritm";
+            this.averagingButton.UseVisualStyleBackColor = true;
+            this.averagingButton.Click += new System.EventHandler(this.averagingButton_Click);
             // 
             // alghoritm2Button
             // 
@@ -247,6 +248,6 @@
         private System.Windows.Forms.TrackBar brightnessBar;
         private System.Windows.Forms.GroupBox greyScaleBox;
         private System.Windows.Forms.Button alghoritm2Button;
-        private System.Windows.Forms.Button alghoritm1Button;
+        private System.Windows.Forms.Button averagingButton;
     }
 }

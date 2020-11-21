@@ -74,7 +74,6 @@ namespace Graphics_Editor
             string ppmType = String.Empty;
             int width = 0, height = 0, maxColorValue = 0;
             List<Color> list = new List<Color>();
-            Color currentColor;
             Bitmap bitmap = new Bitmap(1,1);
             int readingPhase = -1; //-1 - default, 0-ppm type, 1-width, 2-height, 3-max color value, 4-colors
             bool isBitmapCreated = false;

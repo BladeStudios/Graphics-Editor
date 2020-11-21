@@ -115,6 +115,20 @@ namespace Graphics_Editor
             brightnessValue.Value = 0;
         }
 
+        private void averagingAlghoritm()
+        {
+            int grey;
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    grey = (img.GetPixel(i,j).R + img.GetPixel(i, j).G + img.GetPixel(i, j).B)/3;
+                    img.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
+                }
+            }
+            _form.setImage(img);
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             transform(0);
@@ -145,6 +159,11 @@ namespace Graphics_Editor
         {
             brightnessBar.Value = Convert.ToInt32(brightnessValue.Value);
             changeBrightness(Convert.ToInt32(brightnessValue.Value));
+        }
+
+        private void averagingButton_Click(object sender, EventArgs e)
+        {
+            averagingAlghoritm();
         }
     }
 }

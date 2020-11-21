@@ -16,6 +16,18 @@ namespace Graphics_Editor
         public AppState appState;
         Drawing drawing;
         public Bitmap Image;
+
+        public Bitmap getImage()
+        {
+            return Image;
+        }
+
+        public void setImage(Bitmap bitmap)
+        {
+            Image = bitmap;
+            if (pictureBox.Image != null) pictureBox.Image.Dispose();
+            pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+        }
         public Form1()
         {
             InitializeComponent();
@@ -395,6 +407,12 @@ namespace Graphics_Editor
         {
             Cube cube = new Cube(this);
             cube.ShowDialog();
+        }
+
+        private void menuToolsPointTransformation_Click(object sender, EventArgs e)
+        {
+            Transformation transformation = new Transformation(this);
+            transformation.ShowDialog();
         }
     }
 }

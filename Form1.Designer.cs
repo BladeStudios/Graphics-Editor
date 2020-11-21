@@ -43,13 +43,16 @@
             this.menuEditCut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaint = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintRectangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPaintCircle = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.clearDrawingAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolsRGBCube = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolsPointTransformation = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
@@ -79,8 +82,6 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
-            this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuToolsRGBCube = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -196,12 +197,6 @@
             this.menuEditPaste.Size = new System.Drawing.Size(118, 26);
             this.menuEditPaste.Text = "Paste";
             // 
-            // menuView
-            // 
-            this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(56, 25);
-            this.menuView.Text = "View";
-            // 
             // menuPaint
             // 
             this.menuPaint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -247,6 +242,35 @@
             this.clearDrawingAreaToolStripMenuItem.Text = "Clear Drawing Area";
             this.clearDrawingAreaToolStripMenuItem.Click += new System.EventHandler(this.clearDrawingAreaToolStripMenuItem_Click);
             // 
+            // menuView
+            // 
+            this.menuView.Name = "menuView";
+            this.menuView.Size = new System.Drawing.Size(56, 25);
+            this.menuView.Text = "View";
+            // 
+            // menuTools
+            // 
+            this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolsRGBCube,
+            this.menuToolsPointTransformation});
+            this.menuTools.Name = "menuTools";
+            this.menuTools.Size = new System.Drawing.Size(57, 25);
+            this.menuTools.Text = "Tools";
+            // 
+            // menuToolsRGBCube
+            // 
+            this.menuToolsRGBCube.Name = "menuToolsRGBCube";
+            this.menuToolsRGBCube.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsRGBCube.Text = "RGB Cube";
+            this.menuToolsRGBCube.Click += new System.EventHandler(this.menuToolsRGBCube_Click);
+            // 
+            // menuToolsPointTransformation
+            // 
+            this.menuToolsPointTransformation.Name = "menuToolsPointTransformation";
+            this.menuToolsPointTransformation.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsPointTransformation.Text = "Point Transformation";
+            this.menuToolsPointTransformation.Click += new System.EventHandler(this.menuToolsPointTransformation_Click);
+            // 
             // menuHelp
             // 
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -258,7 +282,7 @@
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(180, 26);
+            this.menuHelpAbout.Size = new System.Drawing.Size(122, 26);
             this.menuHelpAbout.Text = "About";
             // 
             // toolBar
@@ -506,21 +530,6 @@
             this.consoleLabel.TabIndex = 4;
             this.consoleLabel.Text = "Console";
             // 
-            // menuTools
-            // 
-            this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolsRGBCube});
-            this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new System.Drawing.Size(57, 25);
-            this.menuTools.Text = "Tools";
-            // 
-            // menuToolsRGBCube
-            // 
-            this.menuToolsRGBCube.Name = "menuToolsRGBCube";
-            this.menuToolsRGBCube.Size = new System.Drawing.Size(180, 26);
-            this.menuToolsRGBCube.Text = "RGB Cube";
-            this.menuToolsRGBCube.Click += new System.EventHandler(this.menuToolsRGBCube_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -602,6 +611,7 @@
         private System.Windows.Forms.Label consoleLabel;
         private System.Windows.Forms.ToolStripMenuItem menuTools;
         private System.Windows.Forms.ToolStripMenuItem menuToolsRGBCube;
+        private System.Windows.Forms.ToolStripMenuItem menuToolsPointTransformation;
     }
 }
 

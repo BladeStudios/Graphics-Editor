@@ -38,7 +38,6 @@
             this.brightnessBox = new System.Windows.Forms.GroupBox();
             this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.brightnessValue = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.greyScaleBox = new System.Windows.Forms.GroupBox();
             this.alghoritm1Button = new System.Windows.Forms.Button();
             this.alghoritm2Button = new System.Windows.Forms.Button();
@@ -55,10 +54,15 @@
             this.value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.value.Location = new System.Drawing.Point(60, 24);
             this.value.Maximum = new decimal(new int[] {
-            255,
+            1000000,
             0,
             0,
             0});
+            this.value.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.value.Name = "value";
             this.value.Size = new System.Drawing.Size(51, 29);
             this.value.TabIndex = 24;
@@ -135,7 +139,6 @@
             // 
             // brightnessBox
             // 
-            this.brightnessBox.Controls.Add(this.label1);
             this.brightnessBox.Controls.Add(this.brightnessValue);
             this.brightnessBox.Controls.Add(this.brightnessBar);
             this.brightnessBox.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -149,34 +152,31 @@
             // brightnessBar
             // 
             this.brightnessBar.Location = new System.Drawing.Point(10, 24);
-            this.brightnessBar.Maximum = 100;
+            this.brightnessBar.Maximum = 255;
+            this.brightnessBar.Minimum = -255;
             this.brightnessBar.Name = "brightnessBar";
-            this.brightnessBar.Size = new System.Drawing.Size(426, 45);
+            this.brightnessBar.Size = new System.Drawing.Size(455, 45);
             this.brightnessBar.TabIndex = 20;
-            this.brightnessBar.Value = 100;
+            this.brightnessBar.Scroll += new System.EventHandler(this.brightnessBar_Scroll);
             // 
             // brightnessValue
             // 
             this.brightnessValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.brightnessValue.Location = new System.Drawing.Point(442, 24);
-            this.brightnessValue.Name = "brightnessValue";
-            this.brightnessValue.Size = new System.Drawing.Size(51, 29);
-            this.brightnessValue.TabIndex = 25;
-            this.brightnessValue.Value = new decimal(new int[] {
-            100,
+            this.brightnessValue.Location = new System.Drawing.Point(471, 24);
+            this.brightnessValue.Maximum = new decimal(new int[] {
+            255,
             0,
             0,
             0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(499, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 21);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "%";
+            this.brightnessValue.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.brightnessValue.Name = "brightnessValue";
+            this.brightnessValue.Size = new System.Drawing.Size(51, 29);
+            this.brightnessValue.TabIndex = 25;
+            this.brightnessValue.ValueChanged += new System.EventHandler(this.brightnessValue_ValueChanged);
             // 
             // greyScaleBox
             // 
@@ -243,7 +243,6 @@
         private System.Windows.Forms.Button divideButton;
         private System.Windows.Forms.GroupBox modifyingBox;
         private System.Windows.Forms.GroupBox brightnessBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown brightnessValue;
         private System.Windows.Forms.TrackBar brightnessBar;
         private System.Windows.Forms.GroupBox greyScaleBox;

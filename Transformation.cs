@@ -14,18 +14,23 @@ namespace Graphics_Editor
     {
         private readonly Form1 _form;
         public Bitmap img;
+        public Bitmap temp;
         public Transformation(Form1 form)
         {
             InitializeComponent();
             _form = form;
             img = _form.getImage();
+            temp = null;
         }
 
         private void transform(int mode)
         {
             //0 - add, 1 - subtract, 2 - multiply, 3 - divide
+            resetBrightness();
             Color pixelColor;
             int newR, newG, newB;
+            if (Convert.ToInt32(value.Value) == 0 && mode == 3)
+                mode = 4;
 
             for (int i = 0; i < img.Width; i++)
             {
@@ -63,7 +68,10 @@ namespace Graphics_Editor
                                 newR = 0;
                                 newG = 0;
                                 newB = 0;
-                                _form.console.Text = _form.console.Text + "Error: Invalid operation mode - Transformation:transform()";
+                                if(mode==4)
+                                    _form.console.Text = _form.console.Text + "Error: Cannot divide by 0.";
+                                else
+                                    _form.console.Text = _form.console.Text + "Error: Unable to transform.";
                                 this.Close();
                             } break;
                     }
@@ -71,6 +79,40 @@ namespace Graphics_Editor
                 }
             }
             _form.setImage(img);
+        }
+
+        private void changeBrightness(int brightness)
+        {
+            if (temp == null)
+            {
+                temp = img.Clone(new Rectangle(0, 0, img.Width, img.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            }
+            int newR, newG, newB;
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    newR = temp.GetPixel(i, j).R + brightness;
+                    newG = temp.GetPixel(i, j).G + brightness;
+                    newB = temp.GetPixel(i, j).B + brightness;
+                    if (newR > 255) newR = 255;
+                    else if (newR < 0) newR = 0;
+                    if (newG > 255) newG = 255;
+                    else if (newG < 0) newG = 0;
+                    if (newB > 255) newB = 255;
+                    else if (newB < 0) newB = 0;
+                    img.SetPixel(i, j, Color.FromArgb(newR, newG, newB));
+                }
+            }
+            _form.setImage(img);
+        }
+
+        private void resetBrightness()
+        {
+            temp = null;
+            brightnessBar.Value = 0;
+            brightnessValue.Value = 0;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -91,6 +133,18 @@ namespace Graphics_Editor
         private void divideButton_Click(object sender, EventArgs e)
         {
             transform(3);
+        }
+
+        private void brightnessBar_Scroll(object sender, EventArgs e)
+        {
+            brightnessValue.Value = brightnessBar.Value;
+            changeBrightness(brightnessBar.Value);
+        }
+
+        private void brightnessValue_ValueChanged(object sender, EventArgs e)
+        {
+            brightnessBar.Value = Convert.ToInt32(brightnessValue.Value);
+            changeBrightness(Convert.ToInt32(brightnessValue.Value));
         }
     }
 }

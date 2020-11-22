@@ -19,7 +19,7 @@ namespace Graphics_Editor
         {
             InitializeComponent();
             _form = form;
-            img = _form.getImage();
+            img = new Bitmap(_form.getImage());
             temp = null;
         }
 
@@ -79,6 +79,7 @@ namespace Graphics_Editor
                 }
             }
             _form.setImage(img);
+            _form.memoryAdd(img);
         }
 
         private void changeBrightness(int brightness)
@@ -110,6 +111,7 @@ namespace Graphics_Editor
 
         private void resetBrightness()
         {
+            _form.memoryAdd(img);
             temp = null;
             brightnessBar.Value = 0;
             brightnessValue.Value = 0;
@@ -127,6 +129,7 @@ namespace Graphics_Editor
                 }
             }
             _form.setImage(img);
+            _form.memoryAdd(img);
         }
 
         private void decompositionAlghoritm()
@@ -136,12 +139,12 @@ namespace Graphics_Editor
             {
                 for (int j = 0; j < img.Height; j++)
                 {
-                    //grey = (img.GetPixel(i, j).R + img.GetPixel(i, j).G + img.GetPixel(i, j).B) / 3;
                     grey = getMin(img.GetPixel(i, j).R, img.GetPixel(i, j).G, img.GetPixel(i, j).B);
                     img.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
                 }
             }
             _form.setImage(img);
+            _form.memoryAdd(img);
         }
 
         private int getMin(int a, int b, int c)

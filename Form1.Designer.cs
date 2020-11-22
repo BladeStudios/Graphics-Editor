@@ -170,8 +170,9 @@
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new System.Drawing.Size(118, 26);
+            this.menuEditUndo.Size = new System.Drawing.Size(180, 26);
             this.menuEditUndo.Text = "Undo";
+            this.menuEditUndo.Click += new System.EventHandler(this.menuEditUndo_Click);
             // 
             // menuEditRedo
             // 

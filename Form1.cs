@@ -16,25 +16,18 @@ namespace Graphics_Editor
         public AppState appState;
         Drawing drawing;
         public Bitmap Image;
+        public List<Bitmap> memory;
+        public int currentMemoryIndex;
 
-        public Bitmap getImage()
-        {
-            return Image;
-        }
-
-        public void setImage(Bitmap bitmap)
-        {
-            Image = bitmap;
-            if (pictureBox.Image != null) pictureBox.Image.Dispose();
-            pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-        }
         public Form1()
         {
             InitializeComponent();
             file = new File(this);
             appState = new AppState(this);
             drawing = new Drawing(this);
-            Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
+            //Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
+            memory = new List<Bitmap>();
+            currentMemoryIndex = -1;
 
             //setting button images
             int width = 20;
@@ -52,6 +45,54 @@ namespace Graphics_Editor
             this.menuColorOrange.Image = createBitmap(width, height, 255, 165, 0);
             this.menuColorViolet.Image = createBitmap(width, height, 238, 82, 238);
             this.menuColorGrey.Image = createBitmap(width, height, 80, 80, 80);
+        }
+
+        public void memoryAdd(Bitmap bitmap)
+        {
+            int count = memory.Count;
+            if(count > (currentMemoryIndex+1))
+            {
+                for (int i = (count - 1); i > currentMemoryIndex; i--)
+                    memory.RemoveAt(i);
+            }
+
+            Bitmap newBitmap = new Bitmap(bitmap.Width, bitmap.Height);
+            newBitmap = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+
+            if (count >= 10)
+                memory.RemoveAt(0);
+            memory.Add(newBitmap);
+            setMemoryIndex(memory.Count-1);
+            consoleSay("Added to memory. Memory count: " + memory.Count + "\n");
+        }
+
+        public Bitmap memoryGet(int index)
+        {
+            return memory.ElementAt(index);
+        }
+
+        public void setMemoryIndex(int index)
+        {
+            this.currentMemoryIndex = index;
+        }
+
+        public int getMemoryIndex()
+        {
+            return this.currentMemoryIndex;
+        }
+
+        public Bitmap getImage()
+        {
+            return Image;
+        }
+
+        public void setImage(Bitmap bitmap)
+        {
+            Image = new Bitmap(bitmap.Width, bitmap.Height);
+            Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            if (pictureBox.Image != null) pictureBox.Image.Dispose();
+            pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            consoleSay("Image set.\n");
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
@@ -413,6 +454,25 @@ namespace Graphics_Editor
         {
             Transformation transformation = new Transformation(this);
             transformation.ShowDialog();
+        }
+
+        private void menuEditUndo_Click(object sender, EventArgs e)
+        {
+            if (getMemoryIndex() > 0)
+            {
+                setMemoryIndex(getMemoryIndex() - 1);
+                setImage(memoryGet(getMemoryIndex()));
+                consoleSay("Displaying image from " + getMemoryIndex() + " index.\n");
+            }
+            else
+                consoleSay("Cannot undo more.");
+        }
+
+        private void consoleSay(string text)
+        {
+            console.Text = console.Text + DateTime.Now.ToString("HH:mm:ss") + " " + text;
+            console.SelectionStart = console.Text.Length;
+            console.ScrollToCaret();
         }
     }
 }

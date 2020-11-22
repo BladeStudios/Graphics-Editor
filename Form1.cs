@@ -63,7 +63,7 @@ namespace Graphics_Editor
                 memory.RemoveAt(0);
             memory.Add(newBitmap);
             setMemoryIndex(memory.Count-1);
-            consoleSay("Added to memory. Memory count: " + memory.Count + "\n");
+            consoleSay("Added to memory. Memory count: " + memory.Count);
         }
 
         public Bitmap memoryGet(int index)
@@ -81,6 +81,11 @@ namespace Graphics_Editor
             return this.currentMemoryIndex;
         }
 
+        public int getMemoryCount()
+        {
+            return this.memory.Count;
+        }
+
         public Bitmap getImage()
         {
             return Image;
@@ -92,7 +97,7 @@ namespace Graphics_Editor
             Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             if (pictureBox.Image != null) pictureBox.Image.Dispose();
             pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-            consoleSay("Image set.\n");
+            //consoleSay("Image set.\n");
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
@@ -452,27 +457,66 @@ namespace Graphics_Editor
 
         private void menuToolsPointTransformation_Click(object sender, EventArgs e)
         {
-            Transformation transformation = new Transformation(this);
-            transformation.ShowDialog();
+            if(Image==null)
+            {
+                MessageBox.Show("Open image first.","Error",MessageBoxButtons.OK);
+            }
+            else
+            {
+                Transformation transformation = new Transformation(this);
+                transformation.ShowDialog();
+            }
+        }
+        public void consoleSay(string text)
+        {
+            console.AppendText(DateTime.Now.ToString("HH:mm:ss") + " " + text + "\n");
+            //console.Text = console.Text + DateTime.Now.ToString("HH:mm:ss") + " " + text;
+            console.SelectionStart = console.Text.Length;
+            console.ScrollToCaret();
         }
 
         private void menuEditUndo_Click(object sender, EventArgs e)
+        {
+            undo();
+        }
+
+        private void undo()
         {
             if (getMemoryIndex() > 0)
             {
                 setMemoryIndex(getMemoryIndex() - 1);
                 setImage(memoryGet(getMemoryIndex()));
-                consoleSay("Displaying image from " + getMemoryIndex() + " index.\n");
+                consoleSay("Displaying image from " + getMemoryIndex() + " index.");
             }
             else
                 consoleSay("Cannot undo more.");
         }
 
-        private void consoleSay(string text)
+        private void redo()
         {
-            console.Text = console.Text + DateTime.Now.ToString("HH:mm:ss") + " " + text;
-            console.SelectionStart = console.Text.Length;
-            console.ScrollToCaret();
+            if (getMemoryIndex() < (getMemoryCount()-1))
+            {
+                setMemoryIndex(getMemoryIndex() + 1);
+                setImage(memoryGet(getMemoryIndex()));
+                consoleSay("Displaying image from " + getMemoryIndex() + " index.");
+            }
+            else
+                consoleSay("Cannot redo more.");
+        }
+
+        private void undoButton_Click(object sender, EventArgs e)
+        {
+            undo();
+        }
+
+        private void menuEditRedo_Click(object sender, EventArgs e)
+        {
+            redo();
+        }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            redo();
         }
     }
 }

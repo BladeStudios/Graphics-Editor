@@ -79,9 +79,11 @@
             this.zoomLabel = new System.Windows.Forms.ToolStripLabel();
             this.zoomMinusButton = new System.Windows.Forms.ToolStripButton();
             this.zoomPlusButton = new System.Windows.Forms.ToolStripButton();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.undoButton = new System.Windows.Forms.ToolStripButton();
+            this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -170,15 +172,16 @@
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new System.Drawing.Size(180, 26);
+            this.menuEditUndo.Size = new System.Drawing.Size(118, 26);
             this.menuEditUndo.Text = "Undo";
             this.menuEditUndo.Click += new System.EventHandler(this.menuEditUndo_Click);
             // 
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new System.Drawing.Size(118, 26);
+            this.menuEditRedo.Size = new System.Drawing.Size(180, 26);
             this.menuEditRedo.Text = "Redo";
+            this.menuEditRedo.Click += new System.EventHandler(this.menuEditRedo_Click);
             // 
             // menuEditCut
             // 
@@ -294,7 +297,9 @@
             this.menuColor,
             this.zoomLabel,
             this.zoomMinusButton,
-            this.zoomPlusButton});
+            this.zoomPlusButton,
+            this.undoButton,
+            this.redoButton});
             this.toolBar.Location = new System.Drawing.Point(0, 29);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1002, 28);
@@ -502,16 +507,27 @@
             this.zoomPlusButton.ToolTipText = "Zoom +";
             this.zoomPlusButton.Click += new System.EventHandler(this.zoomPlusButton_Click);
             // 
-            // pictureBox
+            // undoButton
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(0, 57);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1000, 450);
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            this.undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.undoButton.Image = ((System.Drawing.Image)(resources.GetObject("undoButton.Image")));
+            this.undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Size = new System.Drawing.Size(23, 25);
+            this.undoButton.Text = "Undo";
+            this.undoButton.ToolTipText = "Undo";
+            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
+            // 
+            // redoButton
+            // 
+            this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.redoButton.Image = ((System.Drawing.Image)(resources.GetObject("redoButton.Image")));
+            this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.redoButton.Name = "redoButton";
+            this.redoButton.Size = new System.Drawing.Size(23, 25);
+            this.redoButton.Text = "Redo";
+            this.redoButton.ToolTipText = "Redo";
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // console
             // 
@@ -530,6 +546,17 @@
             this.consoleLabel.Size = new System.Drawing.Size(73, 18);
             this.consoleLabel.TabIndex = 4;
             this.consoleLabel.Text = "Console";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 57);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1000, 450);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // Form1
             // 
@@ -613,6 +640,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuTools;
         private System.Windows.Forms.ToolStripMenuItem menuToolsRGBCube;
         private System.Windows.Forms.ToolStripMenuItem menuToolsPointTransformation;
+        private System.Windows.Forms.ToolStripButton undoButton;
+        private System.Windows.Forms.ToolStripButton redoButton;
     }
 }
 

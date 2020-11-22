@@ -15,12 +15,14 @@ namespace Graphics_Editor
         private readonly Form1 _form;
         public Bitmap img;
         public Bitmap temp;
+        bool clickedTrackbar;
         public Transformation(Form1 form)
         {
             InitializeComponent();
             _form = form;
             img = new Bitmap(_form.getImage());
             temp = null;
+            clickedTrackbar = false;
         }
 
         private void transform(int mode)
@@ -111,7 +113,7 @@ namespace Graphics_Editor
 
         private void resetBrightness()
         {
-            _form.memoryAdd(img);
+            //_form.memoryAdd(img);
             temp = null;
             brightnessBar.Value = 0;
             brightnessValue.Value = 0;
@@ -119,6 +121,7 @@ namespace Graphics_Editor
 
         private void averagingAlghoritm()
         {
+            resetBrightness();
             int grey;
             for (int i = 0; i < img.Width; i++)
             {
@@ -134,6 +137,7 @@ namespace Graphics_Editor
 
         private void decompositionAlghoritm()
         {
+            resetBrightness();
             int grey;
             for (int i = 0; i < img.Width; i++)
             {
@@ -188,6 +192,20 @@ namespace Graphics_Editor
             changeBrightness(brightnessBar.Value);
         }
 
+        private void brightnessBar_MouseDown(object sender, EventArgs e)
+        {
+            clickedTrackbar = true;
+        }
+
+        private void brightnessBar_MouseUp(object sender, EventArgs e)
+        {
+            if (!clickedTrackbar)
+                return;
+
+            clickedTrackbar = false;
+            _form.memoryAdd(img);
+        }
+
         private void brightnessValue_ValueChanged(object sender, EventArgs e)
         {
             brightnessBar.Value = Convert.ToInt32(brightnessValue.Value);
@@ -202,6 +220,11 @@ namespace Graphics_Editor
         private void decompositionButton_Click(object sender, EventArgs e)
         {
             decompositionAlghoritm();
+        }
+
+        private void Transformation_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            //_form.consoleSay("onClose");
         }
     }
 }

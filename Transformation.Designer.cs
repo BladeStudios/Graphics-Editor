@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(Transformation_FormClosing);
             this.value = new System.Windows.Forms.NumericUpDown();
             this.valueLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -158,6 +159,8 @@
             this.brightnessBar.Size = new System.Drawing.Size(455, 45);
             this.brightnessBar.TabIndex = 20;
             this.brightnessBar.Scroll += new System.EventHandler(this.brightnessBar_Scroll);
+            this.brightnessBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseDown);
+            this.brightnessBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseUp);
             // 
             // brightnessValue
             // 

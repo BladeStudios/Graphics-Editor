@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(Transformation_FormClosing);
             this.value = new System.Windows.Forms.NumericUpDown();
             this.valueLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -37,16 +36,17 @@
             this.divideButton = new System.Windows.Forms.Button();
             this.modifyingBox = new System.Windows.Forms.GroupBox();
             this.brightnessBox = new System.Windows.Forms.GroupBox();
-            this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.brightnessValue = new System.Windows.Forms.NumericUpDown();
+            this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.greyScaleBox = new System.Windows.Forms.GroupBox();
-            this.averagingButton = new System.Windows.Forms.Button();
             this.decompositionButton = new System.Windows.Forms.Button();
+            this.averagingButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.value)).BeginInit();
             this.modifyingBox.SuspendLayout();
             this.brightnessBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).BeginInit();
             this.greyScaleBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,18 +150,6 @@
             this.brightnessBox.TabStop = false;
             this.brightnessBox.Text = "Brightness";
             // 
-            // brightnessBar
-            // 
-            this.brightnessBar.Location = new System.Drawing.Point(10, 24);
-            this.brightnessBar.Maximum = 255;
-            this.brightnessBar.Minimum = -255;
-            this.brightnessBar.Name = "brightnessBar";
-            this.brightnessBar.Size = new System.Drawing.Size(455, 45);
-            this.brightnessBar.TabIndex = 20;
-            this.brightnessBar.Scroll += new System.EventHandler(this.brightnessBar_Scroll);
-            this.brightnessBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseDown);
-            this.brightnessBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseUp);
-            // 
             // brightnessValue
             // 
             this.brightnessValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -181,6 +169,18 @@
             this.brightnessValue.TabIndex = 25;
             this.brightnessValue.ValueChanged += new System.EventHandler(this.brightnessValue_ValueChanged);
             // 
+            // brightnessBar
+            // 
+            this.brightnessBar.Location = new System.Drawing.Point(10, 24);
+            this.brightnessBar.Maximum = 255;
+            this.brightnessBar.Minimum = -255;
+            this.brightnessBar.Name = "brightnessBar";
+            this.brightnessBar.Size = new System.Drawing.Size(455, 45);
+            this.brightnessBar.TabIndex = 20;
+            this.brightnessBar.Scroll += new System.EventHandler(this.brightnessBar_Scroll);
+            this.brightnessBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseDown);
+            this.brightnessBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseUp);
+            // 
             // greyScaleBox
             // 
             this.greyScaleBox.Controls.Add(this.decompositionButton);
@@ -193,17 +193,6 @@
             this.greyScaleBox.TabStop = false;
             this.greyScaleBox.Text = "Grey scale";
             // 
-            // averagingButton
-            // 
-            this.averagingButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.averagingButton.Location = new System.Drawing.Point(10, 33);
-            this.averagingButton.Name = "averagingButton";
-            this.averagingButton.Size = new System.Drawing.Size(250, 30);
-            this.averagingButton.TabIndex = 37;
-            this.averagingButton.Text = "Averaging Alghoritm";
-            this.averagingButton.UseVisualStyleBackColor = true;
-            this.averagingButton.Click += new System.EventHandler(this.averagingButton_Click);
-            // 
             // decompositionButton
             // 
             this.decompositionButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -214,6 +203,17 @@
             this.decompositionButton.Text = "Decomposition Alghoritm";
             this.decompositionButton.UseVisualStyleBackColor = true;
             this.decompositionButton.Click += new System.EventHandler(this.decompositionButton_Click);
+            // 
+            // averagingButton
+            // 
+            this.averagingButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.averagingButton.Location = new System.Drawing.Point(10, 33);
+            this.averagingButton.Name = "averagingButton";
+            this.averagingButton.Size = new System.Drawing.Size(250, 30);
+            this.averagingButton.TabIndex = 37;
+            this.averagingButton.Text = "Averaging Alghoritm";
+            this.averagingButton.UseVisualStyleBackColor = true;
+            this.averagingButton.Click += new System.EventHandler(this.averagingButton_Click);
             // 
             // Transformation
             // 
@@ -226,13 +226,14 @@
             this.Name = "Transformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Point Transformation";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Transformation_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.value)).EndInit();
             this.modifyingBox.ResumeLayout(false);
             this.modifyingBox.PerformLayout();
             this.brightnessBox.ResumeLayout(false);
             this.brightnessBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).EndInit();
             this.greyScaleBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -253,5 +254,6 @@
         private System.Windows.Forms.GroupBox greyScaleBox;
         private System.Windows.Forms.Button decompositionButton;
         private System.Windows.Forms.Button averagingButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

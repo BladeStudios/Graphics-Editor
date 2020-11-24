@@ -25,7 +25,6 @@ namespace Graphics_Editor
         private Bitmap filter(Bitmap bitmap, int lefttop, int top, int righttop, int left, int middle, int right, int leftbottom, int bottom, int rightbottom)
         {
             Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
-            int redIn, greenIn, blueIn;
             int redOut, greenOut, blueOut;
             int LTX, LTY, TX, TY, RTX, RTY, LX, LY, RX, RY, LBX, LBY, BX, BY, RBX, RBY;
             int divideby;
@@ -127,6 +126,87 @@ namespace Graphics_Editor
             }
 
             int result = tab[tab.Length / 2];
+            return result;
+        }
+
+        private Bitmap medianFiltering(Bitmap bitmap)
+        {
+            Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
+            int redOut, greenOut, blueOut;
+            int LTX, LTY, TX, TY, RTX, RTY, LX, LY, RX, RY, LBX, LBY, BX, BY, RBX, RBY;
+
+            for (int x = 0; x < result.Width; x++)
+            {
+                for (int y = 0; y < result.Height; y++)
+                {
+                    if (x > 0)
+                    {
+                        LTX = x - 1;
+                        LX = x - 1;
+                        LBX = x - 1;
+                    }
+                    else
+                    {
+                        LTX = x;
+                        LX = x;
+                        LBX = x;
+                    }
+                    if (x < result.Width - 1)
+                    {
+                        RTX = x + 1;
+                        RX = x + 1;
+                        RBX = x + 1;
+                    }
+                    else
+                    {
+                        RTX = x;
+                        RX = x;
+                        RBX = x;
+                    }
+                    if (y > 0)
+                    {
+                        LTY = y - 1;
+                        TY = y - 1;
+                        RTY = y - 1;
+                    }
+                    else
+                    {
+                        LTY = y;
+                        TY = y;
+                        RTY = y;
+                    }
+                    if (y < result.Height - 1)
+                    {
+                        LBY = y + 1;
+                        BY = y + 1;
+                        RBY = y + 1;
+                    }
+                    else
+                    {
+                        LBY = y;
+                        BY = y;
+                        RBY = y;
+                    }
+                    TX = x;
+                    BX = x;
+                    LY = y;
+                    RY = y;
+
+                    redOut = getMedian(new int[] {bitmap.GetPixel(LTX, LTY).R, bitmap.GetPixel(TX, TY).R, bitmap.GetPixel(RTX, RTY).R,
+                        bitmap.GetPixel(LX, LY).R, bitmap.GetPixel(x, y).R, bitmap.GetPixel(RX, RY).R,
+                        bitmap.GetPixel(LBX, LBY).R, bitmap.GetPixel(BX, BY).R, bitmap.GetPixel(RBX, RBY).R});
+
+                    greenOut = getMedian(new int[] {bitmap.GetPixel(LTX, LTY).G, bitmap.GetPixel(TX, TY).G, bitmap.GetPixel(RTX, RTY).G,
+                        bitmap.GetPixel(LX, LY).G, bitmap.GetPixel(x, y).G, bitmap.GetPixel(RX, RY).G,
+                        bitmap.GetPixel(LBX, LBY).G, bitmap.GetPixel(BX, BY).G, bitmap.GetPixel(RBX, RBY).G});
+
+                    blueOut = getMedian(new int[] {bitmap.GetPixel(LTX, LTY).B, bitmap.GetPixel(TX, TY).B, bitmap.GetPixel(RTX, RTY).B,
+                        bitmap.GetPixel(LX, LY).B, bitmap.GetPixel(x, y).B, bitmap.GetPixel(RX, RY).B,
+                        bitmap.GetPixel(LBX, LBY).B, bitmap.GetPixel(BX, BY).B, bitmap.GetPixel(RBX, RBY).B});
+
+                    result.SetPixel(x, y, Color.FromArgb(redOut, greenOut, blueOut));
+                }
+            }
             return result;
         }
 

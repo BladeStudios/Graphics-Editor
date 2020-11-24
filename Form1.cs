@@ -518,5 +518,11 @@ namespace Graphics_Editor
         {
             redo();
         }
+
+        private void menuToolsFiltering_Click(object sender, EventArgs e)
+        {
+            Filtering filtering = new Filtering(this);
+            filtering.ShowDialog();
+        }
     }
 }

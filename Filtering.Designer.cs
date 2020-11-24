@@ -40,6 +40,7 @@
             this.averagingFilterButton.TabIndex = 38;
             this.averagingFilterButton.Text = "Averaging Filter";
             this.averagingFilterButton.UseVisualStyleBackColor = true;
+            this.averagingFilterButton.Click += new System.EventHandler(this.averagingFilterButton_Click);
             // 
             // Filtering
             // 

@@ -565,6 +565,7 @@
             this.menuToolsFiltering.Name = "menuToolsFiltering";
             this.menuToolsFiltering.Size = new System.Drawing.Size(225, 26);
             this.menuToolsFiltering.Text = "Filtering";
+            this.menuToolsFiltering.Click += new System.EventHandler(this.menuToolsFiltering_Click);
             // 
             // Form1
             // 

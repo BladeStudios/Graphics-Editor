@@ -67,6 +67,12 @@
       <DependentUpon>DrawLine.cs</DependentUpon>
     </Compile>
     <Compile Include="File.cs" />
+    <Compile Include="Filtering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filtering.Designer.cs">
+      <DependentUpon>Filtering.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DrawLine.resx">
       <DependentUpon>DrawLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filtering.resx">
+      <DependentUpon>Filtering.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

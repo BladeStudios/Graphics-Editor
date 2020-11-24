@@ -84,6 +84,7 @@
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.menuToolsFiltering = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -179,7 +180,7 @@
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new System.Drawing.Size(180, 26);
+            this.menuEditRedo.Size = new System.Drawing.Size(118, 26);
             this.menuEditRedo.Text = "Redo";
             this.menuEditRedo.Click += new System.EventHandler(this.menuEditRedo_Click);
             // 
@@ -256,7 +257,8 @@
             // 
             this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolsRGBCube,
-            this.menuToolsPointTransformation});
+            this.menuToolsPointTransformation,
+            this.menuToolsFiltering});
             this.menuTools.Name = "menuTools";
             this.menuTools.Size = new System.Drawing.Size(57, 25);
             this.menuTools.Text = "Tools";
@@ -558,6 +560,12 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
+            // menuToolsFiltering
+            // 
+            this.menuToolsFiltering.Name = "menuToolsFiltering";
+            this.menuToolsFiltering.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsFiltering.Text = "Filtering";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -642,6 +650,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolsPointTransformation;
         private System.Windows.Forms.ToolStripButton undoButton;
         private System.Windows.Forms.ToolStripButton redoButton;
+        private System.Windows.Forms.ToolStripMenuItem menuToolsFiltering;
     }
 }
 

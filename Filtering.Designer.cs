@@ -36,28 +36,28 @@
             this.gaussFilterButton = new System.Windows.Forms.Button();
             this.defaultFiltersBox = new System.Windows.Forms.GroupBox();
             this.customFiltersBox = new System.Windows.Forms.GroupBox();
-            this.leftTopValue = new System.Windows.Forms.NumericUpDown();
-            this.maskLabel = new System.Windows.Forms.Label();
-            this.topValue = new System.Windows.Forms.NumericUpDown();
-            this.rightTopValue = new System.Windows.Forms.NumericUpDown();
-            this.leftValue = new System.Windows.Forms.NumericUpDown();
-            this.middleValue = new System.Windows.Forms.NumericUpDown();
-            this.rightValue = new System.Windows.Forms.NumericUpDown();
-            this.leftBottomValue = new System.Windows.Forms.NumericUpDown();
-            this.bottomValue = new System.Windows.Forms.NumericUpDown();
-            this.rightBottomValue = new System.Windows.Forms.NumericUpDown();
             this.customFilterButton = new System.Windows.Forms.Button();
+            this.rightBottomValue = new System.Windows.Forms.NumericUpDown();
+            this.bottomValue = new System.Windows.Forms.NumericUpDown();
+            this.leftBottomValue = new System.Windows.Forms.NumericUpDown();
+            this.rightValue = new System.Windows.Forms.NumericUpDown();
+            this.middleValue = new System.Windows.Forms.NumericUpDown();
+            this.leftValue = new System.Windows.Forms.NumericUpDown();
+            this.rightTopValue = new System.Windows.Forms.NumericUpDown();
+            this.topValue = new System.Windows.Forms.NumericUpDown();
+            this.maskLabel = new System.Windows.Forms.Label();
+            this.leftTopValue = new System.Windows.Forms.NumericUpDown();
             this.defaultFiltersBox.SuspendLayout();
             this.customFiltersBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.leftTopValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.topValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightTopValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.middleValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftBottomValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bottomValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightBottomValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftBottomValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.middleValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightTopValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftTopValue)).BeginInit();
             this.SuspendLayout();
             // 
             // averagingFilterButton
@@ -80,6 +80,7 @@
             this.medianFilterButton.TabIndex = 39;
             this.medianFilterButton.Text = "Median Filter";
             this.medianFilterButton.UseVisualStyleBackColor = true;
+            this.medianFilterButton.Click += new System.EventHandler(this.medianFilterButton_Click);
             // 
             // sobelFilterHorizontalButton
             // 
@@ -90,6 +91,7 @@
             this.sobelFilterHorizontalButton.TabIndex = 40;
             this.sobelFilterHorizontalButton.Text = "Sobel\'s Filter (Horizontal Mask)";
             this.sobelFilterHorizontalButton.UseVisualStyleBackColor = true;
+            this.sobelFilterHorizontalButton.Click += new System.EventHandler(this.sobelFilterHorizontalButton_Click);
             // 
             // sobelFilterVerticalButton
             // 
@@ -100,6 +102,7 @@
             this.sobelFilterVerticalButton.TabIndex = 41;
             this.sobelFilterVerticalButton.Text = "Sobel\'s Filter (Vertical Mask)";
             this.sobelFilterVerticalButton.UseVisualStyleBackColor = true;
+            this.sobelFilterVerticalButton.Click += new System.EventHandler(this.sobelFilterVerticalButton_Click);
             // 
             // highPassFilterButton
             // 
@@ -110,6 +113,7 @@
             this.highPassFilterButton.TabIndex = 42;
             this.highPassFilterButton.Text = "High-Pass Sharpening Filter";
             this.highPassFilterButton.UseVisualStyleBackColor = true;
+            this.highPassFilterButton.Click += new System.EventHandler(this.highPassFilterButton_Click);
             // 
             // gaussFilterButton
             // 
@@ -120,6 +124,7 @@
             this.gaussFilterButton.TabIndex = 43;
             this.gaussFilterButton.Text = "Gauss Softening Filter";
             this.gaussFilterButton.UseVisualStyleBackColor = true;
+            this.gaussFilterButton.Click += new System.EventHandler(this.gaussFilterButton_Click);
             // 
             // defaultFiltersBox
             // 
@@ -158,159 +163,16 @@
             this.customFiltersBox.TabStop = false;
             this.customFiltersBox.Text = "Custom Filters";
             // 
-            // leftTopValue
+            // customFilterButton
             // 
-            this.leftTopValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.leftTopValue.Location = new System.Drawing.Point(20, 57);
-            this.leftTopValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.leftTopValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.leftTopValue.Name = "leftTopValue";
-            this.leftTopValue.Size = new System.Drawing.Size(51, 29);
-            this.leftTopValue.TabIndex = 26;
-            // 
-            // maskLabel
-            // 
-            this.maskLabel.AutoSize = true;
-            this.maskLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.maskLabel.Location = new System.Drawing.Point(16, 21);
-            this.maskLabel.Name = "maskLabel";
-            this.maskLabel.Size = new System.Drawing.Size(47, 21);
-            this.maskLabel.TabIndex = 27;
-            this.maskLabel.Text = "Mask";
-            // 
-            // topValue
-            // 
-            this.topValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.topValue.Location = new System.Drawing.Point(89, 57);
-            this.topValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.topValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.topValue.Name = "topValue";
-            this.topValue.Size = new System.Drawing.Size(51, 29);
-            this.topValue.TabIndex = 28;
-            // 
-            // rightTopValue
-            // 
-            this.rightTopValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.rightTopValue.Location = new System.Drawing.Point(157, 57);
-            this.rightTopValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.rightTopValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.rightTopValue.Name = "rightTopValue";
-            this.rightTopValue.Size = new System.Drawing.Size(51, 29);
-            this.rightTopValue.TabIndex = 29;
-            // 
-            // leftValue
-            // 
-            this.leftValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.leftValue.Location = new System.Drawing.Point(20, 92);
-            this.leftValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.leftValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.leftValue.Name = "leftValue";
-            this.leftValue.Size = new System.Drawing.Size(51, 29);
-            this.leftValue.TabIndex = 30;
-            // 
-            // middleValue
-            // 
-            this.middleValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.middleValue.Location = new System.Drawing.Point(89, 92);
-            this.middleValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.middleValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.middleValue.Name = "middleValue";
-            this.middleValue.Size = new System.Drawing.Size(51, 29);
-            this.middleValue.TabIndex = 31;
-            // 
-            // rightValue
-            // 
-            this.rightValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.rightValue.Location = new System.Drawing.Point(157, 92);
-            this.rightValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.rightValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.rightValue.Name = "rightValue";
-            this.rightValue.Size = new System.Drawing.Size(51, 29);
-            this.rightValue.TabIndex = 32;
-            // 
-            // leftBottomValue
-            // 
-            this.leftBottomValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.leftBottomValue.Location = new System.Drawing.Point(20, 127);
-            this.leftBottomValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.leftBottomValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.leftBottomValue.Name = "leftBottomValue";
-            this.leftBottomValue.Size = new System.Drawing.Size(51, 29);
-            this.leftBottomValue.TabIndex = 33;
-            // 
-            // bottomValue
-            // 
-            this.bottomValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bottomValue.Location = new System.Drawing.Point(89, 127);
-            this.bottomValue.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.bottomValue.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.bottomValue.Name = "bottomValue";
-            this.bottomValue.Size = new System.Drawing.Size(51, 29);
-            this.bottomValue.TabIndex = 34;
+            this.customFilterButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customFilterButton.Location = new System.Drawing.Point(6, 165);
+            this.customFilterButton.Name = "customFilterButton";
+            this.customFilterButton.Size = new System.Drawing.Size(250, 30);
+            this.customFilterButton.TabIndex = 44;
+            this.customFilterButton.Text = "Custom Filter";
+            this.customFilterButton.UseVisualStyleBackColor = true;
+            this.customFilterButton.Click += new System.EventHandler(this.customFilterButton_Click);
             // 
             // rightBottomValue
             // 
@@ -330,15 +192,159 @@
             this.rightBottomValue.Size = new System.Drawing.Size(51, 29);
             this.rightBottomValue.TabIndex = 35;
             // 
-            // customFilterButton
+            // bottomValue
             // 
-            this.customFilterButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.customFilterButton.Location = new System.Drawing.Point(6, 165);
-            this.customFilterButton.Name = "customFilterButton";
-            this.customFilterButton.Size = new System.Drawing.Size(250, 30);
-            this.customFilterButton.TabIndex = 44;
-            this.customFilterButton.Text = "Custom Filter";
-            this.customFilterButton.UseVisualStyleBackColor = true;
+            this.bottomValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bottomValue.Location = new System.Drawing.Point(89, 127);
+            this.bottomValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.bottomValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.bottomValue.Name = "bottomValue";
+            this.bottomValue.Size = new System.Drawing.Size(51, 29);
+            this.bottomValue.TabIndex = 34;
+            // 
+            // leftBottomValue
+            // 
+            this.leftBottomValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.leftBottomValue.Location = new System.Drawing.Point(20, 127);
+            this.leftBottomValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.leftBottomValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.leftBottomValue.Name = "leftBottomValue";
+            this.leftBottomValue.Size = new System.Drawing.Size(51, 29);
+            this.leftBottomValue.TabIndex = 33;
+            // 
+            // rightValue
+            // 
+            this.rightValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.rightValue.Location = new System.Drawing.Point(157, 92);
+            this.rightValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.rightValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.rightValue.Name = "rightValue";
+            this.rightValue.Size = new System.Drawing.Size(51, 29);
+            this.rightValue.TabIndex = 32;
+            // 
+            // middleValue
+            // 
+            this.middleValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.middleValue.Location = new System.Drawing.Point(89, 92);
+            this.middleValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.middleValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.middleValue.Name = "middleValue";
+            this.middleValue.Size = new System.Drawing.Size(51, 29);
+            this.middleValue.TabIndex = 31;
+            // 
+            // leftValue
+            // 
+            this.leftValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.leftValue.Location = new System.Drawing.Point(20, 92);
+            this.leftValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.leftValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.leftValue.Name = "leftValue";
+            this.leftValue.Size = new System.Drawing.Size(51, 29);
+            this.leftValue.TabIndex = 30;
+            // 
+            // rightTopValue
+            // 
+            this.rightTopValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.rightTopValue.Location = new System.Drawing.Point(157, 57);
+            this.rightTopValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.rightTopValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.rightTopValue.Name = "rightTopValue";
+            this.rightTopValue.Size = new System.Drawing.Size(51, 29);
+            this.rightTopValue.TabIndex = 29;
+            // 
+            // topValue
+            // 
+            this.topValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.topValue.Location = new System.Drawing.Point(89, 57);
+            this.topValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.topValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.topValue.Name = "topValue";
+            this.topValue.Size = new System.Drawing.Size(51, 29);
+            this.topValue.TabIndex = 28;
+            // 
+            // maskLabel
+            // 
+            this.maskLabel.AutoSize = true;
+            this.maskLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maskLabel.Location = new System.Drawing.Point(16, 21);
+            this.maskLabel.Name = "maskLabel";
+            this.maskLabel.Size = new System.Drawing.Size(47, 21);
+            this.maskLabel.TabIndex = 27;
+            this.maskLabel.Text = "Mask";
+            // 
+            // leftTopValue
+            // 
+            this.leftTopValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.leftTopValue.Location = new System.Drawing.Point(20, 57);
+            this.leftTopValue.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.leftTopValue.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.leftTopValue.Name = "leftTopValue";
+            this.leftTopValue.Size = new System.Drawing.Size(51, 29);
+            this.leftTopValue.TabIndex = 26;
             // 
             // Filtering
             // 
@@ -350,18 +356,19 @@
             this.Name = "Filtering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filtering";
+            this.Load += new System.EventHandler(this.Filtering_Load);
             this.defaultFiltersBox.ResumeLayout(false);
             this.customFiltersBox.ResumeLayout(false);
             this.customFiltersBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.leftTopValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.topValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightTopValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.middleValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftBottomValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bottomValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightBottomValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftBottomValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.middleValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightTopValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftTopValue)).EndInit();
             this.ResumeLayout(false);
 
         }

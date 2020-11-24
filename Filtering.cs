@@ -22,6 +22,13 @@ namespace Graphics_Editor
             //img = new Bitmap(_form.getImage());
         }
 
+        private void Filtering_Load(object sender, EventArgs e)
+        {
+            if (Owner != null)
+                Location = new Point(Owner.Location.X + Owner.Width / 2 - Width / 2,
+                    Owner.Location.Y + Owner.Height / 2 - Height / 2);
+        }
+
         private Bitmap filter(Bitmap bitmap, int lefttop, int top, int righttop, int left, int middle, int right, int leftbottom, int bottom, int rightbottom)
         {
             Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
@@ -101,11 +108,18 @@ namespace Graphics_Editor
                         bitmap.GetPixel(LX, LY).B * left + bitmap.GetPixel(x, y).B * middle + bitmap.GetPixel(RX, RY).B * right +
                         bitmap.GetPixel(LBX, LBY).B * leftbottom + bitmap.GetPixel(BX, BY).B * bottom + bitmap.GetPixel(RBX, RBY).B * rightbottom) / divideby;
 
+                    if (redOut < 0) redOut = 0;
+                    else if (redOut > 255) redOut = 255;
+                    if (greenOut < 0) greenOut = 0;
+                    else if (greenOut > 255) greenOut = 255;
+                    if (blueOut < 0) blueOut = 0;
+                    else if (blueOut > 255) blueOut = 255;
+
                     result.SetPixel(x, y, Color.FromArgb(redOut, greenOut, blueOut));
                 }
             }
 
-
+            _form.memoryAdd(result);
             return result;
         }
 
@@ -207,12 +221,44 @@ namespace Graphics_Editor
                     result.SetPixel(x, y, Color.FromArgb(redOut, greenOut, blueOut));
                 }
             }
+            _form.memoryAdd(result);
             return result;
         }
 
         private void averagingFilterButton_Click(object sender, EventArgs e)
         {
             _form.setImage(filter(_form.getImage(), 1, 1, 1, 1, 1, 1, 1, 1, 1));
+        }
+
+        private void medianFilterButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(medianFiltering(_form.getImage()));
+        }
+
+        private void sobelFilterHorizontalButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(filter(_form.getImage(), -1, -2, -1, 0, 0, 0, 1, 2, 1));
+        }
+
+        private void sobelFilterVerticalButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(filter(_form.getImage(), -1, 0, 1, -2, 0, 2, -1, 0, 1));
+        }
+
+        private void highPassFilterButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(filter(_form.getImage(), -1, -1, -1, -1, 9, -1, -1, -1, -1));
+        }
+
+        private void gaussFilterButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(filter(_form.getImage(), 1, 4, 1, 4, 32, 4, 1, 4, 1));
+        }
+
+        private void customFilterButton_Click(object sender, EventArgs e)
+        {
+            _form.setImage(filter(_form.getImage(), Convert.ToInt32(leftTopValue.Value), Convert.ToInt32(topValue.Value), Convert.ToInt32(rightTopValue.Value), Convert.ToInt32(leftValue.Value),
+                Convert.ToInt32(middleValue.Value), Convert.ToInt32(rightValue.Value), Convert.ToInt32(leftBottomValue.Value), Convert.ToInt32(bottomValue.Value), Convert.ToInt32(rightBottomValue.Value)));
         }
     }
 }

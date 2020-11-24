@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Load += new System.EventHandler(Transformation_Load);
             this.value = new System.Windows.Forms.NumericUpDown();
             this.valueLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();

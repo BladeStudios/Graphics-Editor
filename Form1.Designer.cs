@@ -56,6 +56,11 @@
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.zoomLabel = new System.Windows.Forms.ToolStripLabel();
+            this.console = new System.Windows.Forms.RichTextBox();
+            this.consoleLabel = new System.Windows.Forms.Label();
+            this.menuToolsFiltering = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuDrawingTool = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuDrawingToolPencil = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolBrush = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,15 +81,10 @@
             this.menuColorViolet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorGrey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorOther = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomLabel = new System.Windows.Forms.ToolStripLabel();
             this.zoomMinusButton = new System.Windows.Forms.ToolStripButton();
             this.zoomPlusButton = new System.Windows.Forms.ToolStripButton();
             this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
-            this.console = new System.Windows.Forms.RichTextBox();
-            this.consoleLabel = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.menuToolsFiltering = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -308,6 +308,50 @@
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
             // 
+            // zoomLabel
+            // 
+            this.zoomLabel.AutoSize = false;
+            this.zoomLabel.Name = "zoomLabel";
+            this.zoomLabel.Size = new System.Drawing.Size(100, 25);
+            this.zoomLabel.Text = "Zoom: 1x";
+            this.zoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // console
+            // 
+            this.console.Font = new System.Drawing.Font("Verdana", 8F);
+            this.console.Location = new System.Drawing.Point(0, 648);
+            this.console.Name = "console";
+            this.console.Size = new System.Drawing.Size(1000, 110);
+            this.console.TabIndex = 3;
+            this.console.Text = "";
+            // 
+            // consoleLabel
+            // 
+            this.consoleLabel.AutoSize = true;
+            this.consoleLabel.Location = new System.Drawing.Point(0, 627);
+            this.consoleLabel.Name = "consoleLabel";
+            this.consoleLabel.Size = new System.Drawing.Size(73, 18);
+            this.consoleLabel.TabIndex = 4;
+            this.consoleLabel.Text = "Console";
+            // 
+            // menuToolsFiltering
+            // 
+            this.menuToolsFiltering.Name = "menuToolsFiltering";
+            this.menuToolsFiltering.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsFiltering.Text = "Filtering";
+            this.menuToolsFiltering.Click += new System.EventHandler(this.menuToolsFiltering_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(0, 57);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(1000, 570);
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            // 
             // menuDrawingTool
             // 
             this.menuDrawingTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -479,14 +523,6 @@
             this.menuColorOther.Text = "Other...";
             this.menuColorOther.Click += new System.EventHandler(this.menuColorOther_Click);
             // 
-            // zoomLabel
-            // 
-            this.zoomLabel.AutoSize = false;
-            this.zoomLabel.Name = "zoomLabel";
-            this.zoomLabel.Size = new System.Drawing.Size(100, 25);
-            this.zoomLabel.Text = "Zoom: 1x";
-            this.zoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // zoomMinusButton
             // 
             this.zoomMinusButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -531,47 +567,11 @@
             this.redoButton.ToolTipText = "Redo";
             this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
-            // console
-            // 
-            this.console.Font = new System.Drawing.Font("Verdana", 8F);
-            this.console.Location = new System.Drawing.Point(0, 528);
-            this.console.Name = "console";
-            this.console.Size = new System.Drawing.Size(1000, 110);
-            this.console.TabIndex = 3;
-            this.console.Text = "";
-            // 
-            // consoleLabel
-            // 
-            this.consoleLabel.AutoSize = true;
-            this.consoleLabel.Location = new System.Drawing.Point(-3, 507);
-            this.consoleLabel.Name = "consoleLabel";
-            this.consoleLabel.Size = new System.Drawing.Size(73, 18);
-            this.consoleLabel.TabIndex = 4;
-            this.consoleLabel.Text = "Console";
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.Location = new System.Drawing.Point(0, 57);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1000, 450);
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
-            // 
-            // menuToolsFiltering
-            // 
-            this.menuToolsFiltering.Name = "menuToolsFiltering";
-            this.menuToolsFiltering.Size = new System.Drawing.Size(225, 26);
-            this.menuToolsFiltering.Text = "Filtering";
-            this.menuToolsFiltering.Click += new System.EventHandler(this.menuToolsFiltering_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 639);
+            this.ClientSize = new System.Drawing.Size(1002, 761);
             this.Controls.Add(this.consoleLabel);
             this.Controls.Add(this.console);
             this.Controls.Add(this.pictureBox);

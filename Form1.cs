@@ -464,13 +464,12 @@ namespace Graphics_Editor
             else
             {
                 Transformation transformation = new Transformation(this);
-                transformation.ShowDialog();
+                transformation.Show(this);
             }
         }
         public void consoleSay(string text)
         {
             console.AppendText(DateTime.Now.ToString("HH:mm:ss") + " " + text + "\n");
-            //console.Text = console.Text + DateTime.Now.ToString("HH:mm:ss") + " " + text;
             console.SelectionStart = console.Text.Length;
             console.ScrollToCaret();
         }
@@ -521,8 +520,15 @@ namespace Graphics_Editor
 
         private void menuToolsFiltering_Click(object sender, EventArgs e)
         {
-            Filtering filtering = new Filtering(this);
-            filtering.ShowDialog();
+            if (Image == null)
+            {
+                MessageBox.Show("Open image first.", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Filtering filtering = new Filtering(this);
+                filtering.Show(this);
+            }
         }
     }
 }

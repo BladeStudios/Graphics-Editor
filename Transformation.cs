@@ -25,6 +25,13 @@ namespace Graphics_Editor
             clickedTrackbar = false;
         }
 
+        private void Transformation_Load(object sender, EventArgs e)
+        {
+            if (Owner != null)
+                Location = new Point(Owner.Location.X + Owner.Width / 2 - Width / 2,
+                    Owner.Location.Y + Owner.Height / 2 - Height / 2);
+        }
+
         private void transform(int mode)
         {
             //0 - add, 1 - subtract, 2 - multiply, 3 - divide

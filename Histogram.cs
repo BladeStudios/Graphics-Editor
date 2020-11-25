@@ -24,6 +24,7 @@ namespace Graphics_Editor
         private int[] blueLUT;
         private double redMin, greenMin, blueMin;
         private double redMax, greenMax, blueMax;
+        bool checkingBlock;
 
         public Histogram(Form1 form)
         {
@@ -38,6 +39,7 @@ namespace Graphics_Editor
             redLUT = new int[256];
             greenLUT = new int[256];
             blueLUT = new int[256];
+            checkingBlock = true;
             //clearHistogram();
             calculateHistogram(_form.getImage());
             setLabels();
@@ -160,7 +162,6 @@ namespace Graphics_Editor
                 }
             }
 
-
             _form.memoryAdd(result);
             return result;
         }
@@ -218,6 +219,34 @@ namespace Graphics_Editor
             }
         }
 
+        private Bitmap customBinarization(Bitmap bitmap, int threshold, bool isBottomThreshold)
+        {
+            Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
+
+            for (int i = 0; i < bitmap.Width; i++)
+            {
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    if (isBottomThreshold)
+                    {
+                        if (bitmap.GetPixel(i, j).R <= threshold)
+                            result.SetPixel(i, j, Color.FromArgb(0, 0, 0));
+                        else
+                            result.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                    }
+                    else //top threshold
+                    {
+                        if (bitmap.GetPixel(i, j).R >= threshold)
+                            result.SetPixel(i, j, Color.FromArgb(0, 0, 0));
+                        else
+                            result.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                    }
+                }
+            }
+
+            _form.memoryAdd(result);
+            return result;
+        }
 
         private void histogramStretchingButton_Click(object sender, EventArgs e)
         {
@@ -226,12 +255,65 @@ namespace Graphics_Editor
             _form.stopLoading();
         }
 
-
         private void histogramEqualizationButton_Click(object sender, EventArgs e)
         {
             _form.startLoading();
             _form.setImage(histogramEqualization(_form.getImage()));
             _form.stopLoading();
+        }
+
+        private void customBinarizationButton_Click(object sender, EventArgs e)
+        {
+            bool isBottomThreshold;
+            if (bottomThresholdBox.Checked == true)
+                isBottomThreshold = true;
+            else
+                isBottomThreshold = false;
+            _form.startLoading();
+            _form.setImage(customBinarization(_form.getImage(),thresholdBar.Value,isBottomThreshold));
+            _form.stopLoading();
+        }
+
+        private void bottomThresholdBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkingBlock)
+            {
+                checkingBlock = false;
+
+                bottomThresholdBox.Checked = true;
+                bottomThresholdBox.CheckState = CheckState.Checked;
+
+                topThresholdBox.Checked = false;
+                topThresholdBox.CheckState = CheckState.Unchecked;
+
+                checkingBlock = true;
+            }
+        }
+
+        private void topThresholdBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkingBlock)
+            {
+                checkingBlock = false;
+
+                topThresholdBox.Checked = true;
+                topThresholdBox.CheckState = CheckState.Checked;
+
+                bottomThresholdBox.Checked = false;
+                bottomThresholdBox.CheckState = CheckState.Unchecked;
+
+                checkingBlock = true;
+            }
+        }
+
+        private void thresholdBar_Scroll(object sender, EventArgs e)
+        {
+            thresholdValue.Value = thresholdBar.Value;
+        }
+
+        private void thresholdValue_ValueChanged(object sender, EventArgs e)
+        {
+            thresholdBar.Value = Convert.ToInt32(thresholdValue.Value);
         }
     }
 }

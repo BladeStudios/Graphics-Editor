@@ -572,8 +572,8 @@
             // menuToolsHistogram
             // 
             this.menuToolsHistogram.Name = "menuToolsHistogram";
-            this.menuToolsHistogram.Size = new System.Drawing.Size(225, 26);
-            this.menuToolsHistogram.Text = "Histogram";
+            this.menuToolsHistogram.Size = new System.Drawing.Size(269, 26);
+            this.menuToolsHistogram.Text = "Histogram and Binarization";
             this.menuToolsHistogram.Click += new System.EventHandler(this.menuToolsHistogram_Click);
             // 
             // Form1

@@ -31,6 +31,7 @@ namespace Graphics_Editor
 
         private Bitmap filter(Bitmap bitmap, int lefttop, int top, int righttop, int left, int middle, int right, int leftbottom, int bottom, int rightbottom)
         {
+            _form.startLoading();
             Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
             int redOut, greenOut, blueOut;
             int LTX, LTY, TX, TY, RTX, RTY, LX, LY, RX, RY, LBX, LBY, BX, BY, RBX, RBY;
@@ -120,6 +121,7 @@ namespace Graphics_Editor
             }
 
             _form.memoryAdd(result);
+            _form.stopLoading();
             return result;
         }
 
@@ -145,6 +147,7 @@ namespace Graphics_Editor
 
         private Bitmap medianFiltering(Bitmap bitmap)
         {
+            _form.startLoading();
             Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
             int redOut, greenOut, blueOut;
             int LTX, LTY, TX, TY, RTX, RTY, LX, LY, RX, RY, LBX, LBY, BX, BY, RBX, RBY;
@@ -222,6 +225,7 @@ namespace Graphics_Editor
                 }
             }
             _form.memoryAdd(result);
+            _form.stopLoading();
             return result;
         }
 
@@ -252,7 +256,7 @@ namespace Graphics_Editor
 
         private void gaussFilterButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), 1, 4, 1, 4, 32, 4, 1, 4, 1));
+            _form.setImage(filter(_form.getImage(), 1, 2, 1, 2, 4, 2, 1, 2, 1));
         }
 
         private void customFilterButton_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace Graphics_Editor
         public Bitmap Image;
         public List<Bitmap> memory;
         public int currentMemoryIndex;
+        public Loading loading;
 
         public Form1()
         {
@@ -97,7 +98,6 @@ namespace Graphics_Editor
             Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             if (pictureBox.Image != null) pictureBox.Image.Dispose();
             pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-            //consoleSay("Image set.\n");
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
@@ -529,6 +529,20 @@ namespace Graphics_Editor
                 Filtering filtering = new Filtering(this);
                 filtering.Show(this);
             }
+        }
+
+        public void startLoading()
+        {
+            loading = new Loading();
+            loading.Show(this);
+            loading.Refresh();
+        }
+
+        public void stopLoading()
+        {
+            loading.Hide();
+            loading.Dispose();
+            loading = null;
         }
     }
 }

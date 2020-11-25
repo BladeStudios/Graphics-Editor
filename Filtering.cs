@@ -19,7 +19,6 @@ namespace Graphics_Editor
         {
             InitializeComponent();
             _form = form;
-            //img = new Bitmap(_form.getImage());
         }
 
         private void Filtering_Load(object sender, EventArgs e)

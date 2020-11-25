@@ -544,5 +544,18 @@ namespace Graphics_Editor
             loading.Dispose();
             loading = null;
         }
+
+        private void menuToolsHistogram_Click(object sender, EventArgs e)
+        {
+            if (Image == null)
+            {
+                MessageBox.Show("Open image first.", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Histogram histogram = new Histogram(this);
+                histogram.Show(this);
+            }
+        }
     }
 }

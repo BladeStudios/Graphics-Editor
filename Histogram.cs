@@ -221,6 +221,7 @@ namespace Graphics_Editor
 
         private Bitmap customBinarization(Bitmap bitmap, int threshold, bool isBottomThreshold)
         {
+            bitmap = averagingAlghoritm(bitmap);
             Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
 
             for (int i = 0; i < bitmap.Width; i++)
@@ -314,6 +315,21 @@ namespace Graphics_Editor
         private void thresholdValue_ValueChanged(object sender, EventArgs e)
         {
             thresholdBar.Value = Convert.ToInt32(thresholdValue.Value);
+        }
+
+        private Bitmap averagingAlghoritm(Bitmap bitmap)
+        {
+            Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
+            int grey;
+            for (int i = 0; i < bitmap.Width; i++)
+            {
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    grey = (bitmap.GetPixel(i, j).R + bitmap.GetPixel(i, j).G + bitmap.GetPixel(i, j).B) / 3;
+                    result.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
+                }
+            }
+            return result;
         }
     }
 }

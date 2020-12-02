@@ -193,6 +193,8 @@
             // bottomThresholdBox
             // 
             this.bottomThresholdBox.AutoSize = true;
+            this.bottomThresholdBox.Checked = true;
+            this.bottomThresholdBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bottomThresholdBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.bottomThresholdBox.Location = new System.Drawing.Point(40, 107);
             this.bottomThresholdBox.Name = "bottomThresholdBox";

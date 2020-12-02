@@ -230,38 +230,38 @@ namespace Graphics_Editor
 
         private void averagingFilterButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), 1, 1, 1, 1, 1, 1, 1, 1, 1));
+            _form.setImage(filter(_form.getImage(), 1, 1, 1, 1, 1, 1, 1, 1, 1),0);
         }
 
         private void medianFilterButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(medianFiltering(_form.getImage()));
+            _form.setImage(medianFiltering(_form.getImage()),0);
         }
 
         private void sobelFilterHorizontalButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), -1, -2, -1, 0, 0, 0, 1, 2, 1));
+            _form.setImage(filter(_form.getImage(), -1, -2, -1, 0, 0, 0, 1, 2, 1),0);
         }
 
         private void sobelFilterVerticalButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), -1, 0, 1, -2, 0, 2, -1, 0, 1));
+            _form.setImage(filter(_form.getImage(), -1, 0, 1, -2, 0, 2, -1, 0, 1),0);
         }
 
         private void highPassFilterButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), -1, -1, -1, -1, 9, -1, -1, -1, -1));
+            _form.setImage(filter(_form.getImage(), -1, -1, -1, -1, 9, -1, -1, -1, -1),0);
         }
 
         private void gaussFilterButton_Click(object sender, EventArgs e)
         {
-            _form.setImage(filter(_form.getImage(), 1, 2, 1, 2, 4, 2, 1, 2, 1));
+            _form.setImage(filter(_form.getImage(), 1, 2, 1, 2, 4, 2, 1, 2, 1),0);
         }
 
         private void customFilterButton_Click(object sender, EventArgs e)
         {
             _form.setImage(filter(_form.getImage(), Convert.ToInt32(leftTopValue.Value), Convert.ToInt32(topValue.Value), Convert.ToInt32(rightTopValue.Value), Convert.ToInt32(leftValue.Value),
-                Convert.ToInt32(middleValue.Value), Convert.ToInt32(rightValue.Value), Convert.ToInt32(leftBottomValue.Value), Convert.ToInt32(bottomValue.Value), Convert.ToInt32(rightBottomValue.Value)));
+                Convert.ToInt32(middleValue.Value), Convert.ToInt32(rightValue.Value), Convert.ToInt32(leftBottomValue.Value), Convert.ToInt32(bottomValue.Value), Convert.ToInt32(rightBottomValue.Value)),0);
         }
     }
 }

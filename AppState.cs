@@ -13,6 +13,7 @@ namespace Graphics_Editor
         string selectedDrawingTool;
         Color selectedColor;
         double zoom;
+        List<Point> bezierPoints;
 
         public AppState(Form1 form)
         {
@@ -20,6 +21,7 @@ namespace Graphics_Editor
             selectedDrawingTool = "Pencil";
             selectedColor = Color.Black;
             zoom = 1;
+            bezierPoints = new List<Point>();
         }
 
         public void setDrawingTool(string drawingTool)
@@ -51,6 +53,27 @@ namespace Graphics_Editor
         public double getZoom()
         {
             return zoom;
+        }
+
+        public void resetPoints()
+        {
+            bezierPoints = null;
+            bezierPoints = new List<Point>();
+        }
+
+        public void addBezierPoint(Point point)
+        {
+            this.bezierPoints.Add(point);
+        }
+
+        public int getPointsAmount()
+        {
+            return this.bezierPoints.Count;
+        }
+
+        public Point getBezierPoint(int index)
+        {
+            return this.bezierPoints.ElementAt(index);
         }
 
     }

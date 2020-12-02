@@ -252,14 +252,14 @@ namespace Graphics_Editor
         private void histogramStretchingButton_Click(object sender, EventArgs e)
         {
             _form.startLoading();
-            _form.setImage(stretchingHistogram(_form.getImage()));
+            _form.setImage(stretchingHistogram(_form.getImage()),0);
             _form.stopLoading();
         }
 
         private void histogramEqualizationButton_Click(object sender, EventArgs e)
         {
             _form.startLoading();
-            _form.setImage(histogramEqualization(_form.getImage()));
+            _form.setImage(histogramEqualization(_form.getImage()),0);
             _form.stopLoading();
         }
 
@@ -271,7 +271,7 @@ namespace Graphics_Editor
             else
                 isBottomThreshold = false;
             _form.startLoading();
-            _form.setImage(customBinarization(_form.getImage(),thresholdBar.Value,isBottomThreshold));
+            _form.setImage(customBinarization(_form.getImage(),thresholdBar.Value,isBottomThreshold),0);
             _form.stopLoading();
         }
 

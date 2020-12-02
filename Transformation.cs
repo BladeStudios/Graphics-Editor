@@ -87,7 +87,7 @@ namespace Graphics_Editor
                     img.SetPixel(i, j, Color.FromArgb(newR, newG, newB));
                 }
             }
-            _form.setImage(img);
+            _form.setImage(img,0);
             _form.memoryAdd(img);
         }
 
@@ -115,7 +115,7 @@ namespace Graphics_Editor
                     img.SetPixel(i, j, Color.FromArgb(newR, newG, newB));
                 }
             }
-            _form.setImage(img);
+            _form.setImage(img,0);
         }
 
         private void resetBrightness()
@@ -138,7 +138,7 @@ namespace Graphics_Editor
                     img.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
                 }
             }
-            _form.setImage(img);
+            _form.setImage(img,0);
             _form.memoryAdd(img);
         }
 
@@ -154,7 +154,7 @@ namespace Graphics_Editor
                     img.SetPixel(i, j, Color.FromArgb(grey, grey, grey));
                 }
             }
-            _form.setImage(img);
+            _form.setImage(img,0);
             _form.memoryAdd(img);
         }
 

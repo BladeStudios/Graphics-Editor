@@ -19,10 +19,12 @@ namespace Graphics_Editor
         public List<Bitmap> memory;
         public int currentMemoryIndex;
         public Loading loading;
+        public List<Bitmap> layers;
 
         public Form1()
         {
             InitializeComponent();
+            layers = new List<Bitmap>();
             file = new File(this);
             appState = new AppState(this);
             drawing = new Drawing(this);
@@ -89,15 +91,34 @@ namespace Graphics_Editor
 
         public Bitmap getImage()
         {
-            return Image;
+            //return Image;
+            return layers.ElementAt(0);
         }
 
-        public void setImage(Bitmap bitmap)
+        public void setImage(Bitmap bitmap, int layerIndex)
         {
-            Image = new Bitmap(bitmap.Width, bitmap.Height);
-            Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            if (layerIndex > layers.Count-1)
+                layers.Add(bitmap);
+            else
+            {
+                layers[layerIndex] = null;
+                layers[layerIndex] = new Bitmap(bitmap.Width, bitmap.Height);
+                layers[layerIndex] = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+
+            }
+
+            Bitmap finalImage = new Bitmap(pictureBox.Width, pictureBox.Height);
+            Graphics g = Graphics.FromImage(finalImage);
+
+            foreach(Bitmap layer in layers)
+            {
+                g.DrawImage(layer, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+            }
+            //Image = new Bitmap(bitmap.Width, bitmap.Height);
+            //Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             if (pictureBox.Image != null) pictureBox.Image.Dispose();
-            pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            //pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            pictureBox.Image = finalImage.Clone(new Rectangle(0, 0, finalImage.Width, finalImage.Height), System.Drawing.Imaging.PixelFormat.DontCare);
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
@@ -186,6 +207,13 @@ namespace Graphics_Editor
                     this.menuDrawingToolCircle.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolCircle.Image;
                     appState.setDrawingTool("Circle");
+                }
+                else if (item == menuDrawingToolBezier)
+                {
+                    this.menuDrawingToolBezier.Checked = true;
+                    this.menuDrawingToolBezier.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolBezier.Image;
+                    appState.setDrawingTool("Bezier");
                 }
             }
             else if(menu == this.menuColor) //menu Color
@@ -323,7 +351,29 @@ namespace Graphics_Editor
         {
             int x = pictureBox.PointToClient(Cursor.Position).X;
             int y = pictureBox.PointToClient(Cursor.Position).Y;
-            drawing.drawPoint(x,y,appState.getColor());
+            if(appState.getDrawingTool()=="Pencil")
+                drawing.drawPoint(x,y,appState.getColor());
+            else if (appState.getDrawingTool()=="Bezier")
+            {
+                //todo
+                //if(getMemoryCount()>0)
+                    //setImage(memoryGet(getMemoryIndex()));
+                consoleSay("Added point (" + x + "," + y + ")");
+                drawing.drawBezierCircle(x, y, appState.getColor());
+                appState.addBezierPoint(new Point(x, y));
+                if(appState.getPointsAmount()>1)
+                {
+                    Point p = appState.getBezierPoint(appState.getPointsAmount() - 2);
+                    drawing.drawLine(p.X, p.Y, x, y, appState.getColor());
+                }
+                //Bitmap bitmap = new Bitmap(Image);
+                Bitmap bitmap = new Bitmap(layers[0]);
+                memoryAdd(bitmap);
+                if (appState.getPointsAmount() >= 3)
+                {
+                    drawBezierCurve();
+                }
+            }
         }
 
         private void menuPaintLine_Click(object sender, EventArgs e)
@@ -351,6 +401,7 @@ namespace Graphics_Editor
             Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
             pictureBox.Image = null;
             pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
+            appState.resetPoints();
         }
 
         private void menuColorBlack_Click(object sender, EventArgs e)
@@ -484,7 +535,7 @@ namespace Graphics_Editor
             if (getMemoryIndex() > 0)
             {
                 setMemoryIndex(getMemoryIndex() - 1);
-                setImage(memoryGet(getMemoryIndex()));
+                setImage(memoryGet(getMemoryIndex()),0);
                 consoleSay("Displaying image from " + getMemoryIndex() + " index.");
             }
             else
@@ -496,7 +547,7 @@ namespace Graphics_Editor
             if (getMemoryIndex() < (getMemoryCount()-1))
             {
                 setMemoryIndex(getMemoryIndex() + 1);
-                setImage(memoryGet(getMemoryIndex()));
+                setImage(memoryGet(getMemoryIndex()),0);
                 consoleSay("Displaying image from " + getMemoryIndex() + " index.");
             }
             else
@@ -556,6 +607,85 @@ namespace Graphics_Editor
                 Histogram histogram = new Histogram(this);
                 histogram.Show(this);
             }
+        }
+
+        private void menuToolsBezier_Click(object sender, EventArgs e)
+        {
+            Bezier bezier = new Bezier(this);
+            bezier.Show(this);
+        }
+
+        private void menuDrawingToolBezier_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, menuDrawingToolBezier);
+        }
+
+        private void drawBezierCurve()
+        {
+            //List<Point> curvePoints = new List<Point>();
+
+            Bitmap bezierBitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+            bezierBitmap.MakeTransparent();
+            Graphics graphics = Graphics.FromImage(bezierBitmap);
+            graphics.Clear(Color.Transparent);
+            double t;
+            Point p;
+            for(int i=0; i<=1000; i++)
+            {
+                t = Convert.ToDouble(i) / 1000;
+                bezierBitmap.SetPixel(getCurvePoint(t).X, getCurvePoint(t).Y, Color.Red);
+                //drawing.drawPointBitmap(getCurvePoint(t).X, getCurvePoint(t).Y, Color.Red, bezierBitmap);
+            }
+            /*
+            Bitmap finalImage = new Bitmap(pictureBox.Width, pictureBox.Height);
+            Graphics g = Graphics.FromImage(finalImage);
+            g.DrawImage(getImage(), new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+            g.DrawImage(bezierBitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));*/
+
+            setImage(bezierBitmap,1);
+        }
+
+        private int getFactorial(int n)
+        {
+            if (n == 0)
+                return 1;
+            else
+            {
+                int result = 1;
+                for(int i=1; i<=n; i++)
+                {
+                    result *= i;
+                }
+                return result;
+            }
+        }
+
+        private double getPower(double a, double b)
+        {
+            if (a == 0 && b == 0)
+                return 1;
+            else
+                return Math.Pow(a, b);
+        }
+
+        private Point getCurvePoint(double t)
+        {
+            Point result;
+            double px = 0;
+            double py = 0;
+            int n = appState.getPointsAmount() - 1;
+            double bez;
+
+            for(int k=0; k<=n; k++)
+            {
+                bez = (getFactorial(n) / (getFactorial(k) * getFactorial(n - k))) * getPower(t, k) * getPower(1 - t, n - k);
+                px += (bez * appState.getBezierPoint(k).X);
+                py += (bez * appState.getBezierPoint(k).Y);
+            }
+
+            result = new Point(Convert.ToInt32(px), Convert.ToInt32(py));
+
+            return result;
         }
     }
 }

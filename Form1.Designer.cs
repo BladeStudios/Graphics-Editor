@@ -54,6 +54,8 @@
             this.menuToolsRGBCube = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolsPointTransformation = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolsFiltering = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolsHistogram = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolsBezier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar = new System.Windows.Forms.ToolStrip();
@@ -64,6 +66,8 @@
             this.menuDrawingToolLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolRectangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolCircle = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuDrawingToolBezier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColor = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuColorBlack = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColorWhite = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +89,6 @@
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.menuToolsHistogram = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -260,7 +263,8 @@
             this.menuToolsRGBCube,
             this.menuToolsPointTransformation,
             this.menuToolsFiltering,
-            this.menuToolsHistogram});
+            this.menuToolsHistogram,
+            this.menuToolsBezier});
             this.menuTools.Name = "menuTools";
             this.menuTools.Size = new System.Drawing.Size(57, 25);
             this.menuTools.Text = "Tools";
@@ -268,23 +272,37 @@
             // menuToolsRGBCube
             // 
             this.menuToolsRGBCube.Name = "menuToolsRGBCube";
-            this.menuToolsRGBCube.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsRGBCube.Size = new System.Drawing.Size(269, 26);
             this.menuToolsRGBCube.Text = "RGB Cube";
             this.menuToolsRGBCube.Click += new System.EventHandler(this.menuToolsRGBCube_Click);
             // 
             // menuToolsPointTransformation
             // 
             this.menuToolsPointTransformation.Name = "menuToolsPointTransformation";
-            this.menuToolsPointTransformation.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsPointTransformation.Size = new System.Drawing.Size(269, 26);
             this.menuToolsPointTransformation.Text = "Point Transformation";
             this.menuToolsPointTransformation.Click += new System.EventHandler(this.menuToolsPointTransformation_Click);
             // 
             // menuToolsFiltering
             // 
             this.menuToolsFiltering.Name = "menuToolsFiltering";
-            this.menuToolsFiltering.Size = new System.Drawing.Size(225, 26);
+            this.menuToolsFiltering.Size = new System.Drawing.Size(269, 26);
             this.menuToolsFiltering.Text = "Filtering";
             this.menuToolsFiltering.Click += new System.EventHandler(this.menuToolsFiltering_Click);
+            // 
+            // menuToolsHistogram
+            // 
+            this.menuToolsHistogram.Name = "menuToolsHistogram";
+            this.menuToolsHistogram.Size = new System.Drawing.Size(269, 26);
+            this.menuToolsHistogram.Text = "Histogram and Binarization";
+            this.menuToolsHistogram.Click += new System.EventHandler(this.menuToolsHistogram_Click);
+            // 
+            // menuToolsBezier
+            // 
+            this.menuToolsBezier.Name = "menuToolsBezier";
+            this.menuToolsBezier.Size = new System.Drawing.Size(269, 26);
+            this.menuToolsBezier.Text = "Bezier\'s Curve Settings";
+            this.menuToolsBezier.Click += new System.EventHandler(this.menuToolsBezier_Click);
             // 
             // menuHelp
             // 
@@ -325,7 +343,9 @@
             this.toolStripMenuItem1,
             this.menuDrawingToolLine,
             this.menuDrawingToolRectangle,
-            this.menuDrawingToolCircle});
+            this.menuDrawingToolCircle,
+            this.toolStripMenuItem3,
+            this.menuDrawingToolBezier});
             this.menuDrawingTool.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuDrawingTool.Name = "menuDrawingTool";
@@ -339,7 +359,7 @@
             this.menuDrawingToolPencil.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuDrawingToolPencil.Image = global::Graphics_Editor.Properties.Resources.pencil;
             this.menuDrawingToolPencil.Name = "menuDrawingToolPencil";
-            this.menuDrawingToolPencil.Size = new System.Drawing.Size(148, 26);
+            this.menuDrawingToolPencil.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolPencil.Text = "Pencil";
             this.menuDrawingToolPencil.Click += new System.EventHandler(this.menuDrawingToolPencil_Click);
             // 
@@ -347,20 +367,20 @@
             // 
             this.menuDrawingToolBrush.Image = global::Graphics_Editor.Properties.Resources.brush;
             this.menuDrawingToolBrush.Name = "menuDrawingToolBrush";
-            this.menuDrawingToolBrush.Size = new System.Drawing.Size(148, 26);
+            this.menuDrawingToolBrush.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolBrush.Text = "Brush";
             this.menuDrawingToolBrush.Click += new System.EventHandler(this.menuDrawingToolBrush_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(253, 6);
             // 
             // menuDrawingToolLine
             // 
             this.menuDrawingToolLine.Image = global::Graphics_Editor.Properties.Resources.line;
             this.menuDrawingToolLine.Name = "menuDrawingToolLine";
-            this.menuDrawingToolLine.Size = new System.Drawing.Size(148, 26);
+            this.menuDrawingToolLine.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolLine.Text = "Line";
             this.menuDrawingToolLine.Click += new System.EventHandler(this.menuDrawingToolLine_Click);
             // 
@@ -368,7 +388,7 @@
             // 
             this.menuDrawingToolRectangle.Image = global::Graphics_Editor.Properties.Resources.rectangle;
             this.menuDrawingToolRectangle.Name = "menuDrawingToolRectangle";
-            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(148, 26);
+            this.menuDrawingToolRectangle.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolRectangle.Text = "Rectangle";
             this.menuDrawingToolRectangle.Click += new System.EventHandler(this.menuDrawingToolRectangle_Click);
             // 
@@ -376,9 +396,22 @@
             // 
             this.menuDrawingToolCircle.Image = global::Graphics_Editor.Properties.Resources.circle;
             this.menuDrawingToolCircle.Name = "menuDrawingToolCircle";
-            this.menuDrawingToolCircle.Size = new System.Drawing.Size(148, 26);
+            this.menuDrawingToolCircle.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolCircle.Text = "Circle";
             this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(253, 6);
+            // 
+            // menuDrawingToolBezier
+            // 
+            this.menuDrawingToolBezier.Image = ((System.Drawing.Image)(resources.GetObject("menuDrawingToolBezier.Image")));
+            this.menuDrawingToolBezier.Name = "menuDrawingToolBezier";
+            this.menuDrawingToolBezier.Size = new System.Drawing.Size(256, 26);
+            this.menuDrawingToolBezier.Text = "Bezier\'s Curve | Degree: 2";
+            this.menuDrawingToolBezier.Click += new System.EventHandler(this.menuDrawingToolBezier_Click);
             // 
             // menuColor
             // 
@@ -569,13 +602,6 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
-            // menuToolsHistogram
-            // 
-            this.menuToolsHistogram.Name = "menuToolsHistogram";
-            this.menuToolsHistogram.Size = new System.Drawing.Size(269, 26);
-            this.menuToolsHistogram.Text = "Histogram and Binarization";
-            this.menuToolsHistogram.Click += new System.EventHandler(this.menuToolsHistogram_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -662,6 +688,9 @@
         private System.Windows.Forms.ToolStripButton redoButton;
         private System.Windows.Forms.ToolStripMenuItem menuToolsFiltering;
         private System.Windows.Forms.ToolStripMenuItem menuToolsHistogram;
+        private System.Windows.Forms.ToolStripMenuItem menuToolsBezier;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem menuDrawingToolBezier;
     }
 }
 

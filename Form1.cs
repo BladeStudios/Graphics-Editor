@@ -91,7 +91,6 @@ namespace Graphics_Editor
 
         public Bitmap getImage()
         {
-            //return Image;
             return layers.ElementAt(0);
         }
 
@@ -99,14 +98,10 @@ namespace Graphics_Editor
         {
             if (layerIndex > layers.Count-1)
             {
-                //Bitmap newBitmap = new Bitmap(bitmap.Width, bitmap.Height);
-                //newBitmap = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
                 layers.Add(bitmap);
             }
             else
             {
-                //layers[layerIndex].Dispose();
-                //layers[layerIndex] = null;
                 layers[layerIndex] = new Bitmap(bitmap.Width, bitmap.Height);
                 layers[layerIndex] = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
 
@@ -120,10 +115,6 @@ namespace Graphics_Editor
                 g.DrawImage(layer, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
             }
             g.Dispose();
-            //Image = new Bitmap(bitmap.Width, bitmap.Height);
-            //Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-            //if (pictureBox.Image != null) pictureBox.Image.Dispose();
-            //pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             pictureBox.Image = finalImage.Clone(new Rectangle(0, 0, finalImage.Width, finalImage.Height), System.Drawing.Imaging.PixelFormat.DontCare);
         }
 
@@ -361,9 +352,6 @@ namespace Graphics_Editor
                 drawing.drawPoint(x,y,appState.getColor());
             else if (appState.getDrawingTool()=="Bezier")
             {
-                //todo
-                //if(getMemoryCount()>0)
-                    //setImage(memoryGet(getMemoryIndex()));
                 consoleSay("Added point (" + x + "," + y + ")");
                 drawing.drawBezierCircle(x, y, appState.getColor());
                 appState.addBezierPoint(new Point(x, y));
@@ -372,7 +360,6 @@ namespace Graphics_Editor
                     Point p = appState.getBezierPoint(appState.getPointsAmount() - 2);
                     drawing.drawLine(p.X, p.Y, x, y, appState.getColor());
                 }
-                //Bitmap bitmap = new Bitmap(Image);
                 Bitmap bitmap = new Bitmap(layers[0]);
                 memoryAdd(bitmap);
                 if (appState.getPointsAmount() >= 3)
@@ -384,7 +371,6 @@ namespace Graphics_Editor
 
         private void menuPaintLine_Click(object sender, EventArgs e)
         {
-            //drawing.drawLine(50, 50, 200, 200, Color.Red);
             DrawLine drawline = new DrawLine(this,"line");
             drawline.ShowDialog();
         }
@@ -628,25 +614,16 @@ namespace Graphics_Editor
 
         private void drawBezierCurve()
         {
-            //List<Point> curvePoints = new List<Point>();
-
             Bitmap bezierBitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             bezierBitmap.MakeTransparent();
             Graphics graphics = Graphics.FromImage(bezierBitmap);
-            //graphics.Clear(Color.Transparent);
             double t;
             Point p;
             for(int i=0; i<=1000; i++)
             {
                 t = Convert.ToDouble(i) / 1000;
                 bezierBitmap.SetPixel(getCurvePoint(t).X, getCurvePoint(t).Y, Color.Red);
-                //drawing.drawPointBitmap(getCurvePoint(t).X, getCurvePoint(t).Y, Color.Red, bezierBitmap);
             }
-            /*
-            Bitmap finalImage = new Bitmap(pictureBox.Width, pictureBox.Height);
-            Graphics g = Graphics.FromImage(finalImage);
-            g.DrawImage(getImage(), new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
-            g.DrawImage(bezierBitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));*/
 
             setImage(bezierBitmap,1);
         }

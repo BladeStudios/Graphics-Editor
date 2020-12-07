@@ -98,10 +98,15 @@ namespace Graphics_Editor
         public void setImage(Bitmap bitmap, int layerIndex)
         {
             if (layerIndex > layers.Count-1)
+            {
+                //Bitmap newBitmap = new Bitmap(bitmap.Width, bitmap.Height);
+                //newBitmap = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
                 layers.Add(bitmap);
+            }
             else
             {
-                layers[layerIndex] = null;
+                //layers[layerIndex].Dispose();
+                //layers[layerIndex] = null;
                 layers[layerIndex] = new Bitmap(bitmap.Width, bitmap.Height);
                 layers[layerIndex] = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
 
@@ -114,9 +119,10 @@ namespace Graphics_Editor
             {
                 g.DrawImage(layer, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
             }
+            g.Dispose();
             //Image = new Bitmap(bitmap.Width, bitmap.Height);
             //Image = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-            if (pictureBox.Image != null) pictureBox.Image.Dispose();
+            //if (pictureBox.Image != null) pictureBox.Image.Dispose();
             //pictureBox.Image = Image.Clone(new Rectangle(0, 0, Image.Width, Image.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             pictureBox.Image = finalImage.Clone(new Rectangle(0, 0, finalImage.Width, finalImage.Height), System.Drawing.Imaging.PixelFormat.DontCare);
         }
@@ -627,7 +633,7 @@ namespace Graphics_Editor
             Bitmap bezierBitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             bezierBitmap.MakeTransparent();
             Graphics graphics = Graphics.FromImage(bezierBitmap);
-            graphics.Clear(Color.Transparent);
+            //graphics.Clear(Color.Transparent);
             double t;
             Point p;
             for(int i=0; i<=1000; i++)

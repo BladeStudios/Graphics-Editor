@@ -29,9 +29,10 @@ namespace Graphics_Editor
             g = Graphics.FromImage(_form.layers[0]);
             SolidBrush b = new SolidBrush(color);
             g.FillRectangle(b, x, y, 1, 1);
-            //_form.pictureBox.Image = _form.Image;
-            _form.pictureBox.Image = _form.layers[0];
+            //_form.pictureBox.Image = _form.layers[0];
+            _form.pictureBox.Image = _form.layers[0].Clone(new Rectangle(0, 0, _form.layers[0].Width, _form.layers[0].Height), System.Drawing.Imaging.PixelFormat.DontCare);
             g.Dispose();
+            
         }
 
         public void drawPointBitmap(int x, int y, Color color, Bitmap bitmap)

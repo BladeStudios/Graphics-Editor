@@ -16,6 +16,7 @@ namespace Graphics_Editor
         List<Point> bezierPoints;
         List<Point> polygonPoints;
         int currentLayer;
+        string selectedPolygonMode;
 
         public AppState(Form1 form)
         {
@@ -26,6 +27,7 @@ namespace Graphics_Editor
             bezierPoints = new List<Point>();
             polygonPoints = new List<Point>();
             setCurrentLayer(0);
+            selectedPolygonMode = "";
         }
 
         public void setDrawingTool(string drawingTool)
@@ -114,6 +116,16 @@ namespace Graphics_Editor
         public int getLayersCount()
         {
             return _form.layers.Count;
+        }
+
+        public void setSelectedPolygonMode(string s)
+        {
+            this.selectedPolygonMode = s;
+        }
+
+        public string getSelectedPolygonMode()
+        {
+            return this.selectedPolygonMode;
         }
 
     }

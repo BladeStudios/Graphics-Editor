@@ -23,10 +23,10 @@ namespace Graphics_Editor
                 _form.setImage(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height), 0);
             }
             Graphics g;
-            g = Graphics.FromImage(_form.layers[0]);
+            g = Graphics.FromImage(_form.layers[0].bitmap);
             SolidBrush b = new SolidBrush(color);
             g.FillRectangle(b, x, y, 1, 1);
-            _form.pictureBox.Image = _form.layers[0].Clone(new Rectangle(0, 0, _form.layers[0].Width, _form.layers[0].Height), System.Drawing.Imaging.PixelFormat.DontCare);
+            _form.pictureBox.Image = _form.layers[0].bitmap.Clone(new Rectangle(0, 0, _form.layers[0].bitmap.Width, _form.layers[0].bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             g.Dispose();
             
         }
@@ -39,31 +39,41 @@ namespace Graphics_Editor
             g = Graphics.FromImage(bitmap);
             SolidBrush b = new SolidBrush(color);
             g.FillRectangle(b, x, y, 1, 1);
-            _form.pictureBox.Image = _form.layers[0];
+            _form.pictureBox.Image = _form.layers[0].bitmap;
             g.Dispose();
         }
 
         public void drawLine(int x1, int y1, int x2, int y2, Color color, int layerIndex)
         {
             if (_form.layers.Count == 0)
-                _form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
+            {
+                Layer newLayer = new Layer();
+                newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
+                _form.layers.Add(newLayer);
+            }
+                //_form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
             Graphics g;
-            g = Graphics.FromImage(_form.layers[layerIndex]);
+            g = Graphics.FromImage(_form.layers[layerIndex].bitmap);
             Pen p = new Pen(color);
             Point p1 = new Point(x1, y1);
             Point p2 = new Point(x2, y2);
             g.DrawLine(p, p1, p2);
             //_form.pictureBox.Image = _form.layers[layerIndex];
-            _form.setImage(_form.layers[layerIndex], layerIndex);
+            _form.setImage(_form.layers[layerIndex].bitmap, layerIndex);
             g.Dispose();
         }
 
         public void drawRectangle(int x1, int y1, int x2, int y2, Color color)
         {
             if (_form.layers.Count == 0)
-                _form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
+            {
+                Layer newLayer = new Layer();
+                newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
+                _form.layers.Add(newLayer);
+            }
+            //_form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
             Graphics g;
-            g = Graphics.FromImage(_form.layers[0]);
+            g = Graphics.FromImage(_form.layers[0].bitmap);
             Pen p = new Pen(color);
             int width, height;
             if (x2 > x1)
@@ -75,21 +85,26 @@ namespace Graphics_Editor
             else
                 height = y1 - y2;
             g.DrawRectangle(p, x1, y1, width, height);
-            _form.pictureBox.Image = _form.layers[0];
+            _form.pictureBox.Image = _form.layers[0].bitmap;
             g.Dispose();
         }
 
         public void drawCircle(int x1, int y1, int x2, int y2, Color color)
         {
             if (_form.layers.Count == 0)
-                _form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
+            {
+                Layer newLayer = new Layer();
+                newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
+                _form.layers.Add(newLayer);
+            }
+            //_form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
             Graphics g;
-            g = Graphics.FromImage(_form.layers[0]);
+            g = Graphics.FromImage(_form.layers[0].bitmap);
             Pen p = new Pen(color);
             Point p1 = new Point(x1, y1);
             Point p2 = new Point(x2, y2);
             g.DrawEllipse(p, x1, y1, x2, y2);
-            _form.pictureBox.Image = _form.layers[0];
+            _form.pictureBox.Image = _form.layers[0].bitmap;
             g.Dispose();
         }
 
@@ -118,16 +133,19 @@ namespace Graphics_Editor
                 Bitmap bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
                 if (_form.layers.Count<= layer)
                 {
-                    _form.layers.Add(bitmap);
+                    Layer newLayer = new Layer();
+                    newLayer.bitmap = bitmap;
+                    _form.layers.Add(newLayer);
+                    //_form.layers.Add(bitmap);
                 }
                 else
                 {
-                    _form.layers[layer] = bitmap;
+                    //_form.layers[layer] = bitmap;
+                    _form.layers[layer].bitmap = bitmap;
                 }
                 for(int i=1; i<list.Count; i++)
                 {
                     drawLine(list[i - 1].X, list[i - 1].Y, list[i].X, list[i].Y, color, layer);
-                    _form.consoleSay("Drawing line from (" + list[i - 1].X + "," + +list[i - 1].Y + ") to (" + +list[i].X + "," + list[i].Y + ")");
                 }
                 drawLine(list[list.Count-1].X, list[list.Count-1].Y, list[0].X, list[0].Y, color, layer);
             }

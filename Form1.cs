@@ -19,12 +19,14 @@ namespace Graphics_Editor
         public List<Bitmap> memory;
         public int currentMemoryIndex;
         public Loading loading;
-        public List<Bitmap> layers;
+        //public List<Bitmap> layers;
+        public List<Layer> layers;
 
         public Form1()
         {
             InitializeComponent();
-            layers = new List<Bitmap>();
+            //layers = new List<Bitmap>();
+            layers = new List<Layer>();
             file = new File(this);
             appState = new AppState(this);
             drawing = new Drawing(this);
@@ -89,30 +91,42 @@ namespace Graphics_Editor
             return this.memory.Count;
         }
 
+        public void addLayer()
+        {
+            Layer newLayer = new Layer();
+            layers.Add(newLayer);
+            appState.setCurrentLayer(layers.Count - 1);
+        }
+
         public Bitmap getImage()
         {
-            return layers.ElementAt(0);
+            return layers.ElementAt(0).bitmap;
         }
 
         public void setImage(Bitmap bitmap, int layerIndex)
         {
             if (layerIndex > layers.Count-1)
             {
-                layers.Add(bitmap);
+                Layer newLayer = new Layer();
+                newLayer.bitmap = bitmap;
+                //layers.Add(bitmap);
+                layers.Add(newLayer);
             }
             else
             {
-                layers[layerIndex] = new Bitmap(bitmap.Width, bitmap.Height);
-                layers[layerIndex] = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
-
+                //layers[layerIndex] = new Bitmap(bitmap.Width, bitmap.Height);
+                //layers[layerIndex] = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
+                layers[layerIndex].bitmap = new Bitmap(bitmap.Width, bitmap.Height);
+                layers[layerIndex].bitmap = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.PixelFormat.DontCare);
             }
 
             Bitmap finalImage = new Bitmap(pictureBox.Width, pictureBox.Height);
             Graphics g = Graphics.FromImage(finalImage);
 
-            foreach(Bitmap layer in layers)
+            foreach(Layer layer in layers)
             {
-                g.DrawImage(layer, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+                //g.DrawImage(layer, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+                g.DrawImage(layer.bitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
             }
             g.Dispose();
             pictureBox.Image = finalImage.Clone(new Rectangle(0, 0, finalImage.Width, finalImage.Height), System.Drawing.Imaging.PixelFormat.DontCare);
@@ -232,6 +246,7 @@ namespace Graphics_Editor
                     this.polygonSelect.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
                     appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Select");
                 }
                 else if (item == polygonDraw)
                 {
@@ -241,6 +256,7 @@ namespace Graphics_Editor
                     this.polygonDraw.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
                     appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Draw");
                 }
                 else if (item == polygonMove)
                 {
@@ -250,6 +266,7 @@ namespace Graphics_Editor
                     this.polygonMove.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
                     appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Move");
                 }
                 else if (item == polygonRotate)
                 {
@@ -259,6 +276,7 @@ namespace Graphics_Editor
                     this.polygonRotate.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
                     appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Rotate");
                 }
             }
             else if(menu == this.menuColor) //menu Color
@@ -407,7 +425,7 @@ namespace Graphics_Editor
                     Point p = appState.getBezierPoint(appState.getPointsAmount() - 2);
                     drawing.drawLine(p.X, p.Y, x, y, appState.getColor(),0);
                 }
-                Bitmap bitmap = new Bitmap(layers[0]);
+                Bitmap bitmap = new Bitmap(layers[0].bitmap);
                 memoryAdd(bitmap);
                 if (appState.getPointsAmount() >= 3)
                 {
@@ -416,8 +434,23 @@ namespace Graphics_Editor
             }
             else if (appState.getDrawingTool()=="Polygon")
             {
-                appState.addPolygonPoint(new Point(x, y));
-                drawing.drawPolygon(appState.getCurrentLayer(), appState.getPolygonPointsList(), Color.Black);
+                if(appState.getSelectedPolygonMode()=="Draw")
+                {
+                    //addLayer();
+                    layers[appState.getCurrentLayer()].addPolygonPoint(new Point(x, y));
+                    drawing.drawPolygon(appState.getCurrentLayer(), layers[appState.getCurrentLayer()].getPointsList(), Color.Black);
+                }
+                else if (appState.getSelectedPolygonMode() == "Select")
+                {
+                    foreach (Layer layer in layers)
+                    {
+                        if(isPointInside(layer.bitmap,Color.Black,new Point(x,y)))
+                        {
+                            drawing.drawPolygon(appState.getCurrentLayer(), layers[appState.getCurrentLayer()].getPointsList(), Color.Red);
+                        }
+                    }
+                }
+
             }
         }
 
@@ -444,7 +477,7 @@ namespace Graphics_Editor
             //Image = null;
             //Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
             layers = null;
-            layers = new List<Bitmap>();
+            layers = new List<Layer>();
             pictureBox.Image = null;
             pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
             appState.resetPoints();
@@ -729,7 +762,7 @@ namespace Graphics_Editor
         private void polygonDraw_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonDraw);
-            appState.setCurrentLayer(appState.getLayersCount());
+            addLayer();
         }
 
         private void polygonMove_Click(object sender, EventArgs e)
@@ -745,6 +778,40 @@ namespace Graphics_Editor
         private void polygonSelect_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonSelect);
+        }
+
+        private bool isPointInside(Bitmap bitmap, Color color, Point p)
+        {
+            int passes = 0; //number of times the line passed polygon borders
+            bool colorChanged = false;
+            Color pixelColor;
+
+            pixelColor = bitmap.GetPixel(p.X, p.Y);
+            if (pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B)
+                return true;
+            else
+            {
+                for (int i = p.X; i < bitmap.Width; i++)
+                {
+                    pixelColor = bitmap.GetPixel(i, p.Y);
+                    if (pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B && colorChanged == false)
+                    {
+                        colorChanged = true;
+                        passes++;
+                    }
+                    else if (!(pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B) && colorChanged == true)
+                    {
+                        colorChanged = false;
+                        passes++;
+                    }
+                }
+
+            }
+
+            if (passes % 2 == 0)
+                return false;
+            else
+                return true;
         }
     }
 }

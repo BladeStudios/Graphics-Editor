@@ -91,6 +91,7 @@
     <Compile Include="Histogram.Designer.cs">
       <DependentUpon>Histogram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layer.cs" />
     <Compile Include="Loading.cs">
       <SubType>Form</SubType>
     </Compile>

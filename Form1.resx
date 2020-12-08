@@ -124,6 +124,18 @@
     <value>132, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuDrawingToolPolygon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAW5JREFUaEPtj1mKxTAMBHP/S2fQgB8ap7xoywtDCuorcbf6OP8J75Cn8Q55Gu8Q
+        zXEcF+8m1EgDeu/C3URHz6zG3EBHWqxiO5mOipjNViId0quh7yOzmCZRMTmC/h0ZBROoiNyF3o70cnlJ
+        4b1eKGuklc8LCiMzoFzSwu/fFNJbAfVoLSyHVEOdTQvTIdVQp9bCcEg11Km1MhwiVkA9vR4+r7ICZ1CH
+        NsJ0iJgFZWuj/EkoKYDM3gxKh1CeNpPlENED5WizuSRmlVJOs4KtIaIVytBmg4lZxZTTm8X2ENELZWkz
+        GKZkF1KeNoppiBiB8rQRpq+zywTK1Hq5fUiDspsezEPELChba2H5d7RgBeVrd3ENETOhfO0OW395wy1Q
+        h3aFe4iYDXVoZ2xfYw2OQF3NEY8ZQvkjidAQ0QPlWCRMl+yGNuj/DInwEHH2LdsRpiEChVe6y6OGRHC9
+        piMsVlA+5C7cTd88mvhuexrn+QO4lBWf4d2PWwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="menuDrawingToolBezier.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

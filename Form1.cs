@@ -169,6 +169,16 @@ namespace Graphics_Editor
                 this.menuDrawingToolRectangle.CheckState = CheckState.Unchecked;
                 this.menuDrawingToolCircle.Checked = false;
                 this.menuDrawingToolCircle.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolBezier.Checked = false;
+                this.menuDrawingToolBezier.CheckState = CheckState.Unchecked;
+                this.menuDrawingToolPolygon.Checked = false;
+                this.menuDrawingToolPolygon.CheckState = CheckState.Unchecked;
+                this.polygonDraw.Checked = false;
+                this.polygonDraw.CheckState = CheckState.Unchecked;
+                this.polygonMove.Checked = false;
+                this.polygonMove.CheckState = CheckState.Unchecked;
+                this.polygonRotate.Checked = false;
+                this.polygonRotate.CheckState = CheckState.Unchecked;
 
                 if (item == menuDrawingToolPencil)
                 {
@@ -211,6 +221,33 @@ namespace Graphics_Editor
                     this.menuDrawingToolBezier.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolBezier.Image;
                     appState.setDrawingTool("Bezier");
+                }
+                else if (item == polygonDraw)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonDraw.Checked = true;
+                    this.polygonDraw.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
+                }
+                else if (item == polygonMove)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonMove.Checked = true;
+                    this.polygonMove.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
+                }
+                else if (item == polygonRotate)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonRotate.Checked = true;
+                    this.polygonRotate.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
                 }
             }
             else if(menu == this.menuColor) //menu Color
@@ -389,8 +426,10 @@ namespace Graphics_Editor
 
         private void clearDrawingAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Image = null;
-            Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
+            //Image = null;
+            //Image = new Bitmap(this.pictureBox.Width, this.pictureBox.Height);
+            layers = null;
+            layers = new List<Bitmap>();
             pictureBox.Image = null;
             pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
             appState.resetPoints();
@@ -669,6 +708,21 @@ namespace Graphics_Editor
             result = new Point(Convert.ToInt32(px), Convert.ToInt32(py));
 
             return result;
+        }
+
+        private void polygonDraw_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonDraw);
+        }
+
+        private void polygonMove_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonMove);
+        }
+
+        private void polygonRotate_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonRotate);
         }
     }
 }

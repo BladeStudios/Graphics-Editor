@@ -43,17 +43,18 @@ namespace Graphics_Editor
             g.Dispose();
         }
 
-        public void drawLine(int x1, int y1, int x2, int y2, Color color)
+        public void drawLine(int x1, int y1, int x2, int y2, Color color, int layerIndex)
         {
             if (_form.layers.Count == 0)
                 _form.layers.Add(new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height));
             Graphics g;
-            g = Graphics.FromImage(_form.layers[0]);
+            g = Graphics.FromImage(_form.layers[layerIndex]);
             Pen p = new Pen(color);
             Point p1 = new Point(x1, y1);
             Point p2 = new Point(x2, y2);
             g.DrawLine(p, p1, p2);
-            _form.pictureBox.Image = _form.layers[0];
+            //_form.pictureBox.Image = _form.layers[layerIndex];
+            _form.setImage(_form.layers[layerIndex], layerIndex);
             g.Dispose();
         }
 
@@ -107,6 +108,28 @@ namespace Graphics_Editor
                                 drawPoint(i, j, color);
                     }
                 }
+            }
+        }
+
+        public void drawPolygon(int layer, List<Point> list, Color color)
+        {
+            if(list.Count>=2)
+            {
+                Bitmap bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
+                if (_form.layers.Count<= layer)
+                {
+                    _form.layers.Add(bitmap);
+                }
+                else
+                {
+                    _form.layers[layer] = bitmap;
+                }
+                for(int i=1; i<list.Count; i++)
+                {
+                    drawLine(list[i - 1].X, list[i - 1].Y, list[i].X, list[i].Y, color, layer);
+                    _form.consoleSay("Drawing line from (" + list[i - 1].X + "," + +list[i - 1].Y + ") to (" + +list[i].X + "," + list[i].Y + ")");
+                }
+                drawLine(list[list.Count-1].X, list[list.Count-1].Y, list[0].X, list[0].Y, color, layer);
             }
         }
 

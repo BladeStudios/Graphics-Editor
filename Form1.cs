@@ -173,6 +173,8 @@ namespace Graphics_Editor
                 this.menuDrawingToolBezier.CheckState = CheckState.Unchecked;
                 this.menuDrawingToolPolygon.Checked = false;
                 this.menuDrawingToolPolygon.CheckState = CheckState.Unchecked;
+                this.polygonSelect.Checked = false;
+                this.polygonSelect.CheckState = CheckState.Unchecked;
                 this.polygonDraw.Checked = false;
                 this.polygonDraw.CheckState = CheckState.Unchecked;
                 this.polygonMove.Checked = false;
@@ -221,6 +223,15 @@ namespace Graphics_Editor
                     this.menuDrawingToolBezier.CheckState = CheckState.Checked;
                     this.menuDrawingTool.Image = this.menuDrawingToolBezier.Image;
                     appState.setDrawingTool("Bezier");
+                }
+                else if (item == polygonSelect)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonSelect.Checked = true;
+                    this.polygonSelect.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
                 }
                 else if (item == polygonDraw)
                 {
@@ -389,13 +400,12 @@ namespace Graphics_Editor
                 drawing.drawPoint(x,y,appState.getColor());
             else if (appState.getDrawingTool()=="Bezier")
             {
-                consoleSay("Added point (" + x + "," + y + ")");
                 drawing.drawBezierCircle(x, y, appState.getColor());
                 appState.addBezierPoint(new Point(x, y));
                 if(appState.getPointsAmount()>1)
                 {
                     Point p = appState.getBezierPoint(appState.getPointsAmount() - 2);
-                    drawing.drawLine(p.X, p.Y, x, y, appState.getColor());
+                    drawing.drawLine(p.X, p.Y, x, y, appState.getColor(),0);
                 }
                 Bitmap bitmap = new Bitmap(layers[0]);
                 memoryAdd(bitmap);
@@ -403,6 +413,11 @@ namespace Graphics_Editor
                 {
                     drawBezierCurve();
                 }
+            }
+            else if (appState.getDrawingTool()=="Polygon")
+            {
+                appState.addPolygonPoint(new Point(x, y));
+                drawing.drawPolygon(appState.getCurrentLayer(), appState.getPolygonPointsList(), Color.Black);
             }
         }
 
@@ -433,6 +448,7 @@ namespace Graphics_Editor
             pictureBox.Image = null;
             pictureBox.Image = createBitmap(pictureBox.Width, pictureBox.Height, 255, 255, 255);
             appState.resetPoints();
+            appState.resetPolygonPoints();
         }
 
         private void menuColorBlack_Click(object sender, EventArgs e)
@@ -657,7 +673,7 @@ namespace Graphics_Editor
             bezierBitmap.MakeTransparent();
             Graphics graphics = Graphics.FromImage(bezierBitmap);
             double t;
-            Point p;
+            //Point p;
             for(int i=0; i<=1000; i++)
             {
                 t = Convert.ToDouble(i) / 1000;
@@ -713,6 +729,7 @@ namespace Graphics_Editor
         private void polygonDraw_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonDraw);
+            appState.setCurrentLayer(appState.getLayersCount());
         }
 
         private void polygonMove_Click(object sender, EventArgs e)
@@ -723,6 +740,11 @@ namespace Graphics_Editor
         private void polygonRotate_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonRotate);
+        }
+
+        private void polygonSelect_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonSelect);
         }
     }
 }

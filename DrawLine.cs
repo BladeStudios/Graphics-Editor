@@ -71,7 +71,7 @@ namespace Graphics_Editor
                 toYValue = temp;
             }
             if(mode=="line")
-                drawing.drawLine(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue,gValue,bValue));
+                drawing.drawLine(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue,gValue,bValue),0);
             else if(mode=="rectangle")
                 drawing.drawRectangle(fromXValue, fromYValue, toXValue, toYValue, Color.FromArgb(rValue, gValue, bValue));
             else if(mode=="circle")

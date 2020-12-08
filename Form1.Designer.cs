@@ -66,6 +66,10 @@
             this.menuDrawingToolLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolRectangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolCircle = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrawingToolPolygon = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonDraw = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonMove = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonRotate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuDrawingToolBezier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColor = new System.Windows.Forms.ToolStripDropDownButton();
@@ -89,10 +93,7 @@
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.menuDrawingToolPolygon = new System.Windows.Forms.ToolStripMenuItem();
-            this.polygonDraw = new System.Windows.Forms.ToolStripMenuItem();
-            this.polygonMove = new System.Windows.Forms.ToolStripMenuItem();
-            this.polygonRotate = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -130,40 +131,40 @@
             // menuFileNew
             // 
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new System.Drawing.Size(171, 26);
+            this.menuFileNew.Size = new System.Drawing.Size(180, 26);
             this.menuFileNew.Text = "New";
             this.menuFileNew.Click += new System.EventHandler(this.menuFileNew_Click);
             // 
             // menuFileNewWindow
             // 
             this.menuFileNewWindow.Name = "menuFileNewWindow";
-            this.menuFileNewWindow.Size = new System.Drawing.Size(171, 26);
+            this.menuFileNewWindow.Size = new System.Drawing.Size(180, 26);
             this.menuFileNewWindow.Text = "New window";
             this.menuFileNewWindow.Click += new System.EventHandler(this.menuFileNewWindow_Click);
             // 
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(171, 26);
+            this.menuFileOpen.Size = new System.Drawing.Size(180, 26);
             this.menuFileOpen.Text = "Open";
             this.menuFileOpen.Click += new System.EventHandler(this.menuFileOpen_Click);
             // 
             // menuFileSave
             // 
             this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new System.Drawing.Size(171, 26);
+            this.menuFileSave.Size = new System.Drawing.Size(180, 26);
             this.menuFileSave.Text = "Save";
             // 
             // menuFileSaveAs
             // 
             this.menuFileSaveAs.Name = "menuFileSaveAs";
-            this.menuFileSaveAs.Size = new System.Drawing.Size(171, 26);
+            this.menuFileSaveAs.Size = new System.Drawing.Size(180, 26);
             this.menuFileSaveAs.Text = "Save as...";
             // 
             // menuFilePrint
             // 
             this.menuFilePrint.Name = "menuFilePrint";
-            this.menuFilePrint.Size = new System.Drawing.Size(171, 26);
+            this.menuFilePrint.Size = new System.Drawing.Size(180, 26);
             this.menuFilePrint.Text = "Print...";
             // 
             // menuEdit
@@ -405,6 +406,39 @@
             this.menuDrawingToolCircle.Text = "Circle";
             this.menuDrawingToolCircle.Click += new System.EventHandler(this.menuDrawingToolCircle_Click);
             // 
+            // menuDrawingToolPolygon
+            // 
+            this.menuDrawingToolPolygon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.polygonSelect,
+            this.polygonDraw,
+            this.polygonMove,
+            this.polygonRotate});
+            this.menuDrawingToolPolygon.Image = ((System.Drawing.Image)(resources.GetObject("menuDrawingToolPolygon.Image")));
+            this.menuDrawingToolPolygon.Name = "menuDrawingToolPolygon";
+            this.menuDrawingToolPolygon.Size = new System.Drawing.Size(256, 26);
+            this.menuDrawingToolPolygon.Text = "Polygon";
+            // 
+            // polygonDraw
+            // 
+            this.polygonDraw.Name = "polygonDraw";
+            this.polygonDraw.Size = new System.Drawing.Size(180, 26);
+            this.polygonDraw.Text = "Draw";
+            this.polygonDraw.Click += new System.EventHandler(this.polygonDraw_Click);
+            // 
+            // polygonMove
+            // 
+            this.polygonMove.Name = "polygonMove";
+            this.polygonMove.Size = new System.Drawing.Size(180, 26);
+            this.polygonMove.Text = "Move";
+            this.polygonMove.Click += new System.EventHandler(this.polygonMove_Click);
+            // 
+            // polygonRotate
+            // 
+            this.polygonRotate.Name = "polygonRotate";
+            this.polygonRotate.Size = new System.Drawing.Size(180, 26);
+            this.polygonRotate.Text = "Rotate";
+            this.polygonRotate.Click += new System.EventHandler(this.polygonRotate_Click);
+            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
@@ -607,37 +641,12 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
-            // menuDrawingToolPolygon
+            // polygonSelect
             // 
-            this.menuDrawingToolPolygon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.polygonDraw,
-            this.polygonMove,
-            this.polygonRotate});
-            this.menuDrawingToolPolygon.Image = ((System.Drawing.Image)(resources.GetObject("menuDrawingToolPolygon.Image")));
-            this.menuDrawingToolPolygon.Name = "menuDrawingToolPolygon";
-            this.menuDrawingToolPolygon.Size = new System.Drawing.Size(256, 26);
-            this.menuDrawingToolPolygon.Text = "Polygon";
-            // 
-            // polygonDraw
-            // 
-            this.polygonDraw.Name = "polygonDraw";
-            this.polygonDraw.Size = new System.Drawing.Size(180, 26);
-            this.polygonDraw.Text = "Draw";
-            this.polygonDraw.Click += new System.EventHandler(this.polygonDraw_Click);
-            // 
-            // polygonMove
-            // 
-            this.polygonMove.Name = "polygonMove";
-            this.polygonMove.Size = new System.Drawing.Size(180, 26);
-            this.polygonMove.Text = "Move";
-            this.polygonMove.Click += new System.EventHandler(this.polygonMove_Click);
-            // 
-            // polygonRotate
-            // 
-            this.polygonRotate.Name = "polygonRotate";
-            this.polygonRotate.Size = new System.Drawing.Size(180, 26);
-            this.polygonRotate.Text = "Rotate";
-            this.polygonRotate.Click += new System.EventHandler(this.polygonRotate_Click);
+            this.polygonSelect.Name = "polygonSelect";
+            this.polygonSelect.Size = new System.Drawing.Size(180, 26);
+            this.polygonSelect.Text = "Select";
+            this.polygonSelect.Click += new System.EventHandler(this.polygonSelect_Click);
             // 
             // Form1
             // 
@@ -732,6 +741,7 @@
         private System.Windows.Forms.ToolStripMenuItem polygonDraw;
         private System.Windows.Forms.ToolStripMenuItem polygonMove;
         private System.Windows.Forms.ToolStripMenuItem polygonRotate;
+        private System.Windows.Forms.ToolStripMenuItem polygonSelect;
     }
 }
 

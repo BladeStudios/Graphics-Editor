@@ -14,6 +14,8 @@ namespace Graphics_Editor
         Color selectedColor;
         double zoom;
         List<Point> bezierPoints;
+        List<Point> polygonPoints;
+        int currentLayer;
 
         public AppState(Form1 form)
         {
@@ -22,6 +24,8 @@ namespace Graphics_Editor
             selectedColor = Color.Black;
             zoom = 1;
             bezierPoints = new List<Point>();
+            polygonPoints = new List<Point>();
+            setCurrentLayer(0);
         }
 
         public void setDrawingTool(string drawingTool)
@@ -74,6 +78,42 @@ namespace Graphics_Editor
         public Point getBezierPoint(int index)
         {
             return this.bezierPoints.ElementAt(index);
+        }
+
+        public void resetPolygonPoints()
+        {
+            polygonPoints = null;
+            polygonPoints = new List<Point>();
+        }
+
+        public void addPolygonPoint(Point point)
+        {
+            this.polygonPoints.Add(point);
+        }
+
+        public Point getPolygonPoint(int index)
+        {
+            return this.polygonPoints.ElementAt(index);
+        }
+
+        public List<Point> getPolygonPointsList()
+        {
+            return this.polygonPoints;
+        }
+
+        public void setCurrentLayer(int index)
+        {
+            this.currentLayer = index;
+        }
+
+        public int getCurrentLayer()
+        {
+            return this.currentLayer;
+        }
+
+        public int getLayersCount()
+        {
+            return _form.layers.Count;
         }
 
     }

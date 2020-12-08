@@ -93,7 +93,7 @@ namespace Graphics_Editor
 
         public void addLayer()
         {
-            Layer newLayer = new Layer();
+            Layer newLayer = new Layer(pictureBox.Width, pictureBox.Height);
             layers.Add(newLayer);
             appState.setCurrentLayer(layers.Count - 1);
         }
@@ -107,7 +107,7 @@ namespace Graphics_Editor
         {
             if (layerIndex > layers.Count-1)
             {
-                Layer newLayer = new Layer();
+                Layer newLayer = new Layer(pictureBox.Width, pictureBox.Height);
                 newLayer.bitmap = bitmap;
                 //layers.Add(bitmap);
                 layers.Add(newLayer);
@@ -122,6 +122,7 @@ namespace Graphics_Editor
 
             Bitmap finalImage = new Bitmap(pictureBox.Width, pictureBox.Height);
             Graphics g = Graphics.FromImage(finalImage);
+            //g.FillRectangle(Brushes.White, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height)); //new
 
             foreach(Layer layer in layers)
             {
@@ -442,11 +443,17 @@ namespace Graphics_Editor
                 }
                 else if (appState.getSelectedPolygonMode() == "Select")
                 {
-                    foreach (Layer layer in layers)
+                    for(int i=0; i<layers.Count; i++)
                     {
-                        if(isPointInside(layer.bitmap,Color.Black,new Point(x,y)))
+                        if (isPointInside(layers[i].bitmap, Color.Black, new Point(x, y)))
                         {
-                            drawing.drawPolygon(appState.getCurrentLayer(), layers[appState.getCurrentLayer()].getPointsList(), Color.Red);
+                            drawing.drawPolygon(i, layers[i].getPointsList(), Color.Red);
+                            layers[i].setSelected(true);
+                        }
+                        else
+                        {
+                            drawing.drawPolygon(i, layers[i].getPointsList(), Color.Black);
+                            layers[i].setSelected(false);
                         }
                     }
                 }
@@ -787,22 +794,21 @@ namespace Graphics_Editor
             Color pixelColor;
 
             pixelColor = bitmap.GetPixel(p.X, p.Y);
-            if (pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B)
+            if (pixelColor.A == color.A && pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B)
                 return true;
             else
             {
                 for (int i = p.X; i < bitmap.Width; i++)
                 {
                     pixelColor = bitmap.GetPixel(i, p.Y);
-                    if (pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B && colorChanged == false)
+                    if (pixelColor.A == color.A && pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B && colorChanged == false)
                     {
                         colorChanged = true;
                         passes++;
                     }
-                    else if (!(pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B) && colorChanged == true)
+                    else if (!(pixelColor.A == color.A && pixelColor.R == color.R && pixelColor.G == color.G && pixelColor.B == color.B) && colorChanged == true)
                     {
                         colorChanged = false;
-                        passes++;
                     }
                 }
 

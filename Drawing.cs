@@ -47,7 +47,7 @@ namespace Graphics_Editor
         {
             if (_form.layers.Count == 0)
             {
-                Layer newLayer = new Layer();
+                Layer newLayer = new Layer(_form.pictureBox.Width, _form.pictureBox.Height);
                 newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
                 _form.layers.Add(newLayer);
             }
@@ -67,7 +67,7 @@ namespace Graphics_Editor
         {
             if (_form.layers.Count == 0)
             {
-                Layer newLayer = new Layer();
+                Layer newLayer = new Layer(_form.pictureBox.Width, _form.pictureBox.Height);
                 newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
                 _form.layers.Add(newLayer);
             }
@@ -93,7 +93,7 @@ namespace Graphics_Editor
         {
             if (_form.layers.Count == 0)
             {
-                Layer newLayer = new Layer();
+                Layer newLayer = new Layer(_form.pictureBox.Width, _form.pictureBox.Height);
                 newLayer.bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
                 _form.layers.Add(newLayer);
             }
@@ -133,7 +133,7 @@ namespace Graphics_Editor
                 Bitmap bitmap = new Bitmap(_form.pictureBox.Width, _form.pictureBox.Height);
                 if (_form.layers.Count<= layer)
                 {
-                    Layer newLayer = new Layer();
+                    Layer newLayer = new Layer(_form.pictureBox.Width, _form.pictureBox.Height);
                     newLayer.bitmap = bitmap;
                     _form.layers.Add(newLayer);
                     //_form.layers.Add(bitmap);

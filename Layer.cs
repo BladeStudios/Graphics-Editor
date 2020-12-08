@@ -13,6 +13,16 @@ namespace Graphics_Editor
         List<Point> polygonPoints = new List<Point>();
         bool isSelected = false;
 
+        public Layer(int width, int height)
+        {
+            bitmap = new Bitmap(width, height);
+            /*Graphics g = Graphics.FromImage(bitmap);
+            g.Clear(Color.White);
+            SolidBrush b = new SolidBrush(Color.White);
+            g.DrawImage(bitmap, 0, 0, width, height);
+            g.Dispose();*/
+        }
+
         public void addPolygonPoint(Point point)
         {
             this.polygonPoints.Add(point);
@@ -21,6 +31,16 @@ namespace Graphics_Editor
         public List<Point> getPointsList()
         {
             return this.polygonPoints;
+        }
+
+        public void setSelected(bool s)
+        {
+            isSelected = s;
+        }
+
+        public bool getSelected()
+        {
+            return isSelected;
         }
     }
 }

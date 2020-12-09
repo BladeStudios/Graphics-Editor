@@ -758,11 +758,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem menuDrawingToolBezier;
         private System.Windows.Forms.ToolStripMenuItem menuDrawingToolPolygon;
-        private System.Windows.Forms.ToolStripMenuItem polygonDraw;
-        private System.Windows.Forms.ToolStripMenuItem polygonMove;
-        private System.Windows.Forms.ToolStripMenuItem polygonRotate;
-        private System.Windows.Forms.ToolStripMenuItem polygonSelect;
-        private System.Windows.Forms.ToolStripMenuItem polygonScale;
+        public System.Windows.Forms.ToolStripMenuItem polygonDraw;
+        public System.Windows.Forms.ToolStripMenuItem polygonMove;
+        public System.Windows.Forms.ToolStripMenuItem polygonRotate;
+        public System.Windows.Forms.ToolStripMenuItem polygonSelect;
+        public System.Windows.Forms.ToolStripMenuItem polygonScale;
         private System.Windows.Forms.ToolStripMenuItem polygonActions;
     }
 }

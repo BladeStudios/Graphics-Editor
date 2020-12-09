@@ -169,7 +169,7 @@ namespace Graphics_Editor
             selectMenuItem(menuDrawingTool, menuDrawingToolBrush);
         }
 
-        private void selectMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
+        public void selectMenuItem(ToolStripDropDownButton menu, ToolStripMenuItem item)
         {
             if(menu == menuDrawingTool) //menu Drawing Tool
             {
@@ -851,6 +851,8 @@ namespace Graphics_Editor
         private void polygonActions_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonActions);
+            Actions actions = new Actions(this);
+            actions.Show(this);
         }
 
         private bool isPointInside(Bitmap bitmap, Color color, Point p)
@@ -886,7 +888,7 @@ namespace Graphics_Editor
                 return true;
         }
 
-        private void move(int layerIndex, int x, int y)
+        public void move(int layerIndex, int x, int y)
         {
             for(int i=0; i < layers[layerIndex].getPointsList().Count; i++)
             {

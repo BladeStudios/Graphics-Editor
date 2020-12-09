@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Actions.Designer.cs">
+      <DependentUpon>Actions.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppState.cs" />
     <Compile Include="Bezier.cs">
       <SubType>Form</SubType>
@@ -107,6 +113,9 @@
     <Compile Include="Transformation.Designer.cs">
       <DependentUpon>Transformation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Actions.resx">
+      <DependentUpon>Actions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColorPicker.resx">
       <DependentUpon>ColorPicker.cs</DependentUpon>
     </EmbeddedResource>

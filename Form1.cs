@@ -895,5 +895,17 @@ namespace Graphics_Editor
                 layers[layerIndex].setPoint(i, layers[layerIndex].getPoint(i).X+x, layers[layerIndex].getPoint(i).Y+y);
             }
         }
+
+        public void rotate(int layerIndex, int x, int y, double angle)
+        {
+            int newX, newY;
+            angle *= 0.0174532925;
+            for (int i = 0; i < layers[layerIndex].getPointsList().Count; i++)
+            {
+                newX = Convert.ToInt32(x + ((layers[layerIndex].getPoint(i).X - x) * Math.Cos(angle)) - ((layers[layerIndex].getPoint(i).Y - y) * Math.Sin(angle)));
+                newY = Convert.ToInt32(y + ((layers[layerIndex].getPoint(i).X - x) * Math.Sin(angle)) + ((layers[layerIndex].getPoint(i).Y - y) * Math.Cos(angle)));
+                layers[layerIndex].setPoint(i, newX, newY);
+            }
+        }
     }
 }

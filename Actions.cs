@@ -22,6 +22,13 @@ namespace Graphics_Editor
             drawing = new Drawing(_form);
         }
 
+        private void Actions_Load(object sender, EventArgs e)
+        {
+            if (Owner != null)
+                Location = new Point(Owner.Location.X + Owner.Width / 2 - Width / 2,
+                    Owner.Location.Y + Owner.Height / 2 - Height / 2);
+        }
+
         private void drawButton_Click(object sender, EventArgs e)
         {
             _form.appState.setDrawingTool("Polygon");
@@ -46,6 +53,20 @@ namespace Graphics_Editor
                 {
                     //move(i, 100, 100);
                     _form.move(i, Convert.ToInt32(vectorX.Value), Convert.ToInt32(vectorY.Value));
+                    drawing.drawPolygon(i, _form.layers[i].getPointsList(), Color.Red);
+                    break;
+                }
+            }
+        }
+
+        private void rotateButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < _form.layers.Count; i++)
+            {
+                if (_form.layers[i].getSelected())
+                {
+                    //move(i, 100, 100);
+                    _form.rotate(i, Convert.ToInt32(rotateX.Value), Convert.ToInt32(rotateY.Value), Convert.ToInt32(rotateAngle.Value));
                     drawing.drawPolygon(i, _form.layers[i].getPointsList(), Color.Red);
                     break;
                 }

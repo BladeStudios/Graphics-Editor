@@ -67,9 +67,12 @@
             this.menuDrawingToolRectangle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolCircle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrawingToolPolygon = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.polygonDraw = new System.Windows.Forms.ToolStripMenuItem();
             this.polygonMove = new System.Windows.Forms.ToolStripMenuItem();
             this.polygonRotate = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.polygonActions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuDrawingToolBezier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColor = new System.Windows.Forms.ToolStripDropDownButton();
@@ -93,7 +96,6 @@
             this.console = new System.Windows.Forms.RichTextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.polygonSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -412,11 +414,20 @@
             this.polygonSelect,
             this.polygonDraw,
             this.polygonMove,
-            this.polygonRotate});
+            this.polygonRotate,
+            this.polygonScale,
+            this.polygonActions});
             this.menuDrawingToolPolygon.Image = ((System.Drawing.Image)(resources.GetObject("menuDrawingToolPolygon.Image")));
             this.menuDrawingToolPolygon.Name = "menuDrawingToolPolygon";
             this.menuDrawingToolPolygon.Size = new System.Drawing.Size(256, 26);
             this.menuDrawingToolPolygon.Text = "Polygon";
+            // 
+            // polygonSelect
+            // 
+            this.polygonSelect.Name = "polygonSelect";
+            this.polygonSelect.Size = new System.Drawing.Size(180, 26);
+            this.polygonSelect.Text = "Select";
+            this.polygonSelect.Click += new System.EventHandler(this.polygonSelect_Click);
             // 
             // polygonDraw
             // 
@@ -438,6 +449,20 @@
             this.polygonRotate.Size = new System.Drawing.Size(180, 26);
             this.polygonRotate.Text = "Rotate";
             this.polygonRotate.Click += new System.EventHandler(this.polygonRotate_Click);
+            // 
+            // polygonScale
+            // 
+            this.polygonScale.Name = "polygonScale";
+            this.polygonScale.Size = new System.Drawing.Size(180, 26);
+            this.polygonScale.Text = "Scale";
+            this.polygonScale.Click += new System.EventHandler(this.polygonScale_Click);
+            // 
+            // polygonActions
+            // 
+            this.polygonActions.Name = "polygonActions";
+            this.polygonActions.Size = new System.Drawing.Size(180, 26);
+            this.polygonActions.Text = "Actions...";
+            this.polygonActions.Click += new System.EventHandler(this.polygonActions_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -642,12 +667,6 @@
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
-            // polygonSelect
-            // 
-            this.polygonSelect.Name = "polygonSelect";
-            this.polygonSelect.Size = new System.Drawing.Size(180, 26);
-            this.polygonSelect.Text = "Select";
-            this.polygonSelect.Click += new System.EventHandler(this.polygonSelect_Click);
             // 
             // Form1
             // 
@@ -743,6 +762,8 @@
         private System.Windows.Forms.ToolStripMenuItem polygonMove;
         private System.Windows.Forms.ToolStripMenuItem polygonRotate;
         private System.Windows.Forms.ToolStripMenuItem polygonSelect;
+        private System.Windows.Forms.ToolStripMenuItem polygonScale;
+        private System.Windows.Forms.ToolStripMenuItem polygonActions;
     }
 }
 

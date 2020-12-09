@@ -196,6 +196,10 @@ namespace Graphics_Editor
                 this.polygonMove.CheckState = CheckState.Unchecked;
                 this.polygonRotate.Checked = false;
                 this.polygonRotate.CheckState = CheckState.Unchecked;
+                this.polygonScale.Checked = false;
+                this.polygonScale.CheckState = CheckState.Unchecked;
+                this.polygonActions.Checked = false;
+                this.polygonActions.CheckState = CheckState.Unchecked;
 
                 if (item == menuDrawingToolPencil)
                 {
@@ -278,6 +282,26 @@ namespace Graphics_Editor
                     this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
                     appState.setDrawingTool("Polygon");
                     appState.setSelectedPolygonMode("Rotate");
+                }
+                else if (item == polygonScale)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonScale.Checked = true;
+                    this.polygonScale.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Scale");
+                }
+                else if (item == polygonActions)
+                {
+                    this.menuDrawingToolPolygon.Checked = true;
+                    this.menuDrawingToolPolygon.CheckState = CheckState.Checked;
+                    this.polygonActions.Checked = true;
+                    this.polygonActions.CheckState = CheckState.Checked;
+                    this.menuDrawingTool.Image = this.menuDrawingToolPolygon.Image;
+                    appState.setDrawingTool("Polygon");
+                    appState.setSelectedPolygonMode("Actions");
                 }
             }
             else if(menu == this.menuColor) //menu Color
@@ -817,6 +841,16 @@ namespace Graphics_Editor
         private void polygonSelect_Click(object sender, EventArgs e)
         {
             selectMenuItem(menuDrawingTool, polygonSelect);
+        }
+
+        private void polygonScale_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonScale);
+        }
+
+        private void polygonActions_Click(object sender, EventArgs e)
+        {
+            selectMenuItem(menuDrawingTool, polygonActions);
         }
 
         private bool isPointInside(Bitmap bitmap, Color color, Point p)

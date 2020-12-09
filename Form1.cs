@@ -907,5 +907,16 @@ namespace Graphics_Editor
                 layers[layerIndex].setPoint(i, newX, newY);
             }
         }
+
+        public void scale(int layerIndex, double x, double y)
+        {
+            int newX, newY;
+            for (int i = 0; i < layers[layerIndex].getPointsList().Count; i++)
+            {
+                newX = Convert.ToInt32((layers[layerIndex].getPoint(i).X * x));
+                newY = Convert.ToInt32((layers[layerIndex].getPoint(i).Y * y));
+                layers[layerIndex].setPoint(i, newX, newY);
+            }
+        }
     }
 }

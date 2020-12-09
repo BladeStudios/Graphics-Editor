@@ -65,8 +65,20 @@ namespace Graphics_Editor
             {
                 if (_form.layers[i].getSelected())
                 {
-                    //move(i, 100, 100);
                     _form.rotate(i, Convert.ToInt32(rotateX.Value), Convert.ToInt32(rotateY.Value), Convert.ToInt32(rotateAngle.Value));
+                    drawing.drawPolygon(i, _form.layers[i].getPointsList(), Color.Red);
+                    break;
+                }
+            }
+        }
+
+        private void scaleButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < _form.layers.Count; i++)
+            {
+                if (_form.layers[i].getSelected())
+                {
+                    _form.scale(i, Convert.ToDouble(scaleX.Value), Convert.ToDouble(scaleY.Value));
                     drawing.drawPolygon(i, _form.layers[i].getPointsList(), Color.Red);
                     break;
                 }

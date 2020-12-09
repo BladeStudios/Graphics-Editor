@@ -42,11 +42,18 @@
             this.rotateY = new System.Windows.Forms.NumericUpDown();
             this.rotateAngleLabel = new System.Windows.Forms.Label();
             this.rotateAngle = new System.Windows.Forms.NumericUpDown();
+            this.scaleButton = new System.Windows.Forms.Button();
+            this.scaleXLabel = new System.Windows.Forms.Label();
+            this.scaleX = new System.Windows.Forms.NumericUpDown();
+            this.scaleYLabel = new System.Windows.Forms.Label();
+            this.scaleY = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.vectorX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vectorY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotateX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotateY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotateAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleY)).BeginInit();
             this.SuspendLayout();
             // 
             // drawButton
@@ -190,7 +197,7 @@
             // rotateY
             // 
             this.rotateY.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.rotateY.Location = new System.Drawing.Point(431, 128);
+            this.rotateY.Location = new System.Drawing.Point(430, 127);
             this.rotateY.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -233,11 +240,85 @@
             this.rotateAngle.Size = new System.Drawing.Size(51, 29);
             this.rotateAngle.TabIndex = 53;
             // 
+            // scaleButton
+            // 
+            this.scaleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.scaleButton.Location = new System.Drawing.Point(33, 165);
+            this.scaleButton.Name = "scaleButton";
+            this.scaleButton.Size = new System.Drawing.Size(250, 30);
+            this.scaleButton.TabIndex = 54;
+            this.scaleButton.Text = "Scale by...";
+            this.scaleButton.UseVisualStyleBackColor = true;
+            this.scaleButton.Click += new System.EventHandler(this.scaleButton_Click);
+            // 
+            // scaleXLabel
+            // 
+            this.scaleXLabel.AutoSize = true;
+            this.scaleXLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.scaleXLabel.Location = new System.Drawing.Point(310, 165);
+            this.scaleXLabel.Name = "scaleXLabel";
+            this.scaleXLabel.Size = new System.Drawing.Size(17, 21);
+            this.scaleXLabel.TabIndex = 55;
+            this.scaleXLabel.Text = "x";
+            // 
+            // scaleX
+            // 
+            this.scaleX.DecimalPlaces = 2;
+            this.scaleX.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.scaleX.Location = new System.Drawing.Point(333, 162);
+            this.scaleX.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.scaleX.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.scaleX.Name = "scaleX";
+            this.scaleX.Size = new System.Drawing.Size(51, 29);
+            this.scaleX.TabIndex = 56;
+            // 
+            // scaleYLabel
+            // 
+            this.scaleYLabel.AutoSize = true;
+            this.scaleYLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.scaleYLabel.Location = new System.Drawing.Point(407, 165);
+            this.scaleYLabel.Name = "scaleYLabel";
+            this.scaleYLabel.Size = new System.Drawing.Size(18, 21);
+            this.scaleYLabel.TabIndex = 57;
+            this.scaleYLabel.Text = "y";
+            // 
+            // scaleY
+            // 
+            this.scaleY.DecimalPlaces = 2;
+            this.scaleY.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.scaleY.Location = new System.Drawing.Point(431, 162);
+            this.scaleY.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.scaleY.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.scaleY.Name = "scaleY";
+            this.scaleY.Size = new System.Drawing.Size(51, 29);
+            this.scaleY.TabIndex = 58;
+            // 
             // Actions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 185);
+            this.ClientSize = new System.Drawing.Size(605, 206);
+            this.Controls.Add(this.scaleY);
+            this.Controls.Add(this.scaleYLabel);
+            this.Controls.Add(this.scaleX);
+            this.Controls.Add(this.scaleXLabel);
+            this.Controls.Add(this.scaleButton);
             this.Controls.Add(this.rotateAngle);
             this.Controls.Add(this.rotateAngleLabel);
             this.Controls.Add(this.rotateY);
@@ -260,6 +341,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.rotateX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotateY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotateAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +364,10 @@
         private System.Windows.Forms.NumericUpDown rotateY;
         private System.Windows.Forms.Label rotateAngleLabel;
         private System.Windows.Forms.NumericUpDown rotateAngle;
+        private System.Windows.Forms.Button scaleButton;
+        private System.Windows.Forms.Label scaleXLabel;
+        private System.Windows.Forms.NumericUpDown scaleX;
+        private System.Windows.Forms.Label scaleYLabel;
+        private System.Windows.Forms.NumericUpDown scaleY;
     }
 }

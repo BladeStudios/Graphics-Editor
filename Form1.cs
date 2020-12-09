@@ -457,8 +457,40 @@ namespace Graphics_Editor
                         }
                     }
                 }
+                else if (appState.getSelectedPolygonMode() == "Move")
+                {
+                    for (int i = 0; i < layers.Count; i++)
+                    {
+                        if(layers[i].getSelected())
+                        {
+                            //move(i, 100, 100);
+                            move(i, x - appState.getMoveFrom().X, y - appState.getMoveFrom().Y);
+                            drawing.drawPolygon(i, layers[i].getPointsList(), Color.Red);
+                            break;
+                        }
+                    }
+                }
 
             }
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(appState.getMouseDown()==false)
+            {
+                appState.setMouseDown(true);
+                int x = pictureBox.PointToClient(Cursor.Position).X;
+                int y = pictureBox.PointToClient(Cursor.Position).Y;
+                if (appState.getDrawingTool() == "Polygon" && appState.getSelectedPolygonMode() == "Move")
+                    appState.setMoveFrom(x, y);
+            }
+            
+        }
+
+        private void pictureBox_MouseUp(object sender, EventArgs e)
+        {
+            if (appState.getMouseDown() == true)
+                appState.setMouseDown(false);
         }
 
         private void menuPaintLine_Click(object sender, EventArgs e)
@@ -818,6 +850,14 @@ namespace Graphics_Editor
                 return false;
             else
                 return true;
+        }
+
+        private void move(int layerIndex, int x, int y)
+        {
+            for(int i=0; i < layers[layerIndex].getPointsList().Count; i++)
+            {
+                layers[layerIndex].setPoint(i, layers[layerIndex].getPoint(i).X+x, layers[layerIndex].getPoint(i).Y+y);
+            }
         }
     }
 }

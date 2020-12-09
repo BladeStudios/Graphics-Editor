@@ -42,5 +42,15 @@ namespace Graphics_Editor
         {
             return isSelected;
         }
+
+        public Point getPoint(int index)
+        {
+            return polygonPoints.ElementAt(index);
+        }
+
+        public void setPoint(int index, int x, int y)
+        {
+            this.polygonPoints[index] = new Point(x, y);
+        }
     }
 }

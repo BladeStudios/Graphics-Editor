@@ -17,6 +17,8 @@ namespace Graphics_Editor
         List<Point> polygonPoints;
         int currentLayer;
         string selectedPolygonMode;
+        Point moveFrom;
+        bool isMouseDown = false;
 
         public AppState(Form1 form)
         {
@@ -126,6 +128,26 @@ namespace Graphics_Editor
         public string getSelectedPolygonMode()
         {
             return this.selectedPolygonMode;
+        }
+
+        public void setMoveFrom(int x, int y)
+        {
+            this.moveFrom = new Point(x, y);
+        }
+
+        public Point getMoveFrom()
+        {
+            return this.moveFrom;
+        }
+
+        public void setMouseDown(bool m)
+        {
+            isMouseDown = m;
+        }
+
+        public bool getMouseDown()
+        {
+            return isMouseDown;
         }
 
     }
